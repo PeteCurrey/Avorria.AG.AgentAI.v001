@@ -8,21 +8,20 @@ export default function Preloader() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Increment counter to 100 with random steps to reach 100 in ~1.4s
+    // Elegant progression to 100 in ~1.2s
     const timer = setInterval(() => {
       setCount((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          // Allow 200ms at 100% before triggering the 0.9s slide up exit
           setTimeout(() => {
             setComplete(true);
-          }, 200);
+          }, 150);
           return 100;
         }
-        const step = Math.floor(Math.random() * 9) + 4;
+        const step = Math.floor(Math.random() * 8) + 5;
         return Math.min(prev + step, 100);
       });
-    }, 45);
+    }, 40);
 
     return () => clearInterval(timer);
   }, []);
@@ -36,46 +35,47 @@ export default function Preloader() {
           exit={{
             y: "-100%",
             transition: {
-              duration: 0.9,
+              duration: 0.85,
               ease: [0.76, 0, 0.24, 1],
             },
           }}
-          className="fixed inset-0 z-[300] flex flex-col justify-between bg-black p-8 md:p-16 select-none overflow-hidden"
+          className="fixed inset-0 z-[300] flex flex-col justify-between bg-[#07070A] p-8 md:p-16 select-none overflow-hidden"
         >
           {/* Top Label */}
-          <div className="flex items-center justify-between">
-            <span className="font-display font-semibold text-xs md:text-sm tracking-[0.3em] uppercase text-white/70">
-              AVORRIA LDN-NYC
+          <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-6">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/80 font-medium">
+              AVORRIA · LONDON &amp; NEW YORK
             </span>
-            <span className="font-body text-xs uppercase tracking-widest text-[var(--color-lime)] flex items-center gap-2">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--color-lime)] animate-ping" />
-              Initializing
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)]">
+              EST. 2022
             </span>
           </div>
 
-          {/* Huge Counter 0 - 100% */}
-          <div className="my-auto flex flex-col items-start justify-center">
-            <div className="font-display font-bold text-[clamp(4.5rem,18vw,14rem)] leading-[0.85] tracking-[-0.05em] text-white tabular-nums flex items-baseline">
-              <span>{count}</span>
-              <span className="text-[var(--color-lime)] text-[0.45em] ml-2">%</span>
+          {/* Center Monolithic Counter */}
+          <div className="my-auto flex flex-col items-start justify-center max-w-4xl">
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] mb-3">
+              DIGITAL FLAGSHIP PRACTICE
+            </span>
+            <div className="font-display font-medium text-[clamp(4.5rem,16vw,12rem)] leading-[0.9] tracking-[-0.04em] text-white tabular-nums flex items-baseline">
+              <span>{count < 10 ? `00${count}` : count < 100 ? `0${count}` : count}</span>
+              <span className="text-[var(--color-muted)] text-[0.35em] ml-3 font-mono font-normal">
+                / 100
+              </span>
             </div>
-            <p className="mt-4 font-body text-xs md:text-sm uppercase tracking-[0.25em] text-[var(--color-muted)]">
-              Performance-First Immersive Experiences
-            </p>
           </div>
 
-          {/* Bottom Lime Progress Bar */}
+          {/* Bottom Hairline Progress Indicator */}
           <div className="w-full space-y-3">
-            <div className="w-full h-[2px] bg-white/10 relative overflow-hidden rounded-full">
+            <div className="w-full h-[1px] bg-white/10 relative overflow-hidden">
               <motion.div
-                className="absolute inset-y-0 left-0 bg-[var(--color-lime)] shadow-[0_0_12px_rgba(214,255,63,0.8)]"
+                className="absolute inset-y-0 left-0 bg-white"
                 style={{ width: `${count}%` }}
                 transition={{ duration: 0.05, ease: "linear" }}
               />
             </div>
             <div className="flex justify-between items-center text-[10px] uppercase tracking-widest text-[var(--color-muted)] font-mono">
-              <span>UK (GMT) · USA (EST)</span>
-              <span>Systems Online</span>
+              <span>GB (GMT) · US (EST)</span>
+              <span>INDEXING PRODUCTION ENVIRONMENT</span>
             </div>
           </div>
         </motion.div>

@@ -58,10 +58,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-[var(--color-border)] bg-[#050508] relative overflow-hidden text-white">
-      {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[var(--color-lime)]/[0.02] blur-3xl pointer-events-none" />
-
+    <footer className="border-t border-[var(--color-border)] bg-[#07070A] relative overflow-hidden text-white">
       <div className="container-px mx-auto max-w-[1440px] pt-20 pb-12">
         {/* 4 Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-[var(--color-border)]">
@@ -70,19 +67,19 @@ export default function Footer() {
             <Link
               href="/"
               aria-label="Avorria homepage"
-              className="font-display font-bold text-3xl tracking-tight text-white inline-block"
+              className="font-display font-semibold text-2xl tracking-tight text-white inline-block"
             >
-              Avorria<span className="text-[var(--color-lime)]">.</span>
+              AVORRIA<span className="text-[var(--color-lime)]">.</span>
             </Link>
 
             <p className="text-[var(--color-muted)] text-sm leading-relaxed max-w-sm">
-              Performance-first digital agency building immersive websites and autonomous AI systems. London & New York.
+              Digital flagships and enterprise intelligence systems. Operating from London &amp; New York for global partners.
             </p>
 
-            {/* Availability Pulse "BOOKING Q1 2027" */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[var(--color-lime)]/10 border border-[var(--color-lime)]/30 text-[var(--color-lime)] font-mono text-xs uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-lime)] animate-ping" />
-              <span>BOOKING Q1 2027</span>
+            {/* Availability Status */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[var(--color-panel)] border border-[var(--color-border)] text-white/90 font-mono text-xs uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
+              <span>COMMISSIONS OPEN Q1 2027</span>
             </div>
 
             {/* Social Icons */}
@@ -94,9 +91,9 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow Avorria on ${label} (opens in new tab)`}
-                  className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-muted)] hover:text-white hover:border-[var(--color-lime)] transition-colors duration-200"
+                  className="w-9 h-9 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-muted)] hover:text-white hover:border-white/40 transition-colors duration-200"
                 >
-                  <Icon size={15} />
+                  <Icon size={14} />
                 </a>
               ))}
             </div>
@@ -104,15 +101,15 @@ export default function Footer() {
 
           {/* Col 2: Sitemap (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[var(--color-muted)]">
-              Sitemap
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-muted)]">
+              Navigation
             </h4>
             <ul className="space-y-2.5 font-body text-sm">
               {SITEMAP_LINKS.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[var(--color-muted)] hover:text-[var(--color-lime)] transition-colors duration-200"
+                    className="text-[var(--color-muted)] hover:text-white transition-colors duration-200"
                   >
                     {label}
                   </Link>
@@ -123,26 +120,26 @@ export default function Footer() {
 
           {/* Col 3: Expertise (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[var(--color-muted)]">
-              Core Capabilities
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-muted)]">
+              Core Practices
             </h4>
-            <ul className="space-y-2.5 font-body text-sm">
+            <ul className="space-y-2.5 font-mono text-xs">
               {EXPERTISE_LIST.map((item) => (
                 <li key={item} className="text-[var(--color-muted)] flex items-center gap-2">
-                  <span className="w-1 h-1 rounded-full bg-[var(--color-lime)]" />
+                  <span className="w-1 h-1 rounded-full bg-white/40" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 4: Newsletter input + lime submit (3 cols) */}
+          {/* Col 4: Newsletter input + submit (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[var(--color-muted)]">
-              Stay Ahead
+            <h4 className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-muted)]">
+              Executive Briefings
             </h4>
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-              Quarterly intelligence on WebGL, real-time 3D, and production AI architecture. Zero marketing fluff.
+              Quarterly technical intelligence on WebGL, real-time 3D, and autonomous enterprise systems.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
@@ -151,37 +148,37 @@ export default function Footer() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="director@brand.com"
+                  placeholder="director@enterprise.com"
                   required
-                  className="w-full px-4 py-3 rounded-full bg-[var(--color-panel)] border border-[var(--color-border)] text-sm text-white placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--color-lime)] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-full bg-[var(--color-panel)] border border-[var(--color-border)] text-xs text-white placeholder-[var(--color-muted)] focus:outline-none focus:border-white/40 transition-colors"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors duration-200 cursor-pointer disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-colors duration-200 cursor-pointer disabled:opacity-50"
               >
-                {status === "loading" ? "Subscribing..." : "Subscribe to Insights"}
-                <ArrowRight size={14} />
+                {status === "loading" ? "Subscribing..." : "Subscribe to Briefing"}
+                <ArrowRight size={13} />
               </button>
 
               {status === "success" && (
-                <p className="text-xs text-[var(--color-lime)] flex items-center gap-1.5 pt-1">
+                <p className="text-xs text-emerald-400 flex items-center gap-1.5 pt-1">
                   <CheckCircle2 size={13} />
                   <span>{message}</span>
                 </p>
               )}
               {status === "error" && (
-                <p className="text-xs text-red-400 pt-1">{message}</p>
+                <p className="text-xs text-rose-400 pt-1">{message}</p>
               )}
             </form>
           </div>
         </div>
 
-        {/* Giant AVORRIA 15rem White 6% Watermark */}
+        {/* Subdued AVORRIA Monogram */}
         <div
-          className="font-display font-black text-[clamp(5.5rem,18vw,15rem)] leading-none tracking-tighter text-white/[0.06] select-none pointer-events-none text-center my-6 md:my-10 uppercase overflow-hidden"
+          className="font-display font-black text-[clamp(4.5rem,15vw,12rem)] leading-none tracking-tighter text-white/[0.025] select-none pointer-events-none text-center my-6 uppercase overflow-hidden"
           aria-hidden="true"
         >
           AVORRIA

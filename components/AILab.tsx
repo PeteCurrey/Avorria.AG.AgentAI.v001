@@ -3,296 +3,335 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Terminal, Cpu, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import {
+  Cpu,
+  Layers,
+  ShieldCheck,
+  Zap,
+  ArrowRight,
+  CheckCircle2,
+  Lock,
+  GitBranch,
+  Database,
+  Workflow,
+} from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
-// Step 1: Build Types
-const BUILD_TYPES = [
-  { id: "website", name: "Website", base: 14000, desc: "Immersive WebGL flagship" },
-  { id: "ecom", name: "Ecom", base: 24000, desc: "Headless Shopify / 3D store" },
-  { id: "ai", name: "AI", base: 16000, desc: "Custom LLM & RAG pipeline" },
-  { id: "combo", name: "Combo", base: 34000, desc: "Flagship Web + Full AI Swarm" },
-];
-
-// Step 2: Complexities
-const COMPLEXITIES = [
-  { id: "launch", name: "Launch", multiplier: 1.0, weeks: 3, label: "x1 · 3 wks" },
-  { id: "growth", name: "Growth", multiplier: 1.6, weeks: 6, label: "x1.6 · 6 wks" },
-  { id: "flagship", name: "Flagship", multiplier: 2.4, weeks: 10, label: "x2.4 · 10 wks" },
+const ARCHITECTURE_MODULES = [
+  {
+    id: "rag",
+    number: "01",
+    title: "Enterprise Knowledge & RAG",
+    tagline: "Proprietary Vector Memory",
+    icon: Database,
+    overview:
+      "Enterprise-grade retrieval-augmented generation combining hybrid sparse/dense vector search with proprietary reranking models. Zero hallucinations, fully citeable outputs, and millisecond-level document synthesis.",
+    specs: [
+      { label: "Search Latency", value: "< 24ms p99" },
+      { label: "Retrieval Precision", value: "99.4% MRR" },
+      { label: "Data Boundary", value: "VPC Air-Gapped" },
+      { label: "Supported Formats", value: "PDF, SQL, API, CRM" },
+    ],
+    architecture: [
+      "Multi-modal Ingestion Pipeline",
+      "Chunking with Semantic Boundary Detection",
+      "Qdrant / Milvus Vector Sharding",
+      "Cross-Encoder Re-Ranking Engine",
+      "Deterministic Context Assembler",
+    ],
+  },
+  {
+    id: "agents",
+    number: "02",
+    title: "Autonomous Agent Orchestration",
+    tagline: "Multi-Role Agent Swarms",
+    icon: Workflow,
+    overview:
+      "State-machine governed multi-agent networks designed for high-stakes operational workflows. Specialized agents collaborate across analysis, execution, and verification phases with human-in-the-loop safety gates.",
+    specs: [
+      { label: "Task Completion Rate", value: "98.7% Zero-Shot" },
+      { label: "Parallel Concurrency", value: "1,000+ Swarm Workers" },
+      { label: "Failure Recovery", value: "Self-Healing Reflection" },
+      { label: "Protocol", value: "JSON Schema Validated" },
+    ],
+    architecture: [
+      "Coordinator Supervisor Model",
+      "Domain-Specialized Subagents",
+      "Dynamic Memory & Tool Sinks",
+      "Self-Correction & Critique Loop",
+      "Real-Time Telemetry & Traces",
+    ],
+  },
+  {
+    id: "middleware",
+    number: "03",
+    title: "High-Throughput Middleware",
+    tagline: "Sub-50ms API Pipelines",
+    icon: Zap,
+    overview:
+      "Ultra-low-latency streaming bridges and webhook infrastructure built with Next.js edge runtimes and distributed Redis queues. Connects client frontends directly to model inference endpoints with real-time UI synchronization.",
+    specs: [
+      { label: "Streaming TTFT", value: "< 140ms Global" },
+      { label: "Uptime SLA", value: "99.99% Tier-1" },
+      { label: "Throughput", value: "10k+ req/sec" },
+      { label: "Edge Delivery", value: "300+ PoPs Globally" },
+    ],
+    architecture: [
+      "Edge Middleware Routing",
+      "Distributed Rate-Limiting",
+      "Server-Sent Events (SSE) Engine",
+      "Automatic Fallback Redundancy",
+      "High-Velocity Redis Cache",
+    ],
+  },
+  {
+    id: "governance",
+    number: "04",
+    title: "Security, Privacy & Governance",
+    tagline: "Institutional Risk Guardrails",
+    icon: ShieldCheck,
+    overview:
+      "Hardened security posture engineered for regulated industries. We enforce zero model training on client IP, granular role-based access control, cryptographic verification, and comprehensive audit logs.",
+    specs: [
+      { label: "Compliance", value: "SOC-2 Type II Aligned" },
+      { label: "Data Retention", value: "Zero Zero-Day Storage" },
+      { label: "Encryption", value: "AES-256 / TLS 1.3" },
+      { label: "PII Masking", value: "Deterministic Redaction" },
+    ],
+    architecture: [
+      "Automated PII Redaction Proxy",
+      "Strict Token Allocation Quotas",
+      "Immutable Audit Ledger",
+      "Role-Based Access Control (RBAC)",
+      "Zero-Retention API Agreements",
+    ],
+  },
 ];
 
 export default function AILab() {
-  const [selectedType, setSelectedType] = useState(BUILD_TYPES[0]);
-  const [selectedComplexity, setSelectedComplexity] = useState(COMPLEXITIES[0]);
-
-  // Terminal build log lines
-  const [logs, setLogs] = useState<string[]>([
-    "[09:14:02] INITIALIZING AVORRIA NEURAL CORE...",
-    "[09:14:03] RAG PIPELINE CONNECTED TO VECTOR DB (qdrant)",
-    "[09:14:04] MULTI-AGENT SWARM ACTIVE ON 4 WORKERS",
-    "[09:14:06] SCOPE SELECTOR READY: AWAITING PARAMETERS",
-  ]);
-
-  // Round calculated price to nearest £500
-  const rawPrice = selectedType.base * selectedComplexity.multiplier;
-  const price = Math.round(rawPrice / 500) * 500;
-
-  const handleSelectType = (type: typeof BUILD_TYPES[0]) => {
-    setSelectedType(type);
-    const time = new Date().toLocaleTimeString("en-GB", { hour12: false });
-    setLogs((prev) => [
-      ...prev.slice(-7),
-      `[${time}] SCOPE: TYPE=${type.name.toUpperCase()} BASE=£${(type.base / 1000).toFixed(0)}k`,
-      `[${time}] RECALCULATING TIMELINE: ${selectedComplexity.weeks} WKS`,
-    ]);
-  };
-
-  const handleSelectComplexity = (complexity: typeof COMPLEXITIES[0]) => {
-    setSelectedComplexity(complexity);
-    const time = new Date().toLocaleTimeString("en-GB", { hour12: false });
-    setLogs((prev) => [
-      ...prev.slice(-7),
-      `[${time}] SCALE: ${complexity.name.toUpperCase()} (x${complexity.multiplier}, ${complexity.weeks} WEEKS)`,
-      `[${time}] EST TOTAL: £${(Math.round((selectedType.base * complexity.multiplier) / 500) * 500).toLocaleString("en-GB")}`,
-    ]);
-  };
+  const [activeModule, setActiveModule] = useState(ARCHITECTURE_MODULES[0]);
+  const ActiveIcon = activeModule.icon;
 
   return (
     <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-[var(--color-cyan)]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-[var(--color-lime)]/5 rounded-full blur-3xl pointer-events-none" />
-
       <div className="container-px mx-auto max-w-[1440px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Heading, 3 Mini Stats & Terminal Log */}
-          <div className="lg:col-span-6 space-y-10">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Cpu size={16} className="text-[var(--color-lime)]" />
-                <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-lime)]">
-                  Autonomous AI Engineering
-                </span>
-              </div>
-              <h2 className="font-display font-bold text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.98] tracking-tight text-white uppercase">
-                AI THAT PAYS<br />
-                <span className="text-gradient-lime">FOR ITSELF.</span>
-              </h2>
-              <p className="mt-6 font-body text-[var(--color-muted)] text-base md:text-lg leading-relaxed max-w-xl">
-                We design and deploy autonomous AI systems, domain-fine-tuned models, and intelligent workflows that reduce manual overhead and unlock scalable revenue.
-              </p>
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-[var(--color-border)]">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <Cpu size={15} className="text-[var(--color-lime)]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
+                Systems &amp; Applied AI Practice
+              </span>
             </div>
-
-            {/* 3 Mini Stats */}
-            <div className="grid grid-cols-3 gap-4 pt-2 border-y border-[var(--color-border)] py-6">
-              <div>
-                <p className="font-display font-bold text-2xl md:text-3xl text-[var(--color-lime)]">
-                  -74%
-                </p>
-                <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-[var(--color-muted)] mt-1">
-                  OpEx Overhead
-                </p>
-              </div>
-              <div>
-                <p className="font-display font-bold text-2xl md:text-3xl text-white">
-                  24/7
-                </p>
-                <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-[var(--color-muted)] mt-1">
-                  Autonomous Ops
-                </p>
-              </div>
-              <div>
-                <p className="font-display font-bold text-2xl md:text-3xl text-[var(--color-cyan)]">
-                  0s
-                </p>
-                <p className="font-mono text-[10px] md:text-xs uppercase tracking-widest text-[var(--color-muted)] mt-1">
-                  Human Latency
-                </p>
-              </div>
-            </div>
-
-            {/* Terminal-style Build Log font-mono */}
-            <div className="rounded-2xl bg-[#07070c] border border-white/10 p-5 shadow-2xl font-mono text-xs text-white/80 overflow-hidden">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                  <span className="ml-2 text-[11px] text-[var(--color-muted)]">
-                    avorria-scope-engine.sh
-                  </span>
-                </div>
-                <span className="text-[10px] text-[var(--color-lime)] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)] animate-ping" />
-                  LIVE
-                </span>
-              </div>
-
-              <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
-                {logs.map((log, idx) => (
-                  <p key={idx} className="leading-relaxed">
-                    <span className="text-[var(--color-lime)]">{">"}</span> {log}
-                  </p>
-                ))}
-                <div className="flex items-center text-[var(--color-muted)]">
-                  <span>waiting for input</span>
-                  <span className="inline-block w-2 h-3.5 bg-[var(--color-lime)] animate-pulse ml-1.5" />
-                </div>
-              </div>
-            </div>
+            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.8rem)] leading-[1.04] tracking-tight text-white">
+              Deterministic intelligence for<br />
+              <span className="text-gradient-silver">enterprise operations.</span>
+            </h2>
           </div>
 
-          {/* Right Column: Glass Estimator Card */}
-          <div className="lg:col-span-6">
-            <div className="relative rounded-3xl p-8 md:p-10 backdrop-blur-2xl bg-white/[0.03] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden">
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/5">
-                <div className="flex items-center gap-2">
-                  <Sparkles size={16} className="text-[var(--color-lime)]" />
-                  <span className="font-display font-bold text-sm tracking-widest uppercase text-white">
-                    Interactive Scope Estimator
-                  </span>
-                </div>
-                <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-widest uppercase bg-[var(--color-lime)]/10 text-[var(--color-lime)] border border-[var(--color-lime)]/30">
-                  Fixed Pricing SLA
-                </span>
-              </div>
+          <p className="font-body text-sm md:text-base text-[var(--color-muted)] max-w-md leading-relaxed">
+            We architect and deploy custom autonomous AI systems, domain-fine-tuned models,
+            and private knowledge infrastructures designed for institutional reliability.
+          </p>
+        </div>
 
-              {/* Step 1: 4 Build Types */}
-              <div className="mb-8">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)]">
-                    Step 01 · Select Build Type
-                  </span>
-                  <span className="font-mono text-xs text-[var(--color-lime)]">
-                    Base: £{(selectedType.base / 1000).toFixed(0)}k
-                  </span>
-                </div>
+        {/* 3 Executive Proof Metrics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]">
+            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1">
+              -74%
+            </span>
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
+              Operational Cycle Latency
+            </span>
+            <p className="text-xs text-[var(--color-muted)] leading-relaxed">
+              Automated multi-agent execution replaces manual back-office pipelines with deterministic sub-second throughput.
+            </p>
+          </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  {BUILD_TYPES.map((type) => {
-                    const isSelected = selectedType.id === type.id;
-                    return (
-                      <button
-                        key={type.id}
-                        type="button"
-                        onClick={() => handleSelectType(type)}
-                        className={`p-4 rounded-2xl border text-left transition-all duration-200 relative ${
-                          isSelected
-                            ? "bg-[var(--color-lime)] text-[var(--color-bg)] border-[var(--color-lime)] shadow-[0_0_20px_rgba(214,255,63,0.3)]"
-                            : "bg-white/[0.02] text-white border-white/10 hover:border-white/30"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="font-display font-bold text-base md:text-lg">
-                            {type.name}
+          <div className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]">
+            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1">
+              99.4%
+            </span>
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
+              Deterministic Precision
+            </span>
+            <p className="text-xs text-[var(--color-muted)] leading-relaxed">
+              Hybrid vector indexing and strict JSON schema boundaries eliminate conversational hallucinations.
+            </p>
+          </div>
+
+          <div className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]">
+            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1">
+              100%
+            </span>
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
+              IP &amp; Privacy Sovereignty
+            </span>
+            <p className="text-xs text-[var(--color-muted)] leading-relaxed">
+              Zero training on enterprise client data. Complete compliance with GDPR, SOC-2, and private cloud VPC standards.
+            </p>
+          </div>
+        </div>
+
+        {/* Interactive Systems Architecture Blueprint */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          {/* Navigation Column */}
+          <div className="lg:col-span-5 flex flex-col gap-3">
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-1">
+              Systems Architecture Stack
+            </span>
+
+            {ARCHITECTURE_MODULES.map((mod) => {
+              const isSelected = activeModule.id === mod.id;
+              const ModIcon = mod.icon;
+              return (
+                <button
+                  key={mod.id}
+                  type="button"
+                  onClick={() => setActiveModule(mod)}
+                  className={`p-6 rounded-[var(--radius-card)] border text-left transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                    isSelected
+                      ? "bg-[var(--color-panel-elevated)] border-white/20 text-white shadow-xl"
+                      : "bg-[var(--color-panel)] border-[var(--color-border)] text-white/70 hover:border-white/15 hover:text-white"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
+                        isSelected
+                          ? "bg-white/10 border-white/20 text-[var(--color-lime)]"
+                          : "bg-[var(--color-bg)] border-[var(--color-border)] text-[var(--color-muted)]"
+                      }`}
+                    >
+                      <ModIcon size={17} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-[10px] text-[var(--color-muted)]">
+                          {mod.number}
+                        </span>
+                        <span className="font-display text-sm font-semibold text-white">
+                          {mod.title}
+                        </span>
+                      </div>
+                      <span className="font-mono text-[11px] text-[var(--color-muted)] block">
+                        {mod.tagline}
+                      </span>
+                    </div>
+                  </div>
+
+                  <ArrowRight
+                    size={15}
+                    className={`transition-transform duration-200 ${
+                      isSelected
+                        ? "text-[var(--color-lime)] translate-x-1"
+                        : "text-[var(--color-muted)] opacity-40"
+                    }`}
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Architecture Blueprint Display Panel */}
+          <div className="lg:col-span-7">
+            <div className="h-full p-8 md:p-10 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)] flex flex-col justify-between">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeModule.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  className="space-y-8"
+                >
+                  {/* Top Bar */}
+                  <div className="flex items-center justify-between pb-6 border-b border-[var(--color-border)]">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center">
+                        <ActiveIcon size={19} className="text-[var(--color-lime)]" />
+                      </div>
+                      <div>
+                        <h3 className="font-display font-semibold text-xl text-white">
+                          {activeModule.title}
+                        </h3>
+                        <span className="font-mono text-xs text-[var(--color-muted)] uppercase tracking-wider">
+                          Module {activeModule.number} · Production Blueprint
+                        </span>
+                      </div>
+                    </div>
+
+                    <span className="font-mono text-[11px] px-3 py-1 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-lime)]">
+                      Active Practice
+                    </span>
+                  </div>
+
+                  {/* Overview */}
+                  <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed">
+                    {activeModule.overview}
+                  </p>
+
+                  {/* Technical Specifications Grid */}
+                  <div>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)] block mb-3">
+                      Technical Benchmarks
+                    </span>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {activeModule.specs.map((spec) => (
+                        <div
+                          key={spec.label}
+                          className="p-3.5 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)]"
+                        >
+                          <span className="font-mono text-[10px] text-[var(--color-muted)] block uppercase">
+                            {spec.label}
                           </span>
-                          <span
-                            className={`font-mono text-xs font-semibold ${
-                              isSelected ? "text-[var(--color-bg)]" : "text-[var(--color-muted)]"
-                            }`}
-                          >
-                            £{(type.base / 1000).toFixed(0)}k
+                          <span className="font-display font-semibold text-xs md:text-sm text-white mt-1 block">
+                            {spec.value}
                           </span>
                         </div>
-                        <p
-                          className={`text-[11px] leading-tight ${
-                            isSelected ? "text-[var(--color-bg)]/80" : "text-[var(--color-muted)]"
-                          }`}
-                        >
-                          {type.desc}
-                        </p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
+                      ))}
+                    </div>
+                  </div>
 
-              {/* Step 2: 3 Complexities */}
-              <div className="mb-8">
-                <div className="flex justify-between items-center mb-3">
-                  <span className="font-body text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)]">
-                    Step 02 · Select Scale & Velocity
-                  </span>
-                  <span className="font-mono text-xs text-white/80">
-                    {selectedComplexity.label}
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-3 gap-3">
-                  {COMPLEXITIES.map((complexity) => {
-                    const isSelected = selectedComplexity.id === complexity.id;
-                    return (
-                      <button
-                        key={complexity.id}
-                        type="button"
-                        onClick={() => handleSelectComplexity(complexity)}
-                        className={`p-3.5 rounded-2xl border text-center transition-all duration-200 ${
-                          isSelected
-                            ? "bg-[var(--color-lime)] text-[var(--color-bg)] border-[var(--color-lime)] shadow-[0_0_20px_rgba(214,255,63,0.3)] font-bold"
-                            : "bg-white/[0.02] text-white border-white/10 hover:border-white/30"
-                        }`}
-                      >
-                        <p className="font-display text-sm md:text-base font-bold">
-                          {complexity.name}
-                        </p>
-                        <p
-                          className={`font-mono text-[10px] mt-0.5 ${
-                            isSelected ? "text-[var(--color-bg)]" : "text-[var(--color-muted)]"
-                          }`}
-                        >
-                          {complexity.label}
-                        </p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Dynamic Price & Metrics Summary */}
-              <div className="pt-6 border-t border-white/10 space-y-6">
-                <div className="flex items-end justify-between">
+                  {/* Architecture Layer Breakdown */}
                   <div>
-                    <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-1">
-                      Estimated Investment
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)] block mb-3">
+                      Pipeline Components
                     </span>
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={price}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="font-display font-bold text-4xl md:text-5xl text-white tracking-tight"
-                      >
-                        £{price.toLocaleString("en-GB")}
-                      </motion.div>
-                    </AnimatePresence>
+                    <div className="space-y-2">
+                      {activeModule.architecture.map((layer, lIdx) => (
+                        <div
+                          key={layer}
+                          className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[var(--color-bg)]/60 border border-[var(--color-border)] text-xs font-mono text-white/90"
+                        >
+                          <span className="text-[var(--color-lime)] font-semibold">
+                            0{lIdx + 1}
+                          </span>
+                          <span>{layer}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                </motion.div>
+              </AnimatePresence>
 
-                  <div className="text-right">
-                    <span className="font-mono text-[11px] text-[var(--color-lime)] block">
-                      {selectedComplexity.weeks} WEEKS DELIVERY
-                    </span>
-                    <span className="font-mono text-[11px] text-white/70 block mt-0.5">
-                      ROI x4.2 PROJECTED
-                    </span>
-                  </div>
-                </div>
+              {/* Action */}
+              <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center justify-between gap-4">
+                <span className="font-mono text-xs text-[var(--color-muted)]">
+                  Custom VPC deployments available for enterprise engagements.
+                </span>
 
-                {/* CTA "LOCK THIS SCOPE" */}
-                <MagneticButton className="w-full block">
+                <MagneticButton>
                   <Link
-                    href={`/contact?scope=${selectedType.id}&scale=${selectedComplexity.id}&price=${price}`}
-                    className="w-full flex items-center justify-center gap-3 py-4 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-base hover:bg-white transition-colors duration-200 shadow-[0_0_30px_rgba(214,255,63,0.35)]"
+                    href="/contact"
+                    className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-colors duration-200"
                   >
-                    LOCK THIS SCOPE
-                    <ArrowRight size={18} />
+                    Request Systems Briefing
+                    <ArrowRight size={13} />
                   </Link>
                 </MagneticButton>
-
-                <p className="text-center font-mono text-[10px] uppercase tracking-wider text-[var(--color-muted)]">
-                  Guaranteed delivery date · 100% IP ownership · NDA included
-                </p>
               </div>
             </div>
           </div>

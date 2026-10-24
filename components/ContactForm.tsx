@@ -219,8 +219,8 @@ export default function ContactForm() {
                 onClick={() => setSelectedType(type.id)}
                 className={`px-4 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50 ${
                   isSelected
-                    ? "bg-[var(--color-lime)] text-[var(--color-bg)] font-bold shadow-[0_0_15px_rgba(214,255,63,0.3)]"
-                    : "bg-[var(--color-panel)] text-[var(--color-muted)] hover:text-white border border-[var(--color-border)] hover:border-[var(--color-lime)]/40"
+                    ? "bg-white text-black font-semibold border border-white shadow-sm"
+                    : "bg-[var(--color-panel)] text-[var(--color-muted)] hover:text-white border border-[var(--color-border)] hover:border-white/20"
                 }`}
               >
                 {type.label}
@@ -246,8 +246,8 @@ export default function ContactForm() {
                 onClick={() => setSelectedBudget(budget.id)}
                 className={`py-3 px-3 rounded-xl text-xs font-mono text-center tracking-wider transition-all duration-200 cursor-pointer disabled:opacity-50 ${
                   isSelected
-                    ? "bg-[var(--color-lime)] text-[var(--color-bg)] font-bold shadow-[0_0_15px_rgba(214,255,63,0.3)]"
-                    : "bg-[var(--color-panel)] text-[var(--color-muted)] hover:text-white border border-[var(--color-border)] hover:border-[var(--color-lime)]/40"
+                    ? "bg-white text-black font-semibold border border-white shadow-sm"
+                    : "bg-[var(--color-panel)] text-[var(--color-muted)] hover:text-white border border-[var(--color-border)] hover:border-white/20"
                 }`}
               >
                 {budget.label}
@@ -274,7 +274,7 @@ export default function ContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Tell us what you're building, target delivery date, current pain points, and any technical constraints..."
-          className="w-full bg-[var(--color-panel)] border border-[var(--color-border)] rounded-2xl px-5 py-4 font-body text-white placeholder:text-[var(--color-muted)]/40 focus:outline-none focus:border-[var(--color-lime)] transition-colors duration-200 resize-none disabled:opacity-50"
+          className="w-full bg-[var(--color-panel)] border border-[var(--color-border)] rounded-2xl px-5 py-4 font-body text-white placeholder:text-[var(--color-muted)]/40 focus:outline-none focus:border-white/40 transition-colors duration-200 resize-none disabled:opacity-50"
         />
       </div>
 
@@ -282,17 +282,17 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isLoading}
-        className="w-full flex items-center justify-center gap-3 py-5 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-extrabold text-base uppercase tracking-wider hover:bg-white transition-all duration-200 cursor-pointer shadow-[0_0_30px_rgba(214,255,63,0.35)] disabled:opacity-60"
+        className="w-full flex items-center justify-center gap-3 py-4.5 rounded-full bg-white text-black font-display font-semibold text-sm uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-all duration-200 cursor-pointer shadow-lg disabled:opacity-60"
       >
         {isLoading ? (
           <>
-            <Loader2 size={20} className="animate-spin text-[var(--color-bg)]" />
-            <span>TRANSMITTING BRIEF...</span>
+            <Loader2 size={18} className="animate-spin text-black" />
+            <span>Transmitting Brief...</span>
           </>
         ) : (
           <>
-            <span>SUBMIT PROJECT BRIEF</span>
-            <Send size={18} />
+            <span>Submit Project Brief</span>
+            <Send size={15} />
           </>
         )}
       </button>

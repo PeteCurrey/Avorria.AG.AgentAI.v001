@@ -120,9 +120,9 @@ export default function ServicesPage() {
         </div>
 
         {/* Required H1 */}
-        <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase mb-8">
+        <h1 className="font-display font-semibold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase mb-8">
           CAPABILITIES THAT<br />
-          <span className="text-gradient-lime">COMPOUND.</span>
+          <span className="text-gradient-silver">COMPOUND.</span>
         </h1>
 
         <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
@@ -132,20 +132,20 @@ export default function ServicesPage() {
 
       {/* ── Triage Banner ── */}
       <section className="container-px mx-auto max-w-[1440px] mb-20">
-        <div className="p-8 md:p-10 rounded-3xl bg-[var(--color-panel)] border border-[var(--color-lime)]/40 relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_0_40px_rgba(214,255,63,0.08)]">
+        <div className="p-8 md:p-10 rounded-3xl bg-[var(--color-panel)] border border-[var(--color-border)] relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--color-lime)]/10 text-[var(--color-lime)] flex items-center justify-center shrink-0">
-              <Compass size={24} />
+            <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center shrink-0">
+              <Compass size={22} />
             </div>
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-lime)] block mb-1">
-                Project Fit Triage
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-1">
+                Technical Architecture Advisory
               </span>
-              <h2 className="font-display font-bold text-xl md:text-2xl text-white">
-                Not sure which architecture fits your milestone?
+              <h2 className="font-display font-semibold text-xl md:text-2xl text-white">
+                Evaluating which technical architecture suits your milestone?
               </h2>
               <p className="font-body text-sm text-[var(--color-muted)] mt-1 max-w-xl">
-                Tell us your current bottleneck. We review tech stack viability, timeline constraints, and deliver a scope recommendation within 4 hours.
+                Outline your current bottlenecks. We analyze stack viability, performance trade-offs, and return a scope recommendation within 4 business hours.
               </p>
             </div>
           </div>
@@ -153,10 +153,10 @@ export default function ServicesPage() {
           <MagneticButton className="shrink-0">
             <Link
               href="/contact?triage=direct"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-sm hover:bg-white transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-colors duration-200"
             >
               RUN SCOPE TRIAGE
-              <ArrowRight size={16} />
+              <ArrowRight size={14} />
             </Link>
           </MagneticButton>
         </div>
@@ -177,21 +177,21 @@ export default function ServicesPage() {
                 <div className="lg:col-span-5 space-y-8">
                   <div>
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-14 h-14 rounded-2xl bg-[var(--color-panel)] border border-[var(--color-border)] flex items-center justify-center">
-                        <Icon size={26} className="text-[var(--color-lime)]" />
+                      <div className="w-12 h-12 rounded-xl bg-[var(--color-panel)] border border-[var(--color-border)] flex items-center justify-center">
+                        <Icon size={22} className="text-white" />
                       </div>
                       <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)]">
                         Discipline {service.number}
                       </span>
                     </div>
 
-                    <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4 leading-tight">
+                    <h2 className="font-display font-semibold text-3xl md:text-4xl text-white mb-4 leading-tight">
                       {service.title}
                     </h2>
-                    <p className="font-body text-base text-[var(--color-lime)] mb-4">
+                    <p className="font-body text-base text-white/80 mb-4">
                       {service.tagline}
                     </p>
-                    <p className="font-body text-base text-[var(--color-muted)] leading-relaxed">
+                    <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed">
                       {service.description}
                     </p>
                   </div>
@@ -200,20 +200,20 @@ export default function ServicesPage() {
                   <div className="p-5 rounded-2xl bg-[var(--color-panel)] border border-[var(--color-border)] grid grid-cols-2 gap-4">
                     <div>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)] flex items-center gap-1.5 mb-1">
-                        <Coins size={12} className="text-[var(--color-lime)]" />
-                        Starting At
+                        <Coins size={12} className="text-white/60" />
+                        Engagement Tier
                       </span>
-                      <p className="font-display font-bold text-lg text-white">
+                      <p className="font-display font-bold text-base md:text-lg text-white">
                         {service.price}
                       </p>
                     </div>
 
                     <div>
                       <span className="font-mono text-[10px] uppercase tracking-widest text-[var(--color-muted)] flex items-center gap-1.5 mb-1">
-                        <Clock size={12} className="text-[var(--color-lime)]" />
-                        Target Sprints
+                        <Clock size={12} className="text-white/60" />
+                        Delivery Window
                       </span>
-                      <p className="font-display font-bold text-lg text-white">
+                      <p className="font-display font-bold text-base md:text-lg text-white">
                         {service.timeline}
                       </p>
                     </div>
@@ -224,10 +224,10 @@ export default function ServicesPage() {
                     <MagneticButton>
                       <Link
                         href={`/contact?service=${service.id}`}
-                        className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-sm md:text-base hover:bg-white transition-all duration-200 shadow-[0_0_25px_rgba(214,255,63,0.3)] group"
+                        className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-all duration-200 shadow-md group"
                       >
                         SCOPE THIS
-                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
                       </Link>
                     </MagneticButton>
                   </div>

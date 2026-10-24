@@ -62,14 +62,14 @@ export default function Work() {
                   Selected Work
                 </span>
               </div>
-              <h2 className="font-display font-bold text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.05] tracking-tight text-white">
-                Engineered to <span className="text-gradient-lime">outperform.</span>
+              <h2 className="font-display font-semibold text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.05] tracking-tight text-white">
+                Engineered for <span className="text-gradient-silver">category leadership.</span>
               </h2>
             </div>
 
             <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-[var(--color-muted)]">
-              <span>Scroll down to navigate horizontally</span>
-              <span className="text-[var(--color-lime)]">→</span>
+              <span>Scroll to navigate case studies</span>
+              <span className="text-white">→</span>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function Work() {
               return (
                 <div
                   key={project.slug}
-                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-[var(--color-lime)]/50 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 transition-all duration-300 flex flex-col justify-between group shadow-xl"
                 >
                   <Link
                     href={`/work/${project.slug}`}
@@ -99,14 +99,14 @@ export default function Work() {
                     className="flex flex-col h-full justify-between"
                   >
                     <div>
-                      {/* Image Showcase: h-360px with scale 1.1 on hover */}
-                      <div className="h-[360px] rounded-2xl overflow-hidden relative mb-6 bg-gradient-to-br from-[#12121d] via-[#090910] to-[#050508] border border-white/5">
+                      {/* Image Showcase */}
+                      <div className="h-[340px] rounded-2xl overflow-hidden relative mb-6 bg-gradient-to-br from-[#12121B] via-[#0C0C12] to-[#07070A] border border-white/5">
                         {/* Hover Zoom Visual */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-transform duration-500 ease-out group-hover:scale-110">
-                          <span className="font-display font-bold text-3xl md:text-4xl text-white/20 uppercase tracking-widest text-center select-none">
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-transform duration-500 ease-out group-hover:scale-105">
+                          <span className="font-display font-semibold text-2xl md:text-3xl text-white/30 uppercase tracking-widest text-center select-none">
                             {project.title}
                           </span>
-                          <span className="mt-2 text-xs font-mono tracking-widest text-[var(--color-lime)]/60">
+                          <span className="mt-2 text-xs font-mono tracking-widest text-white/50">
                             {project.category}
                           </span>
                         </div>
@@ -116,19 +116,19 @@ export default function Work() {
                           <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white">
                             {project.category}
                           </span>
-                          <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-[var(--color-lime)]">
+                          <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white/80">
                             {project.year}
                           </span>
                         </div>
 
-                        {/* Subtle Glow Overlay */}
+                        {/* Subtle Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-panel)] via-transparent to-transparent opacity-80" />
                       </div>
 
-                      {/* Title + Lime Circle Arrow */}
+                      {/* Title + Luxury Arrow */}
                       <div className="flex items-start justify-between gap-4 mb-3">
                         <div>
-                          <h3 className="font-display font-bold text-2xl md:text-3xl text-white group-hover:text-[var(--color-lime)] transition-colors duration-200">
+                          <h3 className="font-display font-semibold text-2xl md:text-3xl text-white group-hover:text-white transition-colors duration-200">
                             {project.title}
                           </h3>
                           <p className="text-[var(--color-muted)] text-sm mt-1 line-clamp-1">
@@ -136,10 +136,10 @@ export default function Work() {
                           </p>
                         </div>
 
-                        {/* Lime Circle Arrow rotates 45 deg on hover */}
-                        <div className="w-12 h-12 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] flex items-center justify-center shrink-0 shadow-[0_0_20px_rgba(214,255,63,0.3)]">
+                        {/* Architectural Circular Arrow */}
+                        <div className="w-10 h-10 rounded-full border border-white/20 bg-white/5 text-white group-hover:bg-white group-hover:text-black group-hover:border-white flex items-center justify-center shrink-0 transition-all duration-300">
                           <ArrowUpRight
-                            size={20}
+                            size={18}
                             className="group-hover:rotate-45 transition-transform duration-300"
                           />
                         </div>

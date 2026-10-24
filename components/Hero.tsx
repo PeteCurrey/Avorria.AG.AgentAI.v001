@@ -4,93 +4,124 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 const WebGLHero = dynamic(() => import("./WebGLHero"), { ssr: false });
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { delayChildren: 2.4, staggerChildren: 0.12 } },
+  visible: { transition: { delayChildren: 2.2, staggerChildren: 0.12 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.85,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    },
+  },
 };
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-bg)]">
-      {/* WebGL Background */}
+    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-bg)]">
+      {/* Refined WebGL Topographical Lattice */}
       <WebGLHero />
 
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)]/20 via-transparent to-[var(--color-bg)]" aria-hidden />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(124,92,255,0.08)_0%,transparent_70%)]" aria-hidden />
+      {/* Subtle depth vignette */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)] via-transparent to-[var(--color-bg)] pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_75%)] pointer-events-none"
+        aria-hidden="true"
+      />
 
       {/* Content */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 container-px mx-auto max-w-[1440px] text-center py-32"
+        className="relative z-10 container-px mx-auto max-w-[1440px] text-center pt-32 pb-24 lg:py-36"
       >
-        {/* Eyebrow */}
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-3 mb-8">
-          <span className="inline-block w-2 h-2 rounded-full bg-[var(--color-lime)] animate-pulse" />
-          <span className="font-body text-sm text-[var(--color-muted)] uppercase tracking-widest">
-            UK & USA Digital Agency
+        {/* Institutional Eyebrow */}
+        <motion.div
+          variants={itemVariants}
+          className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[var(--color-panel)] border border-[var(--color-border)] mb-10 shadow-sm"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/80 font-medium">
+            London · New York · Global Practice
           </span>
         </motion.div>
 
         {/* Headline */}
         <motion.h1
           variants={itemVariants}
-          className="font-display font-extrabold text-[clamp(2.75rem,13.5vw,7.5rem)] leading-[0.94] tracking-[-0.04em] text-white mb-8"
+          className="font-display font-bold text-[clamp(2.75rem,8vw,7rem)] leading-[0.98] tracking-[-0.035em] text-white mb-8 max-w-5xl mx-auto"
         >
-          We build what others
-          <br />
-          <span className="text-gradient-lime">can&apos;t imagine.</span>
+          Architecting digital flagships &amp;{" "}
+          <span className="text-gradient-lime">applied intelligence.</span>
         </motion.h1>
 
-        {/* Sub */}
+        {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="font-body text-[clamp(1rem,2vw,1.25rem)] text-[var(--color-muted)] max-w-2xl mx-auto mb-12 leading-relaxed"
+          className="font-body text-[clamp(1.05rem,1.8vw,1.25rem)] text-[var(--color-muted)] max-w-2xl mx-auto mb-12 leading-relaxed font-normal"
         >
-          Avorria crafts performance-first immersive websites and autonomous AI systems for ambitious brands demanding Awwwards-level craft.
+          Avorria partners with ambitious industry leaders to design and engineer
+          immersive WebGL platforms, custom autonomous systems, and category-defining
+          digital experiences built for enduring scale.
         </motion.p>
 
-        {/* CTAs */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* Primary CTAs */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
           <MagneticButton>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-base hover:bg-white transition-colors duration-200 group"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-display font-semibold text-sm hover:bg-[var(--color-lime)] hover:text-black transition-all duration-200 group shadow-[0_4px_24px_rgba(255,255,255,0.12)]"
             >
-              Start a project
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+              Initiate an Engagement
+              <ArrowRight
+                size={15}
+                className="group-hover:translate-x-1 transition-transform duration-200"
+              />
             </Link>
           </MagneticButton>
+
           <Link
             href="/work"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-[var(--color-border)] text-white font-display font-semibold text-base hover:border-[var(--color-lime)] hover:text-[var(--color-lime)] transition-colors duration-200"
+            className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full border border-[var(--color-border)] bg-[var(--color-panel)]/40 text-white/90 font-display font-medium text-sm hover:border-white/30 hover:text-white transition-all duration-200"
           >
-            View our work
+            Explore Selected Work
+            <ArrowUpRight size={15} className="text-[var(--color-muted)]" />
           </Link>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Bottom Metadata & Scroll Indicator */}
         <motion.div
           variants={itemVariants}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="mt-20 pt-8 border-t border-[var(--color-border)] max-w-4xl mx-auto hidden md:grid grid-cols-3 gap-8 text-left text-xs font-mono text-[var(--color-muted)]"
         >
-          <span className="text-xs text-[var(--color-muted)] uppercase tracking-widest">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[1px] h-8 bg-gradient-to-b from-[var(--color-lime)] to-transparent"
-          />
+          <div>
+            <span className="text-white font-medium block mb-1">PRACTICE FOCUS</span>
+            <span>Immersive 3D &amp; Next.js 15 Flagships</span>
+          </div>
+          <div>
+            <span className="text-white font-medium block mb-1">AI INFRASTRUCTURE</span>
+            <span>Domain-Trained Agent Swarms</span>
+          </div>
+          <div>
+            <span className="text-white font-medium block mb-1">AVAILABILITY</span>
+            <span>Commissions Open for Q1 2027</span>
+          </div>
         </motion.div>
       </motion.div>
     </section>

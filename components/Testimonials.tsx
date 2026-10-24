@@ -141,8 +141,8 @@ export default function Testimonials() {
                 </p>
               </div>
 
-              {/* Lime Metric Pill */}
-              <span className="px-4 py-1.5 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-mono font-bold text-xs tracking-wider uppercase shadow-[0_0_15px_rgba(214,255,63,0.35)]">
+              {/* Refined Metric Pill */}
+              <span className="px-3.5 py-1 rounded-full bg-[var(--color-panel)] border border-white/20 text-white font-mono text-xs tracking-wider uppercase">
                 {t.metric}
               </span>
             </motion.div>
@@ -155,9 +155,9 @@ export default function Testimonials() {
                 type="button"
                 onClick={prev}
                 aria-label="Previous testimonial"
-                className="w-12 h-12 rounded-full border border-[var(--color-border)] hover:border-[var(--color-lime)] flex items-center justify-center text-white hover:text-[var(--color-lime)] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)]"
+                className="w-10 h-10 rounded-full border border-[var(--color-border)] hover:border-white/40 flex items-center justify-center text-white/80 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} />
               </button>
 
               {/* Progress Bars for all 4 items */}
@@ -173,7 +173,7 @@ export default function Testimonials() {
                         progressKey.current += 1;
                       }}
                       aria-label={`Jump to testimonial ${i + 1}`}
-                      className="relative w-12 md:w-16 h-1.5 rounded-full bg-white/10 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)]"
+                      className="relative w-10 md:w-14 h-1 rounded-full bg-white/10 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       {isActive && (
                         <motion.div
@@ -181,11 +181,11 @@ export default function Testimonials() {
                           initial={{ width: "0%" }}
                           animate={{ width: isPaused ? undefined : "100%" }}
                           transition={{ duration: 6, ease: "linear" }}
-                          className="absolute inset-y-0 left-0 bg-[var(--color-lime)]"
+                          className="absolute inset-y-0 left-0 bg-white"
                         />
                       )}
                       {!isActive && i < current && (
-                        <div className="w-full h-full bg-[var(--color-lime)]/40" />
+                        <div className="w-full h-full bg-white/40" />
                       )}
                     </button>
                   );
@@ -196,9 +196,9 @@ export default function Testimonials() {
                 type="button"
                 onClick={next}
                 aria-label="Next testimonial"
-                className="w-12 h-12 rounded-full border border-[var(--color-border)] hover:border-[var(--color-lime)] flex items-center justify-center text-white hover:text-[var(--color-lime)] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)]"
+                className="w-10 h-10 rounded-full border border-[var(--color-border)] hover:border-white/40 flex items-center justify-center text-white/80 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </button>
             </div>
 

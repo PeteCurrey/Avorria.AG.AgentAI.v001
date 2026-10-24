@@ -79,60 +79,60 @@ export default function StudioPage() {
         </p>
       </section>
 
-      {/* ── Lime Manifesto Box (14 makers / 2 studios / 16h coverage) ── */}
+      {/* ── Studio Operating Model (14 makers / 2 studios / 16h coverage) ── */}
       <section className="container-px mx-auto max-w-[1440px] mb-24">
-        <div className="rounded-3xl bg-[var(--color-lime)] text-[var(--color-bg)] p-10 md:p-16 shadow-[0_0_60px_rgba(214,255,63,0.18)] select-none">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 pb-12 border-b border-[var(--color-bg)]/20">
+        <div className="rounded-3xl bg-[var(--color-panel)] border border-[var(--color-border)] text-white p-10 md:p-16 shadow-2xl select-none">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10 pb-12 border-b border-[var(--color-border)]">
             <div>
-              <span className="font-mono text-xs font-bold uppercase tracking-widest text-[var(--color-bg)]/70 block mb-2">
+              <span className="font-mono text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] block mb-2">
                 The Avorria Operating Model
               </span>
-              <h2 className="font-display font-black text-3xl md:text-5xl tracking-tight leading-tight text-[var(--color-bg)]">
+              <h2 className="font-display font-semibold text-3xl md:text-5xl tracking-tight leading-tight text-white">
                 Dual-City Velocity. Zero Agency Friction.
               </h2>
             </div>
-            <p className="font-body font-medium text-sm md:text-base text-[var(--color-bg)]/80 max-w-md leading-relaxed">
-              We operate an asynchronous transatlantic engine. While London finishes design sprints, New York deploys to staging.
+            <p className="font-body text-sm md:text-base text-[var(--color-muted)] max-w-md leading-relaxed">
+              We operate an asynchronous transatlantic engineering collective. While London completes design architecture, New York executes production deployment.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
             <div className="space-y-1">
-              <div className="flex items-center gap-2 mb-2 text-[var(--color-bg)]/70">
-                <Users size={18} />
-                <span className="font-mono text-xs uppercase tracking-widest font-bold">Studio Scale</span>
+              <div className="flex items-center gap-2 mb-2 text-[var(--color-muted)]">
+                <Users size={17} className="text-white" />
+                <span className="font-mono text-xs uppercase tracking-widest font-semibold">Practice Scale</span>
               </div>
-              <p className="font-display font-black text-5xl md:text-6xl text-[var(--color-bg)]">
+              <p className="font-display font-bold text-4xl md:text-5xl text-white">
                 14 makers
               </p>
-              <p className="font-body text-xs md:text-sm text-[var(--color-bg)]/80 pt-1">
-                Zero junior bench. Exclusively principal-grade engineers and directors.
+              <p className="font-body text-xs md:text-sm text-[var(--color-muted)] pt-1">
+                Zero junior bench. Exclusively principal-grade engineers and creative directors.
               </p>
             </div>
 
             <div className="space-y-1">
-              <div className="flex items-center gap-2 mb-2 text-[var(--color-bg)]/70">
-                <Globe2 size={18} />
-                <span className="font-mono text-xs uppercase tracking-widest font-bold">Physical Hubs</span>
+              <div className="flex items-center gap-2 mb-2 text-[var(--color-muted)]">
+                <Globe2 size={17} className="text-white" />
+                <span className="font-mono text-xs uppercase tracking-widest font-semibold">Physical Studios</span>
               </div>
-              <p className="font-display font-black text-5xl md:text-6xl text-[var(--color-bg)]">
+              <p className="font-display font-bold text-4xl md:text-5xl text-white">
                 2 studios
               </p>
-              <p className="font-body text-xs md:text-sm text-[var(--color-bg)]/80 pt-1">
-                London (Shoreditch, EC2A) & New York (SoHo, NY 10013).
+              <p className="font-body text-xs md:text-sm text-[var(--color-muted)] pt-1">
+                London (Shoreditch, EC2A) &amp; New York (SoHo, NY 10013).
               </p>
             </div>
 
             <div className="space-y-1">
-              <div className="flex items-center gap-2 mb-2 text-[var(--color-bg)]/70">
-                <Clock size={18} />
-                <span className="font-mono text-xs uppercase tracking-widest font-bold">Active Timezones</span>
+              <div className="flex items-center gap-2 mb-2 text-[var(--color-muted)]">
+                <Clock size={17} className="text-white" />
+                <span className="font-mono text-xs uppercase tracking-widest font-semibold">Active Coverage</span>
               </div>
-              <p className="font-display font-black text-5xl md:text-6xl text-[var(--color-bg)]">
+              <p className="font-display font-bold text-4xl md:text-5xl text-white">
                 16h coverage
               </p>
-              <p className="font-body text-xs md:text-sm text-[var(--color-bg)]/80 pt-1">
-                Continuous delivery overlap across GMT, EST, and PST hours.
+              <p className="font-body text-xs md:text-sm text-[var(--color-muted)] pt-1">
+                Continuous delivery overlap across GMT, EST, and PST operational hours.
               </p>
             </div>
           </div>

@@ -103,21 +103,20 @@ export default function CustomCursor() {
   // Determine size, styling, and text content based on state
   const { type, label } = cursorState;
 
-  let size = 36;
-  let ringClasses = "border border-white/40 bg-transparent text-transparent";
+  let size = 32;
+  let ringClasses = "border border-white/25 bg-transparent text-transparent";
 
   if (type === "hover") {
-    size = 56;
-    ringClasses =
-      "border border-[var(--color-lime)] bg-[var(--color-lime)]/10 shadow-[0_0_24px_rgba(214,255,63,0.35)] text-transparent";
+    size = 48;
+    ringClasses = "border border-white/40 bg-white/5 text-transparent";
   } else if (type === "view") {
-    size = 96;
+    size = 80;
     ringClasses =
-      "border-none bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-xs tracking-widest shadow-[0_0_30px_rgba(214,255,63,0.5)]";
+      "border-none bg-white text-black font-mono font-medium text-[11px] tracking-widest shadow-xl";
   } else if (type === "drag") {
-    size = 72;
+    size = 64;
     ringClasses =
-      "border-2 border-[var(--color-lime)] bg-[var(--color-lime)]/20 text-[var(--color-lime)] font-display font-bold text-xs tracking-widest shadow-[0_0_20px_rgba(214,255,63,0.4)]";
+      "border border-white/50 bg-black/60 text-white font-mono font-medium text-[10px] tracking-widest backdrop-blur-sm";
   }
 
   const offset = size / 2;
@@ -129,10 +128,10 @@ export default function CustomCursor() {
       }`}
       aria-hidden="true"
     >
-      {/* Small Lime Dot - follows instantly */}
+      {/* Small White Dot - follows instantly */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[var(--color-lime)] pointer-events-none z-[10000]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-[10000]"
         style={{ willChange: "transform" }}
       />
 

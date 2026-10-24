@@ -73,7 +73,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
           scrolled
-            ? "py-3.5 bg-[#050508]/85 backdrop-blur-xl border-b border-[var(--color-border)] shadow-2xl"
+            ? "py-3.5 bg-[#07070A]/90 backdrop-blur-xl border-b border-[var(--color-border)] shadow-2xl"
             : "py-6 bg-transparent"
         }`}
       >
@@ -85,14 +85,14 @@ export default function Navbar() {
           <Link
             href="/"
             aria-label="Avorria homepage"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)] rounded-full p-1"
+            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full p-1"
           >
-            <div className="w-9 h-9 rounded-full border border-[var(--color-lime)] bg-[var(--color-lime)]/10 flex items-center justify-center transition-transform duration-500 ease-out group-hover:rotate-180 shadow-[0_0_15px_rgba(214,255,63,0.25)]">
-              <span className="font-display font-extrabold text-sm text-[var(--color-lime)]">
+            <div className="w-8 h-8 rounded-full border border-white/20 bg-white/5 flex items-center justify-center transition-transform duration-500 ease-out group-hover:rotate-180">
+              <span className="font-display font-bold text-xs text-white">
                 A
               </span>
             </div>
-            <span className="font-display font-bold text-xl tracking-tight text-white">
+            <span className="font-display font-semibold text-lg tracking-tight text-white">
               AVORRIA<span className="text-[var(--color-lime)]">.</span>
             </span>
           </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className="font-body text-sm font-medium text-[var(--color-muted)] hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)] rounded-md px-1 py-0.5"
+                  className="font-mono text-xs uppercase tracking-wider text-[var(--color-muted)] hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-md px-1 py-0.5"
                 >
                   {label}
                 </Link>
@@ -111,31 +111,31 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Right Section: LDN/NYC Live Clocks + Magnetic START A PROJECT Button */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Right Section: LDN/NYC Live Clocks + Executive Action Button */}
+          <div className="hidden lg:flex items-center gap-7">
             {/* Live Clocks */}
-            <div className="flex items-center gap-4 text-[11px] font-mono text-[var(--color-muted)] border-r border-[var(--color-border)] pr-8 select-none">
+            <div className="flex items-center gap-4 text-[11px] font-mono text-[var(--color-muted)] border-r border-[var(--color-border)] pr-7 select-none">
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)] animate-ping" />
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                 <span>LDN</span>
-                <span className="text-white font-semibold">{timeLDN}</span>
+                <span className="text-white font-medium">{timeLDN}</span>
               </div>
               <span className="text-white/20">/</span>
               <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-cyan)]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
                 <span>NYC</span>
-                <span className="text-white font-semibold">{timeNYC}</span>
+                <span className="text-white font-medium">{timeNYC}</span>
               </div>
             </div>
 
-            {/* Lime Magnetic START A PROJECT Button */}
+            {/* Architectural Engagement Button */}
             <MagneticButton>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-xs uppercase tracking-wider hover:bg-white transition-all duration-200 shadow-[0_0_20px_rgba(214,255,63,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-all duration-200 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <span>START A PROJECT</span>
-                <ArrowUpRight size={14} />
+                <span>Initiate Project</span>
+                <ArrowUpRight size={13} />
               </Link>
             </MagneticButton>
           </div>

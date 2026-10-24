@@ -76,26 +76,26 @@ export default function FAQ() {
             {/* Left Header Column */}
             <div className="lg:col-span-4 lg:sticky lg:top-32">
               <div className="flex items-center gap-3 mb-4">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" />
-                <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
-                  Frequently Asked
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
+                  Frequently Addressed
                 </span>
               </div>
-              <h2 className="font-display font-bold text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.05] tracking-tight text-white mb-6">
-                Clear answers.<br />
-                <span className="text-gradient-lime">Zero ambiguity.</span>
+              <h2 className="font-display font-semibold text-[clamp(2.4rem,4.5vw,4.2rem)] leading-[1.05] tracking-tight text-white mb-6">
+                Institutional clarity.<br />
+                <span className="text-gradient-silver">Technical precision.</span>
               </h2>
               <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed mb-8">
-                Everything you need to know about our engineering standards, timelines, pricing model, and AI capabilities.
+                Key considerations regarding engagement parameters, SLA standards, security governance, and delivery velocity.
               </p>
               <div className="p-6 rounded-2xl bg-[var(--color-panel)] border border-[var(--color-border)] space-y-2">
-                <p className="font-display font-semibold text-white text-sm">Have a unique requirement?</p>
+                <p className="font-display font-semibold text-white text-sm">Complex enterprise scope?</p>
                 <p className="font-body text-xs text-[var(--color-muted)]">
-                  Our directors respond within 4 business hours.
+                  Our practice directors respond to technical inquiries within 4 business hours.
                 </p>
                 <a
                   href="mailto:hello@avorria.com"
-                  className="font-mono text-xs text-[var(--color-lime)] hover:underline inline-block pt-2"
+                  className="font-mono text-xs text-white hover:text-[var(--color-lime)] transition-colors inline-block pt-2"
                 >
                   hello@avorria.com →
                 </a>
@@ -113,9 +113,9 @@ export default function FAQ() {
                       onClick={() => setOpenIndex(isOpen ? null : idx)}
                       aria-expanded={isOpen}
                       aria-controls={`faq-answer-${faq.id}`}
-                      className="w-full flex items-center justify-between gap-6 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)] rounded-xl py-1 px-1 -mx-1"
+                      className="w-full flex items-center justify-between gap-6 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-xl py-1 px-1 -mx-1"
                     >
-                      <span className="font-display font-bold text-lg md:text-2xl text-white group-hover:text-[var(--color-lime)] transition-colors duration-200 leading-snug">
+                      <span className="font-display font-semibold text-lg md:text-xl text-white group-hover:text-white/90 transition-colors duration-200 leading-snug">
                         {faq.question}
                       </span>
 
