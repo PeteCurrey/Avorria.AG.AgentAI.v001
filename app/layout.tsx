@@ -8,6 +8,7 @@ import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import PageTransition from "@/components/PageTransition";
+import CursorSpotlight from "@/components/CursorSpotlight";
 
 // ─── Work Sans Typography ───────────────────────────────────────────────────
 const workSans = Work_Sans({
@@ -306,6 +307,9 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#050508] text-white">
+        {/* Cursor spotlight overlay — fixed, pointer-events none */}
+        <div className="cursor-spotlight" aria-hidden="true" />
+        <CursorSpotlight />
         <div className="film-grain" aria-hidden="true" />
         <Preloader />
         <CustomCursor />

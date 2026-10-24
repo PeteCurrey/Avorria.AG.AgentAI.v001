@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Link from "next/link";
 import {
   Globe,
@@ -107,11 +107,19 @@ export default function Services() {
     INTERACTIVE_SERVICES[activeIndex] ?? INTERACTIVE_SERVICES[0];
   const ActiveIcon = activeService.icon;
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-12%" });
+
   return (
-    <section className="section-pad border-t border-[var(--color-border)] relative bg-[var(--color-bg)] overflow-hidden">
+    <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] relative bg-[var(--color-bg)] overflow-hidden">
       <div className="container-px mx-auto max-w-[1440px]">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+        {/* Section Header — staggered reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
+        >
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
@@ -135,17 +143,25 @@ export default function Services() {
               className="group-hover:translate-x-1 transition-transform duration-200"
             />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Interactive 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.75, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch"
+        >
           {/* Left Column: 4 Capability Selectors */}
           <div className="lg:col-span-5 flex flex-col gap-3">
             {INTERACTIVE_SERVICES.map((service, idx) => {
               const isActive = activeIndex === idx;
               return (
-                <button
+                <motion.button
                   key={service.id}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.55, delay: 0.3 + idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   type="button"
                   onMouseEnter={() => setActiveIndex(idx)}
                   onFocus={() => setActiveIndex(idx)}
@@ -189,7 +205,7 @@ export default function Services() {
                         : "text-[var(--color-muted)] group-hover:text-white group-hover:translate-x-1 opacity-50"
                     }`}
                   />
-                </button>
+                </motion.button>
               );
             })}
           </div>
@@ -276,7 +292,7 @@ export default function Services() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

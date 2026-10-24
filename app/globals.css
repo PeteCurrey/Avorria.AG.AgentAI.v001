@@ -211,4 +211,42 @@
   .container-px {
     padding-inline: clamp(1.25rem, 5vw, 5rem);
   }
+
+  /* ── Cursor Spotlight ─────────────────────────────────────────────────────
+   * A fixed radial gradient that follows the cursor via --cx / --cy CSS vars.
+   * Updated at hardware speed by CursorSpotlight.tsx — no React state.
+   * pointer-events: none so it never blocks interaction.
+   * Only visible on pointer:fine (mouse/trackpad) devices.
+   * ────────────────────────────────────────────────────────────────────────── */
+  .cursor-spotlight {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(
+      600px circle at var(--cx, 50%) var(--cy, 50%),
+      rgba(255, 255, 255, 0.025) 0%,
+      transparent 70%
+    );
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  @media (pointer: fine) {
+    html:has(body:hover) .cursor-spotlight {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor-spotlight {
+      display: none;
+    }
+  }
+
+  /* ── Section reveal keyframes (used by @layer utilities) ─────────────────── */
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 }
