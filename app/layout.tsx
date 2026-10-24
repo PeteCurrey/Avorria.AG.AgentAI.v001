@@ -311,7 +311,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className="bg-[#050508] text-white">
         <div className="film-grain" aria-hidden="true" />
         <Preloader />
         <CustomCursor />

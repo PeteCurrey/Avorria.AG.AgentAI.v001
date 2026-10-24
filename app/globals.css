@@ -36,6 +36,15 @@
 
   :root {
     color-scheme: dark;
+    --color-bg: #050508;
+    --color-panel: #0b0b12;
+    --color-lime: #D6FF3F;
+    --color-violet: #7C5CFF;
+    --color-cyan: #38E1FF;
+    --color-coral: #FF5C38;
+    --color-white: #FFFFFF;
+    --color-muted: #6B7280;
+    --color-border: rgba(255, 255, 255, 0.08);
   }
 
   html {
