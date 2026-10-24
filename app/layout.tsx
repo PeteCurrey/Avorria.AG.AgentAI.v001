@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
+import PageTransition from "@/components/PageTransition";
 
 // ─── Work Sans Typography ───────────────────────────────────────────────────
 const workSans = Work_Sans({
@@ -310,7 +311,9 @@ export default function RootLayout({
         <CustomCursor />
         <SmoothScroll>
           <Navbar />
-          <main id="main-content">{children}</main>
+          <PageTransition>
+            <main id="main-content">{children}</main>
+          </PageTransition>
           <Footer />
         </SmoothScroll>
       </body>

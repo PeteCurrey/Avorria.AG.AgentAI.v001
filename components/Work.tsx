@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { projects } from "@/lib/data";
+import { useCardTilt } from "@/hooks/useCardTilt";
 
 // Stats metadata for selected work items
 const PROJECT_STATS: Record<
@@ -37,6 +38,16 @@ const PROJECT_STATS: Record<
     { value: "FWA", label: "FWA of the Day" },
   ],
 };
+
+// ── TiltCard — wraps each project card with 3D hover tilt ───────────────────
+function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  const tiltRef = useCardTilt(5);
+  return (
+    <div ref={tiltRef} className={className}>
+      {children}
+    </div>
+  );
+}
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -114,9 +125,9 @@ export default function Work() {
               ];
 
               return (
-                <div
+                <TiltCard
                   key={project.slug}
-                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 transition-all duration-300 flex flex-col justify-between group shadow-xl"
+                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 transition-colors duration-300 flex flex-col justify-between group shadow-xl"
                 >
                   <Link
                     href={`/work/${project.slug}`}
@@ -186,12 +197,12 @@ export default function Work() {
                       ))}
                     </div>
                   </Link>
-                </div>
+                </TiltCard>
               );
             })}
 
             {/* End Card: VIEW ALL WORK */}
-            <div className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl border-2 border-dashed border-[var(--color-border)] hover:border-white/40 bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-all duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
+            <TiltCard className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl border-2 border-dashed border-[var(--color-border)] hover:border-white/40 bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-colors duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
               <Link
                 href="/work"
                 data-cursor="view"
@@ -217,7 +228,7 @@ export default function Work() {
                   </p>
                 </div>
               </Link>
-            </div>
+            </TiltCard>
           </motion.div>
         </div>
       </div>

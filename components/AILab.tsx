@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import Link from "next/link";
+import { useCountUp } from "@/hooks/useCountUp";
 import {
   Cpu,
   Layers,
@@ -112,11 +113,25 @@ export default function AILab() {
   const [activeModule, setActiveModule] = useState(ARCHITECTURE_MODULES[0]);
   const ActiveIcon = activeModule.icon;
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const metricsRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-10%" });
+  const metricsInView = useInView(metricsRef, { once: true, margin: "-5%" });
+
+  const metric1 = useCountUp("74", metricsInView, 1300);
+  const metric2 = useCountUp("99", metricsInView, 1500);
+  const metric3 = useCountUp("100", metricsInView, 1200);
+
   return (
-    <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
+    <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
       <div className="container-px mx-auto max-w-[1440px]">
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-[var(--color-border)]">
+        {/* Section Header — staggered reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-[var(--color-border)]"
+        >
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Cpu size={15} className="text-[var(--color-lime)]" />
@@ -134,13 +149,18 @@ export default function AILab() {
             We architect and deploy custom autonomous AI systems, domain-fine-tuned models,
             and private knowledge infrastructures designed for institutional reliability.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 3 Executive Proof Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]">
-            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1">
-              -74%
+        {/* 3 Executive Proof Metrics — count-up on viewport entry */}
+        <div ref={metricsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={metricsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]"
+          >
+            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1 tabular-nums">
+              -{metric1}%
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
               Operational Cycle Latency
@@ -148,11 +168,16 @@ export default function AILab() {
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
               Automated multi-agent execution replaces manual back-office pipelines with deterministic sub-second throughput.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]">
-            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1">
-              99.4%
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={metricsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]"
+          >
+            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1 tabular-nums">
+              {metric2}.4%
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
               Deterministic Precision
@@ -160,11 +185,16 @@ export default function AILab() {
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
               Hybrid vector indexing and strict JSON schema boundaries eliminate conversational hallucinations.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]">
-            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1">
-              100%
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={metricsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]"
+          >
+            <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1 tabular-nums">
+              {metric3}%
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
               IP &amp; Privacy Sovereignty
@@ -172,7 +202,7 @@ export default function AILab() {
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
               Zero training on enterprise client data. Complete compliance with GDPR, SOC-2, and private cloud VPC standards.
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* Interactive Systems Architecture Blueprint */}

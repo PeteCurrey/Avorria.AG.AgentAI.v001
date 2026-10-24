@@ -2,7 +2,8 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Compass, Code2, ShieldCheck, ArrowRight } from "lucide-react";
+import { Compass, Code2, ShieldCheck } from "lucide-react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const PROCESS_STEPS = [
   {
@@ -52,13 +53,43 @@ const PROCESS_STEPS = [
 const INSTITUTIONAL_STATS = [
   { value: "47+", label: "Digital Flagships Delivered", detail: "Global enterprise & hyper-growth clients" },
   { value: "100", label: "Core Vitals Perfect Score", detail: "Sub-second LCP benchmarked globally" },
-  { value: "£14M+", label: "Client Revenue Generated", detail: "Measurable commercial conversion lift" },
+  { value: "14", label: "£M+ Client Revenue Generated", detail: "Measurable commercial conversion lift" },
   { value: "94%", label: "Institutional Retainer Rate", detail: "Multi-year client partnerships" },
 ];
 
+// Individual stat that count-ups when in view
+function StatItem({
+  value,
+  label,
+  detail,
+  inView,
+}: {
+  value: string;
+  label: string;
+  detail: string;
+  inView: boolean;
+}) {
+  const displayed = useCountUp(value, inView, 1400);
+  return (
+    <div className="flex flex-col space-y-2 pb-6 sm:pb-0 border-b sm:border-b-0 border-[var(--color-border)] last:border-b-0">
+      <span className="font-display font-bold text-4xl sm:text-5xl tracking-tight text-white tabular-nums">
+        {displayed}
+      </span>
+      <span className="font-mono text-xs uppercase tracking-wider text-white/90 font-medium">
+        {label}
+      </span>
+      <span className="font-mono text-[11px] text-[var(--color-muted)]">
+        {detail}
+      </span>
+    </div>
+  );
+}
+
 export default function Process() {
   const ref = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-10%" });
+  const statsInView = useInView(statsRef, { once: true, margin: "-5%" });
 
   return (
     <section
@@ -68,7 +99,12 @@ export default function Process() {
       {/* ── Process 3 Cards ── */}
       <div className="section-pad container-px mx-auto max-w-[1440px]">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-8 border-b border-[var(--color-border)]">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-8 border-b border-[var(--color-border)]"
+        >
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
@@ -85,20 +121,20 @@ export default function Process() {
             We assemble compact, senior-only engineering pods. Clients collaborate directly
             with founding engineers and principal designers — zero agency overhead.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 3 Process Cards */}
+        {/* 3 Process Cards — staggered reveal */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {PROCESS_STEPS.map((step, idx) => {
             const Icon = step.icon;
             return (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 36 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{
-                  duration: 0.65,
-                  delay: idx * 0.12,
+                  duration: 0.7,
+                  delay: 0.15 + idx * 0.14,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="group relative p-8 md:p-10 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/25 transition-all duration-300 flex flex-col justify-between overflow-hidden"
@@ -155,25 +191,18 @@ export default function Process() {
         </div>
       </div>
 
-      {/* ── 2. Architectural Institutional Metrics Strip ── */}
-      <div className="border-y border-[var(--color-border)] bg-[var(--color-panel)] py-14 select-none">
+      {/* ── Architectural Institutional Metrics Strip — count-up ── */}
+      <div ref={statsRef} className="border-y border-[var(--color-border)] bg-[var(--color-panel)] py-14 select-none">
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {INSTITUTIONAL_STATS.map((stat, i) => (
-              <div
+              <StatItem
                 key={i}
-                className="flex flex-col space-y-2 pb-6 sm:pb-0 border-b sm:border-b-0 border-[var(--color-border)] last:border-b-0"
-              >
-                <span className="font-display font-bold text-4xl sm:text-5xl tracking-tight text-white">
-                  {stat.value}
-                </span>
-                <span className="font-mono text-xs uppercase tracking-wider text-white/90 font-medium">
-                  {stat.label}
-                </span>
-                <span className="font-mono text-[11px] text-[var(--color-muted)]">
-                  {stat.detail}
-                </span>
-              </div>
+                value={stat.value}
+                label={stat.label}
+                detail={stat.detail}
+                inView={statsInView}
+              />
             ))}
           </div>
         </div>
