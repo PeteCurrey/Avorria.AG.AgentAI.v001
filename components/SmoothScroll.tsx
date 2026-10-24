@@ -5,10 +5,13 @@ import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // High-performance smooth scroll configuration
+    // Uses a lightweight 0.1 lerp that tracks user input instantaneously without lag
     const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 2,
+      lerp: 0.1,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.0,
+      syncTouch: false,
     });
 
     let rafId: number;

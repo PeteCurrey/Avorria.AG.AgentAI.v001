@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Work_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -8,19 +8,12 @@ import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 
-// ─── Fonts ────────────────────────────────────────────────────────────────────
-const spaceGrotesk = Space_Grotesk({
+// ─── Work Sans Typography ───────────────────────────────────────────────────
+const workSans = Work_Sans({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-work-sans",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-  preload: true,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
+  weight: ["200", "300", "400", "500", "600"],
   preload: true,
 });
 
@@ -292,7 +285,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-GB" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+    <html lang="en-GB" className={workSans.variable}>
       <head>
         {/* Preconnect to Google Fonts CDN (next/font uses fonts.gstatic.com) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

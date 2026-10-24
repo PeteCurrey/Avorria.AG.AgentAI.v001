@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
@@ -40,25 +40,50 @@ const PROJECT_STATS: Record<
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [scrollDistance, setScrollDistance] = useState(0);
 
-  // Scroll-linked horizontal transform: 4% to -42%
+  // Measure exact horizontal overflow distance dynamically
+  useEffect(() => {
+    const calculateDistance = () => {
+      if (!trackRef.current) return;
+      const trackWidth = trackRef.current.scrollWidth;
+      const windowWidth = window.innerWidth;
+      // Extra offset to ensure the final card is shown fully with clean margins
+      const distance = Math.max(0, trackWidth - windowWidth + 120);
+      setScrollDistance(distance);
+    };
+
+    calculateDistance();
+    window.addEventListener("resize", calculateDistance);
+    return () => window.removeEventListener("resize", calculateDistance);
+  }, []);
+
+  // Track progress strictly while the container is pinned
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["4%", "-42%"]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, -scrollDistance]);
 
   return (
-    <section ref={containerRef} className="relative h-[260vh] bg-[var(--color-bg)]">
-      {/* Sticky Viewport Stage */}
+    <section
+      ref={containerRef}
+      style={{
+        height: scrollDistance ? `${scrollDistance + (typeof window !== "undefined" ? window.innerHeight : 900)}px` : "400vh",
+      }}
+      className="relative bg-[var(--color-bg)]"
+    >
+      {/* Sticky Viewport Stage - Freezes vertical scroll while translating horizontally */}
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)]">
         {/* Section Header */}
         <div className="container-px mx-auto max-w-[1440px] w-full mb-8 shrink-0">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 mb-2">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" />
-                <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
                   Selected Work
                 </span>
               </div>
@@ -68,7 +93,7 @@ export default function Work() {
             </div>
 
             <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-[var(--color-muted)]">
-              <span>Scroll to navigate case studies</span>
+              <span>Scroll down to navigate through all projects</span>
               <span className="text-white">→</span>
             </div>
           </div>
@@ -77,8 +102,9 @@ export default function Work() {
         {/* Horizontal Scrolling Row */}
         <div className="w-full overflow-hidden" data-cursor="drag">
           <motion.div
+            ref={trackRef}
             style={{ x }}
-            className="flex gap-8 items-stretch will-change-transform pl-4 md:pl-12"
+            className="flex gap-8 items-stretch will-change-transform pl-4 md:pl-16 pr-20"
           >
             {projects.map((project) => {
               const stats = PROJECT_STATS[project.slug] || [
@@ -164,15 +190,15 @@ export default function Work() {
               );
             })}
 
-            {/* End Card: VIEW ALL WORK dashed card */}
-            <div className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl border-2 border-dashed border-[var(--color-border)] hover:border-[var(--color-lime)] bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-all duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
+            {/* End Card: VIEW ALL WORK */}
+            <div className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl border-2 border-dashed border-[var(--color-border)] hover:border-white/40 bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-all duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
               <Link
                 href="/work"
                 data-cursor="view"
                 aria-label="View all portfolio projects"
                 className="flex flex-col items-center justify-center gap-6"
               >
-                <div className="w-20 h-20 rounded-full border border-[var(--color-border)] group-hover:border-[var(--color-lime)] flex items-center justify-center group-hover:bg-[var(--color-lime)] text-white group-hover:text-[var(--color-bg)] transition-all duration-300 shadow-[0_0_25px_rgba(214,255,63,0.2)]">
+                <div className="w-20 h-20 rounded-full border border-white/20 group-hover:border-white flex items-center justify-center group-hover:bg-white text-white group-hover:text-black transition-all duration-300 shadow-xl">
                   <ArrowRight
                     size={28}
                     className="group-hover:translate-x-1 transition-transform duration-300"
@@ -183,7 +209,7 @@ export default function Work() {
                   <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)] mb-2 block">
                     Portfolio Archive
                   </span>
-                  <h3 className="font-display font-bold text-3xl md:text-4xl text-white group-hover:text-[var(--color-lime)] transition-colors duration-200">
+                  <h3 className="font-display font-semibold text-3xl md:text-4xl text-white group-hover:text-white transition-colors duration-200">
                     VIEW ALL WORK
                   </h3>
                   <p className="font-body text-xs md:text-sm text-[var(--color-muted)] mt-2 max-w-xs">

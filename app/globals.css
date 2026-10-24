@@ -12,9 +12,9 @@
   --color-muted:  #6B7280;
   --color-border: rgba(255,255,255,0.08);
 
-  /* ─── Typography ─── */
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body:    "Inter", system-ui, sans-serif;
+  /* ─── Typography: Work Sans ─── */
+  --font-display: var(--font-work-sans), sans-serif;
+  --font-body:    var(--font-work-sans), sans-serif;
 
   /* ─── Spacing scale overrides ─── */
   --spacing-section: 7rem;
@@ -36,6 +36,7 @@
 
   :root {
     color-scheme: dark;
+    --font-work-sans: "Work Sans", system-ui, sans-serif;
     --color-bg: #07070A;
     --color-panel: #0E0E14;
     --color-panel-elevated: #15151E;
@@ -52,15 +53,29 @@
   html {
     background-color: var(--color-bg);
     color: var(--color-white);
-    font-family: var(--font-body);
+    font-family: var(--font-work-sans), sans-serif;
+    font-weight: 300; /* Work Sans Light for all other text */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: auto; /* lenis handles smooth scroll */
+    scroll-behavior: auto;
   }
 
   body {
     background-color: var(--color-bg);
+    font-family: var(--font-work-sans), sans-serif;
+    font-weight: 300; /* Work Sans Light */
     overflow-x: hidden;
+  }
+
+  p, span, a, li, input, textarea, button, label {
+    font-weight: 300; /* Work Sans Light */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-work-sans), sans-serif;
+    font-weight: 200 !important; /* Work Sans Extra Light for H1 / main titles */
+    line-height: 1.05;
+    letter-spacing: -0.025em;
   }
 
   /* Hide native cursor on pointer:fine devices only */
@@ -150,8 +165,14 @@
 }
 
 @layer utilities {
-  .font-display { font-family: var(--font-display); }
-  .font-body    { font-family: var(--font-body); }
+  .font-display {
+    font-family: var(--font-work-sans), sans-serif;
+    font-weight: 200;
+  }
+  .font-body {
+    font-family: var(--font-work-sans), sans-serif;
+    font-weight: 300;
+  }
 
   .text-gradient-silver {
     background: linear-gradient(180deg, #FFFFFF 15%, rgba(255, 255, 255, 0.55) 100%);
