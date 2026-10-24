@@ -1,9 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 
 type CursorType = "default" | "hover" | "view" | "drag";
+
+// Ring config per cursor type
+const RING_CONFIG: Record<CursorType, { size: number; classes: string }> = {
+  default: {
+    size: 32,
+    classes: "border border-white/30 bg-transparent",
+  },
+  hover: {
+    size: 48,
+    classes: "border border-white/60 bg-white/5",
+  },
+  view: {
+    size: 78,
+    classes: "border-none bg-white text-black",
+  },
+  drag: {
+    size: 64,
+    classes: "border border-white/60 bg-black/70 backdrop-blur-sm text-white",
+  },
+};
 
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
@@ -11,38 +30,41 @@ export default function CustomCursor() {
   const [cursorType, setCursorType] = useState<CursorType>("default");
   const [cursorLabel, setCursorLabel] = useState<string>("");
 
+  // Refs for direct DOM manipulation — no re-render on mouse move
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const isVisibleRef = useRef(false);
   const currentTypeRef = useRef<CursorType>("default");
   const currentLabelRef = useRef<string>("");
 
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  const mousePos = useRef({ x: -200, y: -200 });
-  const ringPos = useRef({ x: -200, y: -200 });
-  const isVisibleRef = useRef(false);
-
   useEffect(() => {
-    // Only run on fine-pointer devices (mouse/trackpad)
-    if (!window.matchMedia("(pointer: fine)").matches) {
-      return;
-    }
+    // Fine-pointer devices only (mouse / trackpad)
+    if (!window.matchMedia("(pointer: fine)").matches) return;
     setMounted(true);
 
     const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current.x = e.clientX;
-      mousePos.current.y = e.clientY;
+      const x = e.clientX;
+      const y = e.clientY;
 
+      // ── PRIMARY DOT — instant, zero-delay hardware transform ──────────
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate3d(${x - 3}px,${y - 3}px,0)`;
+      }
+
+      // ── RING — also instant; CSS transition only on width/height/opacity ─
+      if (ringRef.current) {
+        const cfg = RING_CONFIG[currentTypeRef.current];
+        const offset = cfg.size / 2;
+        ringRef.current.style.transform = `translate3d(${x - offset}px,${y - offset}px,0)`;
+      }
+
+      // Show cursor on first move
       if (!isVisibleRef.current) {
         isVisibleRef.current = true;
         setVisible(true);
       }
 
-      // Instant hardware-level response for the primary dot (zero delay)
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${e.clientX - 3}px, ${e.clientY - 3}px, 0)`;
-      }
-
-      // Check hovered element
+      // ── CURSOR TYPE DETECTION ────────────────────────────────────────────
       const target = (e.target as HTMLElement | null)?.closest(
         "[data-cursor], [data-cursor-label], a, button, input, select, textarea, [role='button']"
       ) as HTMLElement | null;
@@ -60,13 +82,17 @@ export default function CustomCursor() {
         } else if (cursorAttr === "drag" || labelAttr?.toUpperCase() === "DRAG") {
           nextType = "drag";
           nextLabel = labelAttr || "DRAG";
-        } else if (cursorAttr === "hover" || target.tagName === "A" || target.tagName === "BUTTON") {
+        } else if (
+          cursorAttr === "hover" ||
+          target.tagName === "A" ||
+          target.tagName === "BUTTON"
+        ) {
           nextType = "hover";
           nextLabel = labelAttr || "";
         }
       }
 
-      // ONLY trigger a React re-render when the state actually transitions
+      // Only trigger React re-render on actual state change
       if (
         nextType !== currentTypeRef.current ||
         nextLabel !== currentLabelRef.current
@@ -92,82 +118,51 @@ export default function CustomCursor() {
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseenter", handleMouseEnter);
 
-    // High-performance RAF loop for responsive smooth follower ring
-    let rafId: number;
-    const loop = () => {
-      if (isVisibleRef.current && ringRef.current) {
-        // Snappy lerp (0.35) for instant, fluid tracking without lag
-        const lerpFactor = 0.35;
-        ringPos.current.x += (mousePos.current.x - ringPos.current.x) * lerpFactor;
-        ringPos.current.y += (mousePos.current.y - ringPos.current.y) * lerpFactor;
-
-        ringRef.current.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0)`;
-      }
-      rafId = requestAnimationFrame(loop);
-    };
-
-    rafId = requestAnimationFrame(loop);
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
-      cancelAnimationFrame(rafId);
     };
   }, []);
 
   if (!mounted) return null;
 
-  let size = 32;
-  let ringClasses = "border border-white/30 bg-transparent text-transparent";
-
-  if (cursorType === "hover") {
-    size = 48;
-    ringClasses = "border border-white/50 bg-white/5 text-transparent";
-  } else if (cursorType === "view") {
-    size = 78;
-    ringClasses =
-      "border-none bg-white text-black font-mono font-medium text-[11px] tracking-widest shadow-xl";
-  } else if (cursorType === "drag") {
-    size = 64;
-    ringClasses =
-      "border border-white/60 bg-black/70 text-white font-mono font-medium text-[10px] tracking-widest backdrop-blur-sm";
-  }
-
-  const offset = size / 2;
+  const cfg = RING_CONFIG[cursorType];
+  const showLabel = cursorLabel && (cursorType === "view" || cursorType === "drag");
 
   return (
-    <div
-      className={`custom-cursor pointer-events-none fixed inset-0 z-[9999] transition-opacity duration-200 ${
-        visible ? "opacity-100" : "opacity-0"
-      }`}
-      aria-hidden="true"
-    >
-      {/* Primary Dot - Instant 0ms hardware response */}
+    <>
+      {/* Primary Dot — hardware-speed, no transition */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-[10000]"
-        style={{ willChange: "transform" }}
+        aria-hidden="true"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-[10001]"
+        style={{
+          willChange: "transform",
+          opacity: visible ? 1 : 0,
+          transition: "opacity 150ms ease",
+          transform: "translate3d(-200px,-200px,0)",
+        }}
       />
 
-      {/* Outer Follower Ring - 60-120fps direct RAF with snappy 0.35 lerp */}
+      {/* Follower Ring — instant position, CSS-only size transition */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 pointer-events-none will-change-transform z-[9999]"
+        aria-hidden="true"
+        className={`fixed top-0 left-0 rounded-full flex items-center justify-center pointer-events-none z-[10000] uppercase select-none font-mono font-medium tracking-widest text-[11px] ${cfg.classes}`}
+        style={{
+          willChange: "transform",
+          width: cfg.size,
+          height: cfg.size,
+          // CSS transition ONLY on non-positional properties
+          transition:
+            "width 180ms cubic-bezier(0.34,1.56,0.64,1), height 180ms cubic-bezier(0.34,1.56,0.64,1), opacity 150ms ease, background-color 150ms ease, border-color 150ms ease",
+          opacity: visible ? 1 : 0,
+          transform: "translate3d(-200px,-200px,0)",
+        }}
       >
-        <motion.div
-          animate={{
-            width: size,
-            height: size,
-            x: -offset,
-            y: -offset,
-          }}
-          transition={{ type: "spring", stiffness: 450, damping: 32 }}
-          className={`rounded-full flex items-center justify-center transition-colors duration-150 uppercase select-none ${ringClasses}`}
-        >
-          {cursorLabel && (cursorType === "view" || cursorType === "drag") ? cursorLabel : null}
-        </motion.div>
+        {showLabel ? cursorLabel : null}
       </div>
-    </div>
+    </>
   );
 }
