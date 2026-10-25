@@ -68,10 +68,10 @@ export default function Hero() {
         <span
           className="font-display text-white uppercase leading-none"
           style={{
-            fontSize: "clamp(10rem, 30vw, 28rem)",
+            fontSize: "clamp(6rem, 18vw, 16rem)",
             fontWeight: 200,
-            letterSpacing: "-0.05em",
-            opacity: 0.022,
+            letterSpacing: "-0.04em",
+            opacity: 0.015,
             whiteSpace: "nowrap",
           }}
         >
@@ -85,21 +85,21 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         style={{ opacity: heroOpacity }}
-        className="relative z-10 container-px mx-auto max-w-[1440px] w-full pt-32 pb-24 lg:py-36"
+        className="relative z-10 container-px mx-auto max-w-[1440px] w-full pt-28 pb-16 lg:pt-32 lg:pb-20"
       >
-        {/* Eyebrow — LEFT aligned, institutional */}
-        <motion.div variants={itemVariants} className="flex items-center gap-3 mb-10">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)] shrink-0" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/60">
+        {/* Eyebrow — LEFT aligned, compact institutional */}
+        <motion.div variants={itemVariants} className="flex items-center gap-2.5 mb-6">
+          <span className="w-1 h-1 rounded-full bg-[var(--color-lime)] shrink-0" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
             London · New York · Global Practice
           </span>
         </motion.div>
 
-        {/* Headline — balanced scale, slow parallax */}
+        {/* Headline — refined, understated architectural scale */}
         <motion.div style={{ y: headlineY }}>
           <motion.h1
             variants={itemVariants}
-            className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.98] tracking-[-0.042em] text-white mb-8 max-w-5xl"
+            className="font-display text-[clamp(2rem,4.2vw,3.8rem)] leading-[1.04] tracking-[-0.035em] text-white mb-6 max-w-3xl"
           >
             Architecting digital<br className="hidden sm:block" />
             flagships &amp;{" "}
@@ -107,11 +107,11 @@ export default function Hero() {
           </motion.h1>
         </motion.div>
 
-        {/* Subtitle + CTAs — faster parallax */}
-        <motion.div style={{ y: subtextY }} className="max-w-3xl">
+        {/* Subtitle + CTAs — compact & elegant */}
+        <motion.div style={{ y: subtextY }} className="max-w-2xl">
           <motion.p
             variants={itemVariants}
-            className="font-body text-[clamp(1rem,1.6vw,1.2rem)] text-[var(--color-muted)] mb-12 leading-[1.7] max-w-xl"
+            className="font-body text-sm sm:text-base text-[var(--color-muted)] mb-8 leading-[1.65] max-w-lg"
           >
             Avorria partners with ambitious industry leaders to design and engineer
             immersive WebGL platforms, custom autonomous systems, and
@@ -120,16 +120,16 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-3.5"
           >
             <MagneticButton>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black font-display font-semibold text-sm hover:bg-[var(--color-lime)] transition-all duration-200 group shadow-[0_4px_24px_rgba(255,255,255,0.10)]"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-medium text-xs sm:text-sm hover:bg-[var(--color-lime)] transition-all duration-200 group shadow-[0_4px_20px_rgba(255,255,255,0.08)]"
               >
                 Initiate an Engagement
                 <ArrowRight
-                  size={15}
+                  size={14}
                   className="group-hover:translate-x-1 transition-transform duration-200"
                 />
               </Link>
@@ -137,10 +137,10 @@ export default function Hero() {
 
             <Link
               href="/work"
-              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full border border-[var(--color-border)] bg-transparent text-white/80 font-display font-light text-sm hover:border-white/25 hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] bg-transparent text-white/75 font-display font-light text-xs sm:text-sm hover:border-white/25 hover:text-white transition-all duration-200"
             >
               Explore Selected Work
-              <ArrowUpRight size={14} className="text-[var(--color-muted)]" />
+              <ArrowUpRight size={13} className="text-[var(--color-muted)]" />
             </Link>
           </motion.div>
         </motion.div>
@@ -148,19 +148,19 @@ export default function Hero() {
         {/* ── Bottom Metadata Strip ─────────────────────────────────────────── */}
         <motion.div
           variants={itemVariants}
-          className="mt-24 pt-6 border-t border-[var(--color-border)] hidden md:grid grid-cols-3 gap-8 text-left"
+          className="mt-14 pt-5 border-t border-[var(--color-border)] hidden md:grid grid-cols-3 gap-8 text-left"
         >
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/30 block mb-1.5">Practice Focus</span>
-            <span className="font-mono text-xs text-white/60">Immersive 3D · Next.js 16 Flagships</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Practice Focus</span>
+            <span className="font-mono text-[11px] text-white/60">Immersive 3D · Next.js 16 Flagships</span>
           </div>
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/30 block mb-1.5">AI Infrastructure</span>
-            <span className="font-mono text-xs text-white/60">Domain-Trained Agent Swarms</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">AI Infrastructure</span>
+            <span className="font-mono text-[11px] text-white/60">Domain-Trained Agent Swarms</span>
           </div>
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/30 block mb-1.5">Availability</span>
-            <span className="font-mono text-xs text-[var(--color-lime)]">Commissions Open — Q1 2027</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Availability</span>
+            <span className="font-mono text-[11px] text-[var(--color-lime)]">Commissions Open — Q1 2027</span>
           </div>
         </motion.div>
       </motion.div>
