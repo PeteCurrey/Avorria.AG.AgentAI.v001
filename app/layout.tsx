@@ -307,8 +307,6 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#050508] text-white">
-        {/* Cursor spotlight overlay — fixed, pointer-events none */}
-        <div className="cursor-spotlight" aria-hidden="true" />
         <CursorSpotlight />
         <div className="film-grain" aria-hidden="true" />
         <Preloader />

@@ -1,32 +1,58 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * CursorSpotlight — applies a subtle radial spotlight that follows the cursor
- * across all dark sections. Works by writing --cx / --cy CSS custom properties
- * on <html> and using them via a CSS background-image on dark section elements.
+ * CursorSpotlight — hardware-accelerated ambient radial glow.
  *
- * Uses a single mousemove listener on the window, updating two CSS vars at
- * hardware speed with zero React state. The gradient lives entirely in CSS.
+ * Moves a 600px layer directly using GPU translate3d, completely eliminating
+ * document-wide CSS variable recalculations and viewport repaints during scroll.
  */
 export default function CursorSpotlight() {
-  useEffect(() => {
-    const root = document.documentElement;
+  const spotRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
-    // Respect reduced-motion — don't run at all
+  useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    // Fine pointer only (mouse/trackpad)
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
+    let rafId: number | null = null;
+    let targetX = -999;
+    let targetY = -999;
+
+    const render = () => {
+      if (spotRef.current) {
+        spotRef.current.style.transform = `translate3d(${targetX - 300}px, ${targetY - 300}px, 0)`;
+      }
+      rafId = null;
+    };
+
     const onMove = (e: MouseEvent) => {
-      root.style.setProperty("--cx", `${e.clientX}px`);
-      root.style.setProperty("--cy", `${e.clientY}px`);
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!visible) setVisible(true);
+      if (rafId === null) {
+        rafId = requestAnimationFrame(render);
+      }
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
-    return () => window.removeEventListener("mousemove", onMove);
-  }, []);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
+  }, [visible]);
 
-  return null; // purely side-effect, no DOM output
+  return (
+    <div
+      ref={spotRef}
+      className={`fixed top-0 left-0 w-[600px] h-[600px] pointer-events-none z-[1] rounded-full will-change-transform transition-opacity duration-300 ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+      style={{
+        background: "radial-gradient(circle, rgba(255, 255, 255, 0.025) 0%, transparent 70%)",
+      }}
+      aria-hidden="true"
+    />
+  );
 }

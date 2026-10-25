@@ -95,11 +95,11 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Headline — expanded scale, slow parallax */}
+        {/* Headline — balanced scale, slow parallax */}
         <motion.div style={{ y: headlineY }}>
           <motion.h1
             variants={itemVariants}
-            className="font-display text-[clamp(3.2rem,10vw,9.5rem)] leading-[0.95] tracking-[-0.048em] text-white mb-10 max-w-6xl"
+            className="font-display text-[clamp(2.75rem,7vw,6.5rem)] leading-[0.98] tracking-[-0.042em] text-white mb-8 max-w-5xl"
           >
             Architecting digital<br className="hidden sm:block" />
             flagships &amp;{" "}

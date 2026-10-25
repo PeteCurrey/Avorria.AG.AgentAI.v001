@@ -58,13 +58,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: auto;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-bg);
     font-family: var(--font-work-sans), sans-serif;
     font-weight: 300; /* Work Sans Light */
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   p, span, a, li, input, textarea, button, label {
@@ -149,13 +150,6 @@
     width: max-content;
     will-change: transform;
     animation: marquee-track-reverse 28s linear infinite;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
   }
 
   a {
@@ -245,38 +239,6 @@
     white-space: nowrap;
     pointer-events: none;
     user-select: none;
-  }
-
-  /* ── Cursor Spotlight ─────────────────────────────────────────────────────
-   * A fixed radial gradient that follows the cursor via --cx / --cy CSS vars.
-   * Updated at hardware speed by CursorSpotlight.tsx — no React state.
-   * pointer-events: none so it never blocks interaction.
-   * Only visible on pointer:fine (mouse/trackpad) devices.
-   * ────────────────────────────────────────────────────────────────────────── */
-  .cursor-spotlight {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    background: radial-gradient(
-      600px circle at var(--cx, 50%) var(--cy, 50%),
-      rgba(255, 255, 255, 0.025) 0%,
-      transparent 70%
-    );
-    transition: opacity 0.3s ease;
-    opacity: 0;
-  }
-
-  @media (pointer: fine) {
-    html:has(body:hover) .cursor-spotlight {
-      opacity: 1;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .cursor-spotlight {
-      display: none;
-    }
   }
 
   /* ── Section reveal keyframes (used by @layer utilities) ─────────────────── */

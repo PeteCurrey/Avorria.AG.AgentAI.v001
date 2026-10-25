@@ -77,63 +77,63 @@ export default function Navbar() {
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-300 ${
           scrolled && !menuOpen
-            ? "py-4 bg-[#07070A]/90 backdrop-blur-xl border-b border-[var(--color-border)] shadow-2xl"
-            : "py-6 bg-transparent"
+            ? "py-2.5 bg-[#07070A]/90 backdrop-blur-xl border-b border-[var(--color-border)] shadow-xl"
+            : "py-3.5 bg-transparent"
         }`}
       >
         <nav
           aria-label="Main Navigation"
           className="container-px mx-auto flex items-center justify-between max-w-[1440px]"
         >
-          {/* Logo with rotating mark */}
+          {/* Logo with rotating mark — refined compact scale */}
           <Link
             href="/"
             onClick={() => setMenuOpen(false)}
             aria-label="Avorria homepage"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full p-1"
+            className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full p-0.5"
           >
-            <div className="w-8 h-8 rounded-full border border-white/20 bg-white/5 flex items-center justify-center transition-transform duration-500 ease-out group-hover:rotate-180">
-              <span className="font-display text-xs text-white">
+            <div className="w-6 h-6 rounded-full border border-white/20 bg-white/5 flex items-center justify-center transition-transform duration-500 ease-out group-hover:rotate-180">
+              <span className="font-display text-[10px] text-white">
                 A
               </span>
             </div>
-            <span className="font-display text-lg tracking-[-0.04em] text-white">
+            <span className="font-display text-sm tracking-[-0.03em] text-white font-medium">
               AVORRIA<span className="text-[var(--color-lime)]">.</span>
             </span>
           </Link>
 
-          {/* Center: Institutional Live Clocks (London / New York) */}
-          <div className="hidden md:flex items-center gap-5 text-[11px] font-mono text-[var(--color-muted)] select-none">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              <span className="text-white/40">LDN</span>
-              <span className="text-white/90 font-medium">{timeLDN}</span>
+          {/* Center: Institutional Live Clocks (London / New York) — refined scale */}
+          <div className="hidden md:flex items-center gap-4 text-[10px] font-mono text-[var(--color-muted)] select-none">
+            <div className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full bg-emerald-400" />
+              <span className="text-white/35">LDN</span>
+              <span className="text-white/80 font-medium">{timeLDN}</span>
             </div>
-            <span className="text-white/15">/</span>
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
-              <span className="text-white/40">NYC</span>
-              <span className="text-white/90 font-medium">{timeNYC}</span>
+            <span className="text-white/10">/</span>
+            <div className="flex items-center gap-1.5">
+              <span className="w-1 h-1 rounded-full bg-slate-400" />
+              <span className="text-white/35">NYC</span>
+              <span className="text-white/80 font-medium">{timeNYC}</span>
             </div>
           </div>
 
-          {/* Right: Architectural Menu Trigger */}
-          <div className="flex items-center gap-4">
-            <MagneticButton strength={0.3}>
+          {/* Right: Architectural Menu Trigger — refined compact button */}
+          <div className="flex items-center gap-3">
+            <MagneticButton strength={0.25}>
               <button
                 type="button"
                 onClick={() => setMenuOpen((o) => !o)}
                 aria-label={menuOpen ? "Close navigation index" : "Open navigation index"}
                 aria-expanded={menuOpen}
-                className="group inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 text-white transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)]"
+                className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 text-white transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-lime)]"
               >
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/90 group-hover:text-white">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/80 group-hover:text-white">
                   {menuOpen ? "CLOSE" : "MENU"}
                 </span>
                 <span
-                  className={`block w-4 h-[1px] bg-white transition-transform duration-300 ${
+                  className={`block w-2.5 h-[1px] bg-white transition-transform duration-300 ${
                     menuOpen ? "rotate-45" : ""
                   }`}
                 />
