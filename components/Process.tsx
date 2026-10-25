@@ -96,6 +96,11 @@ export default function Process() {
       className="border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden"
       ref={ref}
     >
+      {/* Section annotation — 02 */}
+      <span className="section-annotation hidden lg:block" aria-hidden="true">
+        02 — Methodology
+      </span>
+
       {/* ── Process 3 Cards ── */}
       <div className="section-pad container-px mx-auto max-w-[1440px]">
         {/* Header */}
@@ -112,7 +117,7 @@ export default function Process() {
                 Delivery Methodology
               </span>
             </div>
-            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.8rem)] leading-[1.05] tracking-tight text-white">
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.98] tracking-[-0.042em] text-white">
               Principal engineering.<br />
               <span className="text-gradient-silver">Institutional rigor.</span>
             </h2>

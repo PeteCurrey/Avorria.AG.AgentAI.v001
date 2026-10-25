@@ -70,7 +70,12 @@ export default function FAQ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative">
+      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
+        {/* Section annotation — 06 */}
+        <span className="section-annotation hidden lg:block" aria-hidden="true">
+          06 — Inquiries
+        </span>
+
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Header Column */}
@@ -81,15 +86,15 @@ export default function FAQ() {
                   Frequently Addressed
                 </span>
               </div>
-              <h2 className="font-display font-semibold text-[clamp(2.4rem,4.5vw,4.2rem)] leading-[1.05] tracking-tight text-white mb-6">
+              <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white mb-6">
                 Institutional clarity.<br />
                 <span className="text-gradient-silver">Technical precision.</span>
               </h2>
               <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed mb-8">
                 Key considerations regarding engagement parameters, SLA standards, security governance, and delivery velocity.
               </p>
-              <div className="p-6 rounded-2xl bg-[var(--color-panel)] border border-[var(--color-border)] space-y-2">
-                <p className="font-display font-semibold text-white text-sm">Complex enterprise scope?</p>
+              <div className="p-6 card-arch bg-[var(--color-panel)] border border-[var(--color-border)] space-y-2">
+                <p className="font-display font-medium text-white text-sm">Complex enterprise scope?</p>
                 <p className="font-body text-xs text-[var(--color-muted)]">
                   Our practice directors respond to technical inquiries within 4 business hours.
                 </p>

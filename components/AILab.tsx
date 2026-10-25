@@ -124,6 +124,11 @@ export default function AILab() {
 
   return (
     <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
+      {/* Section annotation — 04 */}
+      <span className="section-annotation hidden lg:block" aria-hidden="true">
+        04 — Applied AI
+      </span>
+
       <div className="container-px mx-auto max-w-[1440px]">
         {/* Section Header — staggered reveal */}
         <motion.div
@@ -139,7 +144,7 @@ export default function AILab() {
                 Systems &amp; Applied AI Practice
               </span>
             </div>
-            <h2 className="font-display font-semibold text-[clamp(2.4rem,5vw,4.8rem)] leading-[1.04] tracking-tight text-white">
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.98] tracking-[-0.042em] text-white">
               Deterministic intelligence for<br />
               <span className="text-gradient-silver">enterprise operations.</span>
             </h2>

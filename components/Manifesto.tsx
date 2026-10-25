@@ -87,6 +87,11 @@ export default function Manifesto() {
       id="manifesto"
       className="section-pad border-t border-[var(--color-border)] relative bg-[var(--color-bg)]"
     >
+      {/* Section annotation — 01 */}
+      <span className="section-annotation hidden lg:block" aria-hidden="true">
+        01 — Principles
+      </span>
+
       <div className="container-px mx-auto max-w-[1440px]">
         {/* Section Metadata Header */}
         <div className="flex items-center justify-between pb-8 mb-12 border-b border-[var(--color-border)]">
@@ -103,7 +108,7 @@ export default function Manifesto() {
 
         {/* Scroll-Linked Word-by-Word Text */}
         <div ref={containerRef} className="py-8 max-w-5xl mb-24">
-          <h2 className="font-display font-semibold text-[clamp(2.2rem,4.8vw,4.6rem)] leading-[1.12] tracking-[-0.03em]">
+          <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[1.06] tracking-[-0.042em]">
             {words.map((word, i) => {
               const start = i / words.length;
               const end = Math.min(1, start + (1 / words.length) * 1.5);

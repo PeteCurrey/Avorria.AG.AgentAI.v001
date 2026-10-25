@@ -17,10 +17,10 @@
   --font-body:    var(--font-work-sans), sans-serif;
 
   /* ─── Spacing scale overrides ─── */
-  --spacing-section: 7rem;
+  --spacing-section: 8rem;
 
   /* ─── Radius ─── */
-  --radius-card: 1.25rem;
+  --radius-card: 0.25rem;   /* 4px — sharp, architectural */
   --radius-pill: 9999px;
 
   /* ─── Transitions ─── */
@@ -73,9 +73,9 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-work-sans), sans-serif;
-    font-weight: 200 !important; /* Work Sans Extra Light for H1 / main titles */
-    line-height: 1.05;
-    letter-spacing: -0.025em;
+    font-weight: 200 !important; /* Work Sans Extra Light */
+    line-height: 1.02;
+    letter-spacing: -0.042em;
   }
 
   /* Hide native cursor on pointer:fine devices only */
@@ -210,6 +210,41 @@
 
   .container-px {
     padding-inline: clamp(1.25rem, 5vw, 5rem);
+  }
+
+  /* ── Architectural Card ───────────────────────────────────────────────────
+   * Sharp corners, lit top edge (inner highlight), crisp hover ring.
+   * Use instead of rounded-xl on all panel cards.
+   * ────────────────────────────────────────────────────────────────────────── */
+  .card-arch {
+    border-radius: var(--radius-card);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+  .card-arch:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(255, 255, 255, 0.16);
+  }
+
+  /* ── Section Annotation ───────────────────────────────────────────────────
+   * Vertical monospace index number in section left margin.
+   * Desktop only. Positioned absolute — parent must be relative.
+   * ────────────────────────────────────────────────────────────────────────── */
+  .section-annotation {
+    position: absolute;
+    left: clamp(0.5rem, 1.5vw, 2rem);
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: center center;
+    font-family: var(--font-work-sans), monospace;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
   }
 
   /* ── Cursor Spotlight ─────────────────────────────────────────────────────

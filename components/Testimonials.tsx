@@ -84,13 +84,18 @@ export default function Testimonials() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
+      {/* Section annotation — 05 */}
+      <span className="section-annotation hidden lg:block" aria-hidden="true">
+        05 — Record
+      </span>
+
       <div className="container-px mx-auto max-w-[1440px]">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-16">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" />
-            <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
-              Client Testimonials & Impact
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
+              Client Endorsements &amp; Impact
             </span>
           </div>
 
@@ -100,7 +105,7 @@ export default function Testimonials() {
             <Star size={14} className="fill-[var(--color-lime)]" />
             <Star size={14} className="fill-[var(--color-lime)]" />
             <Star size={14} className="fill-[var(--color-lime)]" />
-            <span className="ml-2 text-white font-bold">5.0 / 5.0</span>
+            <span className="ml-2 text-white font-medium">5.0 / 5.0</span>
           </div>
         </div>
 
@@ -117,7 +122,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display font-bold text-[clamp(1.75rem,3.8vw,3.2rem)] text-white leading-[1.18] tracking-tight mb-8"
+                className="font-display text-[clamp(1.85rem,4vw,3.4rem)] text-white leading-[1.15] tracking-[-0.038em] mb-8"
               >
                 &ldquo;{t.quote}&rdquo;
               </motion.blockquote>
@@ -135,7 +140,7 @@ export default function Testimonials() {
               className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mb-12"
             >
               <div>
-                <p className="font-display font-bold text-lg text-white">{t.author}</p>
+                <p className="font-display font-medium text-lg text-white">{t.author}</p>
                 <p className="font-body text-xs md:text-sm text-[var(--color-muted)]">
                   {t.role} · <span className="text-white/80">{t.company}</span>
                 </p>

@@ -87,7 +87,12 @@ export default function Work() {
       className="relative bg-[var(--color-bg)]"
     >
       {/* Sticky Viewport Stage - Freezes vertical scroll while translating horizontally */}
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)]">
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)] relative">
+        {/* Section annotation */}
+        <span className="section-annotation hidden lg:block" aria-hidden="true">
+          Index — Selected Work
+        </span>
+
         {/* Section Header */}
         <div className="container-px mx-auto max-w-[1440px] w-full mb-8 shrink-0">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -98,7 +103,7 @@ export default function Work() {
                   Selected Work
                 </span>
               </div>
-              <h2 className="font-display font-semibold text-[clamp(2.2rem,4.5vw,4.5rem)] leading-[1.05] tracking-tight text-white">
+              <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
                 Engineered for <span className="text-gradient-silver">category leadership.</span>
               </h2>
             </div>
@@ -127,7 +132,7 @@ export default function Work() {
               return (
                 <TiltCard
                   key={project.slug}
-                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 transition-colors duration-300 flex flex-col justify-between group shadow-xl"
+                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 card-arch p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 transition-colors duration-300 flex flex-col justify-between group shadow-xl"
                 >
                   <Link
                     href={`/work/${project.slug}`}
@@ -137,7 +142,7 @@ export default function Work() {
                   >
                     <div>
                       {/* Image Showcase */}
-                      <div className="h-[340px] rounded-2xl overflow-hidden relative mb-6 bg-gradient-to-br from-[#12121B] via-[#0C0C12] to-[#07070A] border border-white/5">
+                      <div className="h-[340px] rounded-sm overflow-hidden relative mb-6 bg-gradient-to-br from-[#12121B] via-[#0C0C12] to-[#07070A] border border-white/5">
                         {/* Hover Zoom Visual */}
                         <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-transform duration-500 ease-out group-hover:scale-105">
                           <span className="font-display font-semibold text-2xl md:text-3xl text-white/30 uppercase tracking-widest text-center select-none">
@@ -202,7 +207,7 @@ export default function Work() {
             })}
 
             {/* End Card: VIEW ALL WORK */}
-            <TiltCard className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 rounded-3xl border-2 border-dashed border-[var(--color-border)] hover:border-white/40 bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-colors duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
+            <TiltCard className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 card-arch border-2 border-dashed border-[var(--color-border)] hover:border-white/40 bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-colors duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
               <Link
                 href="/work"
                 data-cursor="view"

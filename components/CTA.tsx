@@ -6,84 +6,97 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
+/**
+ * CTA — full-bleed lime inversion.
+ *
+ * After 2,500px of deep obsidian, a sudden full-bleed chartreuse section
+ * is the colour punctuation of the entire site. All type inverts to obsidian.
+ * This is the single most impactful visual moment on the page.
+ */
 export default function CTA() {
   return (
-    <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative">
-      <div className="container-px mx-auto max-w-[1440px]">
-        {/* Architectural Monolith Card */}
-        <div className="rounded-[2rem] bg-[var(--color-panel)] border border-[var(--color-border)] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl">
-          {/* Subtle radial illumination */}
-          <div
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)] pointer-events-none"
-            aria-hidden="true"
-          />
+    <section className="relative overflow-hidden" style={{ backgroundColor: "var(--color-lime)" }}>
+      {/* Large typographic arrow anchor — bottom-right depth element */}
+      <span
+        aria-hidden="true"
+        className="absolute right-0 bottom-0 font-display leading-none select-none pointer-events-none"
+        style={{
+          fontSize: "clamp(12rem, 30vw, 28rem)",
+          fontWeight: 200,
+          letterSpacing: "-0.05em",
+          color: "rgba(0,0,0,0.07)",
+          lineHeight: 0.85,
+          transform: "translate(6%, 12%)",
+        }}
+      >
+        →
+      </span>
 
-          {/* Institutional Availability Pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] mb-8"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
-            <span className="font-mono text-xs uppercase tracking-widest text-white/90 font-medium">
-              Accepting Select Enterprise Commissions · Q1 2027
-            </span>
-          </motion.div>
+      <div className="container-px mx-auto max-w-[1440px] py-28 md:py-40 relative z-10">
+        {/* Availability eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-3 mb-10"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[#07070A]/50 shrink-0" />
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#07070A]/60">
+            Accepting Select Commissions · Q1 2027
+          </span>
+        </motion.div>
 
-          {/* Headline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display font-semibold text-[clamp(2.4rem,6vw,5.5rem)] leading-[1.02] tracking-tight text-white uppercase mb-8 max-w-4xl mx-auto"
-          >
-            Architect your next{" "}
-            <span className="text-gradient-silver">digital flagship.</span>
-          </motion.h2>
+        {/* Headline — maximum type scale, inverted */}
+        <motion.h2
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-[clamp(3rem,8vw,8rem)] leading-[0.95] tracking-[-0.048em] text-[#07070A] mb-10 max-w-5xl"
+        >
+          Architect your next digital flagship.
+        </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-body text-[var(--color-muted)] text-base md:text-lg max-w-xl mx-auto mb-12 leading-relaxed"
-          >
-            We collaborate with ambitious leadership teams across finance, autonomous systems,
-            and luxury commerce. Tell us what you are commissioning.
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          className="font-body text-[#07070A]/60 text-base md:text-lg max-w-xl mb-14 leading-[1.7]"
+        >
+          We collaborate with ambitious leadership teams across finance, autonomous
+          systems, and luxury commerce. Tell us what you are commissioning.
+        </motion.p>
 
-          {/* Call to Action Actions */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
-          >
-            <MagneticButton>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-white text-black font-display font-semibold text-sm uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-all duration-200 shadow-lg group"
-              >
-                Initiate a Partnership Briefing
-                <ArrowRight
-                  size={15}
-                  className="group-hover:translate-x-1 transition-transform duration-200"
-                />
-              </Link>
-            </MagneticButton>
-
-            <a
-              href="mailto:hello@avorria.com"
-              className="font-mono text-xs uppercase tracking-wider text-[var(--color-muted)] hover:text-white transition-colors duration-200 py-3"
+        {/* CTAs — obsidian on lime */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col sm:flex-row items-start sm:items-center gap-5"
+        >
+          <MagneticButton>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-[#07070A] text-white font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-[#07070A] transition-all duration-200 shadow-lg group"
             >
-              Direct Partner Desk: hello@avorria.com →
-            </a>
-          </motion.div>
-        </div>
+              Initiate a Partnership Briefing
+              <ArrowRight
+                size={15}
+                className="group-hover:translate-x-1 transition-transform duration-200"
+              />
+            </Link>
+          </MagneticButton>
+
+          <a
+            href="mailto:hello@avorria.com"
+            className="font-mono text-xs uppercase tracking-wider text-[#07070A]/50 hover:text-[#07070A] transition-colors duration-200 py-3"
+          >
+            Direct Partner Desk: hello@avorria.com →
+          </a>
+        </motion.div>
       </div>
     </section>
   );
