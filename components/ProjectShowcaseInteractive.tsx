@@ -1,31 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { Monitor, Smartphone, CheckCircle2, Cpu, Zap, Layers, Volume2, ShieldCheck, Compass } from "lucide-react";
+import { Monitor, Smartphone, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectShowcaseInteractiveProps {
   slug: string;
   title: string;
   category: string;
-  accentColor: string;
+  accentColor?: string;
 }
 
 export default function ProjectShowcaseInteractive({
   slug,
   title,
   category,
-  accentColor,
+  accentColor = "#3657E8",
 }: ProjectShowcaseInteractiveProps) {
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
   const [activeTab, setActiveTab] = useState<"visual" | "tech">("visual");
 
   return (
-    <div className="rounded-3xl bg-[var(--color-panel)] border border-[var(--color-border)] p-6 md:p-10 shadow-2xl overflow-hidden relative">
+    <div className="rounded-3xl bg-[#15171B] border border-white/10 p-6 md:p-10 shadow-2xl overflow-hidden relative">
       {/* Header controls: Desktop/Mobile Switcher + View mode */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[var(--color-border)]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-white/10">
         <div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-lime)] block mb-1">
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#3657E8] block mb-1 font-bold">
             Interactive Experience Studio
           </span>
           <h3 className="font-display font-semibold text-xl md:text-2xl text-white">
@@ -35,14 +35,14 @@ export default function ProjectShowcaseInteractive({
 
         <div className="flex flex-wrap items-center gap-3">
           {/* Device toggle */}
-          <div className="inline-flex p-1 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)]">
+          <div className="inline-flex p-1 rounded-full bg-white/5 border border-white/10">
             <button
               type="button"
               onClick={() => setDevice("desktop")}
               className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                 device === "desktop"
                   ? "bg-white text-black font-semibold shadow-sm"
-                  : "text-[var(--color-muted)] hover:text-white"
+                  : "text-white/60 hover:text-white"
               }`}
             >
               <Monitor size={14} />
@@ -54,7 +54,7 @@ export default function ProjectShowcaseInteractive({
               className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                 device === "mobile"
                   ? "bg-white text-black font-semibold shadow-sm"
-                  : "text-[var(--color-muted)] hover:text-white"
+                  : "text-white/60 hover:text-white"
               }`}
             >
               <Smartphone size={14} />
@@ -63,14 +63,14 @@ export default function ProjectShowcaseInteractive({
           </div>
 
           {/* View Tab */}
-          <div className="inline-flex p-1 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)]">
+          <div className="inline-flex p-1 rounded-full bg-white/5 border border-white/10">
             <button
               type="button"
               onClick={() => setActiveTab("visual")}
               className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                 activeTab === "visual"
-                  ? "bg-[var(--color-lime)] text-[var(--color-bg)] font-semibold shadow-sm"
-                  : "text-[var(--color-muted)] hover:text-white"
+                  ? "bg-[#3657E8] text-white font-semibold shadow-sm"
+                  : "text-white/60 hover:text-white"
               }`}
             >
               Canvas Preview
@@ -80,8 +80,8 @@ export default function ProjectShowcaseInteractive({
               onClick={() => setActiveTab("tech")}
               className={`px-3 py-1.5 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
                 activeTab === "tech"
-                  ? "bg-[var(--color-lime)] text-[var(--color-bg)] font-semibold shadow-sm"
-                  : "text-[var(--color-muted)] hover:text-white"
+                  ? "bg-[#3657E8] text-white font-semibold shadow-sm"
+                  : "text-white/60 hover:text-white"
               }`}
             >
               Runtime Graph
@@ -102,8 +102,8 @@ export default function ProjectShowcaseInteractive({
               transition={{ duration: 0.3 }}
               className={`transition-all duration-500 overflow-hidden rounded-2xl border border-white/10 shadow-2xl relative ${
                 device === "desktop"
-                  ? "w-full aspect-[16/9] max-w-4xl bg-gradient-to-br from-[#12121d] via-[#090910] to-[#040407]"
-                  : "w-[300px] aspect-[9/18] max-h-[520px] bg-gradient-to-br from-[#12121d] via-[#090910] to-[#040407]"
+                  ? "w-full aspect-[16/9] max-w-4xl bg-gradient-to-br from-[#1A1C22] via-[#121317] to-[#0A0B0D]"
+                  : "w-[300px] aspect-[9/18] max-h-[520px] bg-gradient-to-br from-[#1A1C22] via-[#121317] to-[#0A0B0D]"
               }`}
             >
               {/* Device Frame Header */}
@@ -120,13 +120,16 @@ export default function ProjectShowcaseInteractive({
               {/* Internal Project Mock UI */}
               <div className="p-6 md:p-8 flex flex-col justify-between h-[calc(100%-35px)] relative overflow-hidden">
                 <div className="space-y-2 z-10">
-                  <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-wider uppercase bg-white/5 text-[var(--color-lime)] border border-white/10">
+                  <span
+                    className="px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-wider uppercase border"
+                    style={{ borderColor: `${accentColor}40`, color: accentColor, backgroundColor: `${accentColor}15` }}
+                  >
                     {category}
                   </span>
                   <h4 className="font-display font-bold text-xl md:text-3xl text-white">
                     {title}
                   </h4>
-                  <p className="font-body text-xs text-[var(--color-muted)] max-w-md line-clamp-2">
+                  <p className="font-body text-xs text-white/60 max-w-md line-clamp-2">
                     Simulated production viewport. Optimized frame budget, zero layout shifts, and responsive touch gestures.
                   </p>
                 </div>
@@ -137,7 +140,8 @@ export default function ProjectShowcaseInteractive({
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="absolute inset-0 rounded-full border-t border-[var(--color-lime)]"
+                      className="absolute inset-0 rounded-full border-t"
+                      style={{ borderColor: accentColor }}
                     />
                     <span className="font-mono text-[10px] uppercase text-white/50 tracking-widest">
                       WebGL Active
@@ -146,12 +150,17 @@ export default function ProjectShowcaseInteractive({
                 </div>
 
                 <div className="flex items-center justify-between text-[10px] font-mono text-white/40 pt-4 border-t border-white/5 z-10">
-                  <span>Edge Render: &lt; 40ms</span>
-                  <span className="text-[var(--color-lime)]">CLS: 0.000</span>
+                  <span>Edge Render: &lt; 38ms</span>
+                  <span className="text-emerald-400">CLS: 0.000</span>
                 </div>
 
                 {/* Atmospheric Glow */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(214,255,63,0.03)_0%,transparent_70%)] pointer-events-none" />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at center, ${accentColor}12 0%, transparent 70%)`,
+                  }}
+                />
               </div>
             </motion.div>
           ) : (
@@ -161,31 +170,31 @@ export default function ProjectShowcaseInteractive({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.3 }}
-              className="w-full max-w-4xl p-6 md:p-8 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] space-y-6"
+              className="w-full max-w-4xl p-6 md:p-8 rounded-2xl bg-[#0F1014] border border-white/10 space-y-6"
             >
               <h4 className="font-display font-semibold text-lg text-white">
                 Runtime Architecture &amp; Lifecycle Diagnostics
               </h4>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl bg-[var(--color-panel)] border border-[var(--color-border)]">
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-muted)] block mb-1">
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 block mb-1">
                     Rendering Pipeline
                   </span>
                   <p className="font-display font-semibold text-sm text-white">Next.js 16 SSR + SSG</p>
                   <p className="font-body text-xs text-white/60 mt-1">Pre-rendered static shell with zero-delay edge hydration.</p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[var(--color-panel)] border border-[var(--color-border)]">
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-muted)] block mb-1">
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 block mb-1">
                     Graphics Thread
                   </span>
-                  <p className="font-display font-semibold text-sm text-[var(--color-lime)]">Three.js GLSL Shaders</p>
+                  <p className="font-display font-semibold text-sm text-[#3657E8]">Three.js GLSL Shaders</p>
                   <p className="font-body text-xs text-white/60 mt-1">Offloaded to GPU with offscreen RAF pause detection.</p>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[var(--color-panel)] border border-[var(--color-border)]">
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-[var(--color-muted)] block mb-1">
+                <div className="p-4 rounded-xl bg-white/[0.03] border border-white/10">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-white/50 block mb-1">
                     State &amp; Cache
                   </span>
                   <p className="font-display font-semibold text-sm text-white">Edge Key-Value Cache</p>
@@ -193,12 +202,12 @@ export default function ProjectShowcaseInteractive({
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[var(--color-panel)] border border-white/5 flex items-center justify-between text-xs font-mono text-[var(--color-muted)]">
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between text-xs font-mono text-white/60">
                 <div className="flex items-center gap-2 text-white">
-                  <CheckCircle2 size={14} className="text-[var(--color-lime)]" />
+                  <CheckCircle2 size={14} className="text-emerald-400" />
                   <span>Verified 100/100 Core Web Vitals Audit Passed</span>
                 </div>
-                <span>Zero Layout Shift Guaranteed</span>
+                <span className="text-emerald-400">Zero Layout Shift Guaranteed</span>
               </div>
             </motion.div>
           )}

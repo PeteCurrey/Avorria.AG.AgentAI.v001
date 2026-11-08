@@ -14,6 +14,7 @@ const PROJECT_IMAGE_MAP: Record<string, string> = {
   "Axiom Finance": "/imagery/projects/axiom-finance.webp",
   "Nocturne Studio": "/imagery/projects/nocturne-studio.webp",
   "Vanta AI": "/imagery/projects/vanta-ai.webp",
+  "Vanguard AI": "/imagery/projects/vanta-ai.webp",
   "Bloom Health": "/imagery/projects/bloom-health.webp",
   "Meridian Arc": "/imagery/projects/meridian-arc.webp",
 };

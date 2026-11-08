@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Sparkles, Terminal } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, ShieldCheck, Sparkles } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { Project } from "@/lib/data";
 
@@ -13,37 +14,63 @@ const CATEGORIES = [
   "Brand & Digital",
 ] as const;
 
-// Project-specific editorial attributes
-const PROJECT_METRICS: Record<string, { badge: string; highlight: string; type: string; bgGradient: string }> = {
+// Project-specific editorial attributes in Design System 2.0
+const PROJECT_METRICS: Record<
+  string,
+  {
+    badge: string;
+    isConcept: boolean;
+    highlight: string;
+    type: string;
+    image: string;
+    accentColor: string;
+    pillBg: string;
+  }
+> = {
   "axiom-finance": {
     badge: "Commercial Commission",
+    isConcept: false,
     highlight: "0.68s LCP · 100/100 Core Web Vitals",
-    type: "Fintech & WebGL Experience",
-    bgGradient: "from-[#101914] via-[#09110d] to-[#040806]",
+    type: "Fintech & WebGL Architecture",
+    image: "/imagery/projects/axiom-finance.webp",
+    accentColor: "#3657E8",
+    pillBg: "bg-[#3657E8]/10 text-[#3657E8] border-[#3657E8]/20",
   },
   "nocturne-studio": {
     badge: "Commercial Commission",
+    isConcept: false,
     highlight: "60fps Audio-Reactive WebGL",
     type: "Spatial Audio & Motion Design",
-    bgGradient: "from-[#181124] via-[#0d0914] to-[#050408]",
+    image: "/imagery/projects/nocturne-studio.webp",
+    accentColor: "#A78BFA",
+    pillBg: "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/20",
   },
   "vanta-ai": {
     badge: "Commercial Commission",
+    isConcept: false,
     highlight: "Sub-140ms Streaming TTFT",
     type: "Autonomous Operations Sandbox",
-    bgGradient: "from-[#161d15] via-[#0b120a] to-[#040704]",
+    image: "/imagery/projects/vanta-ai.webp",
+    accentColor: "#10B981",
+    pillBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20",
   },
   "bloom-health": {
     badge: "Commercial Commission",
+    isConcept: false,
     highlight: "1.24s Global Checkout LCP",
     type: "Headless D2C Commerce",
-    bgGradient: "from-[#0e1724] via-[#070d14] to-[#03060a]",
+    image: "/imagery/projects/bloom-health.webp",
+    accentColor: "#E77B68",
+    pillBg: "bg-[#E77B68]/10 text-[#E77B68] border-[#E77B68]/20",
   },
   "meridian-arc": {
     badge: "Avorria Technical Demonstration",
+    isConcept: true,
     highlight: "72% Compressed glTF 3D Stream",
     type: "Spatial Architecture Canvas",
-    bgGradient: "from-[#1c1b18] via-[#100f0d] to-[#070605]",
+    image: "/imagery/projects/meridian-arc.webp",
+    accentColor: "#F59E0B",
+    pillBg: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20",
   },
 };
 
@@ -59,7 +86,7 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
   return (
     <div className="space-y-12">
       {/* Category Filter Pills & Transparency note */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--color-border)]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#15171B]/10">
         <div className="flex flex-wrap items-center gap-2">
           {CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat;
@@ -68,14 +95,14 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`relative px-5 py-2 rounded-full font-mono text-xs uppercase tracking-wider transition-colors duration-200 cursor-pointer ${
-                  isActive ? "text-[var(--color-bg)] font-bold" : "text-[var(--color-muted)] hover:text-white"
+                className={`relative px-5 py-2.5 rounded-full font-mono text-xs uppercase tracking-wider transition-colors duration-200 cursor-pointer ${
+                  isActive ? "text-white font-bold" : "text-[#6E7179] hover:text-[#15171B] bg-white border border-[#15171B]/10"
                 }`}
               >
                 {isActive && (
                   <motion.div
-                    layoutId="work-filter-pill"
-                    className="absolute inset-0 rounded-full bg-[var(--color-lime)]"
+                    layoutId="work-filter-pill-2"
+                    className="absolute inset-0 rounded-full bg-[#3657E8]"
                     transition={
                       shouldReduceMotion
                         ? { duration: 0 }
@@ -89,9 +116,10 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
           })}
         </div>
 
-        <span className="font-mono text-xs text-[var(--color-muted)]">
-          5 Verified Records &amp; Demonstrations
-        </span>
+        <div className="flex items-center gap-2 font-mono text-xs text-[#6E7179]">
+          <span className="w-2 h-2 rounded-full bg-[#3657E8]" />
+          <span>5 Curated Project Showcases</span>
+        </div>
       </div>
 
       {/* Editorial Grid of Filtered Projects with Varied Layouts */}
@@ -102,10 +130,13 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, idx) => {
             const meta = PROJECT_METRICS[project.slug] ?? {
-              badge: "Verified Record",
-              highlight: "Production SLA",
+              badge: "Commercial Commission",
+              isConcept: false,
+              highlight: "Production Benchmark",
               type: project.category,
-              bgGradient: "from-[#131322] via-[#0b0b14] to-[#050508]",
+              image: project.cover || "/imagery/hero/spatial-monolith.webp",
+              accentColor: "#3657E8",
+              pillBg: "bg-blue-500/10 text-blue-600 border-blue-500/20",
             };
 
             // Varied editorial spans: 1st is 12-cols (flagship), 2nd is 7-cols, 3rd is 5-cols, 4th is 5-cols, 5th is 7-cols
@@ -134,20 +165,20 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
                   href={`/work/${project.slug}`}
                   data-cursor="view"
                   aria-label={`View case study: ${project.title}`}
-                  className="group block card-arch p-8 md:p-10 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-[var(--color-lime)]/50 transition-all duration-300 shadow-xl relative overflow-hidden h-full flex flex-col justify-between"
+                  className="group block rounded-3xl p-6 md:p-8 bg-white border border-[#15171B]/10 hover:border-[#3657E8]/50 transition-all duration-300 shadow-xl hover:shadow-2xl relative overflow-hidden h-full flex flex-col justify-between"
                 >
                   <div>
                     {/* Top Meta Strip */}
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                       <div className="flex items-center gap-2">
-                        <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-white/5 border border-white/10 text-white">
+                        <span className="px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#F7F7F5] border border-[#15171B]/10 text-[#15171B] font-medium">
                           {project.category}
                         </span>
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-white/5 text-[var(--color-muted)]">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#F7F7F5] text-[#6E7179]">
                           {project.year}
                         </span>
                       </div>
-                      <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-lime)]">
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border ${meta.pillBg}`}>
                         {meta.badge}
                       </span>
                     </div>
@@ -156,50 +187,61 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
                     <div
                       className={`relative ${
                         isFlagship
-                          ? "aspect-[16/8] md:aspect-[21/9] min-h-[320px] md:min-h-[420px]"
-                          : "aspect-[16/10] min-h-[240px] md:min-h-[280px]"
-                      } rounded-xl bg-gradient-to-br ${meta.bgGradient} border border-white/5 overflow-hidden flex flex-col justify-between p-6 md:p-8 mb-6 group`}
-                      role="img"
-                      aria-label={`${project.title} project showcase`}
+                          ? "aspect-[16/8] md:aspect-[21/9] min-h-[300px] md:min-h-[440px]"
+                          : "aspect-[16/10] min-h-[220px] md:min-h-[280px]"
+                      } rounded-2xl bg-[#15171B] border border-[#15171B]/15 overflow-hidden flex flex-col justify-between p-6 md:p-8 mb-6 group`}
                     >
-                      <div className="flex items-center gap-2 z-10">
-                        <span className="px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase bg-black/60 backdrop-blur-md border border-white/10 text-white/90">
+                      {/* Actual Photographic Image */}
+                      <Image
+                        src={meta.image}
+                        alt={`${project.title} photographic showcase`}
+                        fill
+                        sizes={isFlagship ? "(max-width: 1200px) 100vw, 1400px" : "(max-width: 768px) 100vw, 700px"}
+                        className="object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700 ease-out"
+                      />
+
+                      {/* Gradient overlay for text legibility */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#15171B]/90 via-[#15171B]/30 to-transparent pointer-events-none" />
+
+                      {/* Floating type badge */}
+                      <div className="relative z-10 flex items-center gap-2">
+                        <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase bg-white/90 backdrop-blur-md text-[#15171B] font-bold shadow-sm">
                           {meta.type}
                         </span>
                       </div>
 
-                      <div className="relative z-10 transition-transform duration-500 ease-out group-hover:scale-[1.01]">
-                        <span
+                      {/* Title & Tagline in Foreground */}
+                      <div className="relative z-10">
+                        <h2
                           className={`font-display font-black ${
-                            isFlagship ? "text-4xl md:text-6xl" : "text-2xl md:text-4xl"
-                          } text-white tracking-tight block`}
+                            isFlagship ? "text-3xl md:text-5xl" : "text-2xl md:text-3xl"
+                          } text-white tracking-tight`}
                         >
                           {project.title}
-                        </span>
-                        <p className="font-body text-xs md:text-sm text-[var(--color-muted)] max-w-xl mt-2 line-clamp-2">
+                        </h2>
+                        <p className="font-body text-xs md:text-sm text-white/80 max-w-xl mt-2 line-clamp-2">
                           {project.tagline}
                         </p>
                       </div>
-
-                      <div className="absolute inset-0 bg-[var(--color-lime)]/0 group-hover:bg-[var(--color-lime)]/[0.03] transition-colors duration-500" />
                     </div>
 
                     {/* Description */}
-                    <p className="font-body text-xs md:text-sm text-[var(--color-muted)] leading-relaxed mb-6 line-clamp-2">
+                    <p className="font-body text-sm text-[#6E7179] leading-relaxed mb-6 line-clamp-2">
                       {project.description}
                     </p>
                   </div>
 
                   {/* Bottom strip: Verified Benchmark + Action */}
-                  <div className="pt-4 border-t border-[var(--color-border)] flex items-center justify-between gap-4">
-                    <span className="font-mono text-[11px] text-white/70">
+                  <div className="pt-4 border-t border-[#15171B]/10 flex items-center justify-between gap-4">
+                    <span className="font-mono text-xs text-[#15171B] font-semibold flex items-center gap-2">
+                      <Sparkles size={13} className="text-[#3657E8]" />
                       {meta.highlight}
                     </span>
 
-                    <div className="flex items-center gap-2 text-xs font-display font-bold text-[var(--color-lime)] group-hover:text-white transition-colors duration-200 shrink-0">
-                      <span>CASE STUDY</span>
-                      <div className="w-7 h-7 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
-                        <ArrowUpRight size={14} />
+                    <div className="flex items-center gap-2 text-xs font-display font-bold text-[#3657E8] group-hover:text-[#2544CC] transition-colors duration-200 shrink-0">
+                      <span>EXPLORE CASE STUDY</span>
+                      <div className="w-8 h-8 rounded-full bg-[#3657E8] text-white flex items-center justify-center group-hover:rotate-45 group-hover:bg-[#2544CC] transition-all duration-300">
+                        <ArrowUpRight size={16} />
                       </div>
                     </div>
                   </div>
@@ -209,6 +251,33 @@ export default function WorkFilterGrid({ projects }: { projects: Project[] }) {
           })}
         </AnimatePresence>
       </motion.div>
+
+      {/* Credibility Charter Banner */}
+      <div className="p-8 rounded-3xl bg-[#15171B] text-white border border-white/10 mt-16">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="w-10 h-10 rounded-2xl bg-[#3657E8]/20 border border-[#3657E8]/40 flex items-center justify-center shrink-0 text-[#3657E8]">
+              <ShieldCheck size={22} />
+            </div>
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-widest text-[#3657E8] block mb-1">
+                Avorria Credibility &amp; Transparency Standard
+              </span>
+              <p className="font-body text-sm text-white/80 max-w-3xl leading-relaxed">
+                We believe exceptional digital work speaks through verifiable evidence. Commercial commissions cite documented Chrome CrUX and edge observability benchmarks. Exploratory builds are explicitly marked as Avorria Technical Demonstrations.
+              </p>
+            </div>
+          </div>
+
+          <Link
+            href="/contact"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#15171B] font-display font-bold text-xs hover:bg-[#F7F7F5] transition-colors"
+          >
+            <span>Commission a Project</span>
+            <ArrowUpRight size={14} />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

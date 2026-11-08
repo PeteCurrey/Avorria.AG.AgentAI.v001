@@ -47,7 +47,7 @@ export default function PageHero({ eyebrow, headline, body, className = "" }: Pa
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="flex items-center gap-3 mb-6"
       >
-        <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" aria-hidden="true" />
+        <span className="w-2 h-2 rounded-full bg-[#3657E8]" aria-hidden="true" />
         <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
           {eyebrow}
         </span>
