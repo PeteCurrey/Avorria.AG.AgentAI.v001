@@ -28,13 +28,13 @@ export default function JournalPage() {
       <PageHero
         eyebrow="Engineering & Design Intelligence"
         headline={
-          <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase">
+          <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-[#15171B] uppercase">
             PLAYBOOKS, NOT<br />
             <span className="text-gradient-lime">HOT TAKES.</span>
           </h1>
         }
         body={
-          <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
+          <p className="font-body text-[#6E7179] text-lg md:text-xl max-w-2xl leading-relaxed">
             Deep architectural breakdowns, benchmarks, and production lessons from shipping high-stakes digital flagships and autonomous AI systems.
           </p>
         }
@@ -42,7 +42,7 @@ export default function JournalPage() {
       />
 
       {/* ── Journal Feed ── */}
-      <section className="border-t border-[var(--color-border)]">
+      <section className="border-t border-[#15171B]/[0.08]">
         <div className="container-px mx-auto max-w-[1440px] py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Featured First Post: Large Card */}
@@ -51,7 +51,7 @@ export default function JournalPage() {
                 <Link
                   href={`/journal/${featuredPost.slug}`}
                   aria-label={`Read featured playbook: ${featuredPost.title}`}
-                  className="group block rounded-3xl p-8 md:p-12 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-[var(--color-lime)]/50 transition-all duration-300 shadow-2xl relative overflow-hidden"
+                  className="group block rounded-3xl p-8 md:p-12 bg-[#FFFFFF] border border-[#15171B]/[0.08] hover:border-[var(--color-lime)]/50 transition-all duration-300 shadow-2xl relative overflow-hidden"
                 >
                   {/* Large Showcase Cover */}
                   <div
@@ -63,19 +63,19 @@ export default function JournalPage() {
                       <span className="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--color-lime)] text-[var(--color-bg)] font-bold">
                         FEATURED PLAYBOOK
                       </span>
-                      <span className="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white">
+                      <span className="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-[#15171B]">
                         {featuredPost.category}
                       </span>
-                      <span className="px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-[var(--color-muted)]">
+                      <span className="px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-[#6E7179]">
                         {featuredPost.readTime} min read
                       </span>
                     </div>
 
                     <div className="relative z-10 transition-transform duration-500 ease-out group-hover:scale-[1.01]">
-                      <h2 className="font-display font-extrabold text-3xl md:text-5xl lg:text-6xl text-white group-hover:text-[var(--color-lime)] transition-colors duration-200 tracking-tight leading-tight max-w-4xl">
+                      <h2 className="font-display font-extrabold text-3xl md:text-5xl lg:text-6xl text-[#15171B] group-hover:text-[#3657E8] transition-colors duration-200 tracking-tight leading-tight max-w-4xl">
                         {featuredPost.title}
                       </h2>
-                      <p className="font-body text-base md:text-xl text-[var(--color-muted)] max-w-3xl mt-4 leading-relaxed line-clamp-2">
+                      <p className="font-body text-base md:text-xl text-[#6E7179] max-w-3xl mt-4 leading-relaxed line-clamp-2">
                         {featuredPost.excerpt}
                       </p>
                     </div>
@@ -84,14 +84,14 @@ export default function JournalPage() {
                   </div>
 
                   {/* Bottom Metadata & Read Prompt */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 text-xs font-mono text-[var(--color-muted)]">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2 text-xs font-mono text-[#6E7179]">
                     <div className="flex items-center gap-4">
                       <span>By {featuredPost.author}</span>
                       <span aria-hidden>·</span>
                       <time dateTime={featuredPost.date}>{featuredPost.date}</time>
                     </div>
 
-                    <div className="flex items-center gap-2 font-display font-bold text-sm text-[var(--color-lime)] group-hover:text-white transition-colors duration-200">
+                    <div className="flex items-center gap-2 font-display font-bold text-sm text-[#3657E8] group-hover:text-[#15171B] transition-colors duration-200">
                       <span>READ FULL PLAYBOOK</span>
                       <div className="w-8 h-8 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
                         <ArrowUpRight size={15} />
@@ -108,7 +108,7 @@ export default function JournalPage() {
                 <Link
                   href={`/journal/${post.slug}`}
                   aria-label={`Read article: ${post.title}`}
-                  className="group block rounded-3xl p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-[var(--color-lime)]/50 transition-all duration-300 flex flex-col justify-between h-full shadow-lg"
+                  className="group block rounded-3xl p-6 md:p-8 bg-[#FFFFFF] border border-[#15171B]/[0.08] hover:border-[var(--color-lime)]/50 transition-all duration-300 flex flex-col justify-between h-full shadow-lg"
                 >
                   <div>
                     {/* Media Cover */}
@@ -118,16 +118,16 @@ export default function JournalPage() {
                       aria-label={`Cover for ${post.title}`}
                     >
                       <div className="flex items-center gap-2 z-10">
-                        <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-black/60 backdrop-blur-md border border-white/10 text-white">
+                        <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-black/60 backdrop-blur-md border border-white/10 text-[#15171B]">
                           {post.category}
                         </span>
-                        <span className="px-3 py-1 rounded-full text-xs font-mono bg-black/60 backdrop-blur-md border border-white/10 text-[var(--color-lime)]">
+                        <span className="px-3 py-1 rounded-full text-xs font-mono bg-black/60 backdrop-blur-md border border-white/10 text-[#3657E8]">
                           {post.readTime} min read
                         </span>
                       </div>
 
                       <div className="transition-transform duration-500 ease-out group-hover:scale-105 z-10">
-                        <span className="font-display font-bold text-2xl text-white block">
+                        <span className="font-display font-bold text-2xl text-[#15171B] block">
                           {post.title}
                         </span>
                       </div>
@@ -135,17 +135,17 @@ export default function JournalPage() {
                       <div className="absolute inset-0 bg-[var(--color-lime)]/0 group-hover:bg-[var(--color-lime)]/[0.04] transition-colors duration-500" />
                     </div>
 
-                    <h2 className="font-display font-bold text-xl md:text-2xl text-white group-hover:text-[var(--color-lime)] transition-colors duration-200 mb-3 leading-snug">
+                    <h2 className="font-display font-bold text-xl md:text-2xl text-[#15171B] group-hover:text-[#3657E8] transition-colors duration-200 mb-3 leading-snug">
                       {post.title}
                     </h2>
-                    <p className="font-body text-xs md:text-sm text-[var(--color-muted)] line-clamp-3 leading-relaxed">
+                    <p className="font-body text-xs md:text-sm text-[#6E7179] line-clamp-3 leading-relaxed">
                       {post.excerpt}
                     </p>
                   </div>
 
-                  <div className="pt-6 mt-6 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-mono text-[var(--color-muted)]">
+                  <div className="pt-6 mt-6 border-t border-[#15171B]/[0.08] flex items-center justify-between text-xs font-mono text-[#6E7179]">
                     <time dateTime={post.date}>{post.date}</time>
-                    <span className="text-[var(--color-lime)] group-hover:translate-x-1 transition-transform duration-200 flex items-center gap-1 font-semibold">
+                    <span className="text-[#3657E8] group-hover:translate-x-1 transition-transform duration-200 flex items-center gap-1 font-semibold">
                       Read Playbook →
                     </span>
                   </div>

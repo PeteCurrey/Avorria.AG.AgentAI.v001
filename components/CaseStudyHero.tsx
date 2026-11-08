@@ -2,13 +2,23 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 
 interface CaseStudyHeroProps {
   title: string;
   category: string;
+  image?: string;
 }
 
-export default function CaseStudyHero({ title, category }: CaseStudyHeroProps) {
+const PROJECT_IMAGE_MAP: Record<string, string> = {
+  "Axiom Finance": "/imagery/projects/axiom-finance.webp",
+  "Nocturne Studio": "/imagery/projects/nocturne-studio.webp",
+  "Vanta AI": "/imagery/projects/vanta-ai.webp",
+  "Bloom Health": "/imagery/projects/bloom-health.webp",
+  "Meridian Arc": "/imagery/projects/meridian-arc.webp",
+};
+
+export default function CaseStudyHero({ title, category, image }: CaseStudyHeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
@@ -17,40 +27,48 @@ export default function CaseStudyHero({ title, category }: CaseStudyHeroProps) {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.05, 1, 0.98]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.06, 1.02, 0.98]);
+
+  const activeImage = image || PROJECT_IMAGE_MAP[title] || "/imagery/hero/spatial-monolith.webp";
 
   return (
     <div
       ref={containerRef}
-      className="aspect-[16/8] md:aspect-[21/9] rounded-3xl bg-gradient-to-br from-[#151525] via-[#0b0b14] to-[#050508] border border-white/10 flex items-center justify-center p-12 overflow-hidden shadow-2xl relative"
+      className="aspect-[16/8] md:aspect-[21/9] rounded-2xl bg-[#15171B] border border-[#15171B]/15 overflow-hidden shadow-2xl relative group card-arch"
       role="img"
       aria-label={`${title} Hero Showcase Image`}
     >
-      {/* Background kinetic grid lines */}
-      <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(214,255,63,0.03)_0%,transparent_60%)] pointer-events-none"
-        aria-hidden="true"
-      />
-
+      {/* High-Resolution Project Artwork */}
       <motion.div
         style={{
           y: shouldReduceMotion ? 0 : y,
           scale: shouldReduceMotion ? 1 : scale,
         }}
-        className="text-center relative z-10 select-none pointer-events-none will-change-transform"
+        className="absolute inset-0 w-full h-full will-change-transform"
       >
-        <span className="font-display font-black text-5xl md:text-8xl lg:text-9xl text-white/20 uppercase tracking-wider block transition-colors duration-500 hover:text-white/30">
-          {title}
-        </span>
-        <span className="font-mono text-xs md:text-sm uppercase tracking-[0.3em] text-[var(--color-lime)] mt-3 block">
-          {category} Flagship
-        </span>
+        <Image
+          src={activeImage}
+          alt={`${title} — ${category}`}
+          fill
+          priority
+          sizes="(max-width: 1200px) 100vw, 1400px"
+          className="object-cover opacity-85 transition-opacity duration-500 group-hover:opacity-95"
+        />
       </motion.div>
 
-      {/* Vignette gradients */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-transparent opacity-60 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)]/40 via-transparent to-transparent pointer-events-none" />
+      {/* Atmospheric depth overlay in deep charcoal and subtle cobalt */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#15171B] via-transparent to-[#15171B]/30 opacity-80 pointer-events-none" />
+
+      {/* Foreground title overlay */}
+      <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 z-10 space-y-2 pointer-events-none">
+        <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-white/95 text-[#15171B] font-medium backdrop-blur-md inline-block">
+          {category} Flagship
+        </span>
+        <h2 className="font-display font-light text-3xl md:text-6xl text-white tracking-[-0.035em]">
+          {title}
+        </h2>
+      </div>
     </div>
   );
 }

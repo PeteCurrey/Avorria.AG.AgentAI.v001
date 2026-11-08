@@ -168,14 +168,14 @@ export default function StudioPage() {
       <PageHero
         eyebrow="The Studio · Doctrine & Standards"
         headline={
-          <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase">
+          <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-[#15171B] uppercase">
             WHY AVORRIA<br />
             <span className="text-gradient-lime">EXISTS.</span>
           </h1>
         }
         body={
           <div className="space-y-12">
-            <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
+            <p className="font-body text-[#6E7179] text-lg md:text-xl max-w-2xl leading-relaxed">
               We believe ambitious businesses deserve better digital experiences and better technology. We combine commercial thinking, distinctive creative execution, and senior engineering capability under one unified practice.
             </p>
             {/* Live Studio Telemetry Strip */}
@@ -186,39 +186,39 @@ export default function StudioPage() {
       />
 
       {/* 01 — WHY AVORRIA EXISTS */}
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[var(--color-bg)]">
         <div className="container-px mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-lime)] block">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#3657E8] block">
               01 / Core Thesis
             </span>
-            <h2 className="font-display font-semibold text-3xl md:text-5xl text-white tracking-tight leading-tight">
+            <h2 className="font-display font-semibold text-3xl md:text-5xl text-[#15171B] tracking-tight leading-tight">
               Bridging the divide between commercial strategy, design, and engineering.
             </h2>
-            <p className="font-body text-base text-[var(--color-muted)] leading-relaxed">
+            <p className="font-body text-base text-[#6E7179] leading-relaxed">
               Most digital projects fail in the handoff. Traditional strategy consultancies produce theoretical roadmaps that designers cannot visually interpret. Creative agencies design breathtaking visual mockups that collapse under technical production constraints. Development shops write functional code that lacks commercial nuance and aesthetic refinement.
             </p>
-            <p className="font-body text-base text-white/90 leading-relaxed">
+            <p className="font-body text-base text-[#15171B]/90 leading-relaxed">
               Avorria exists to unite all three disciplines under one roof. When senior strategists, creative directors, and systems architects collaborate from day one, projects ship faster, perform better, and create enduring market value.
             </p>
           </div>
 
-          <div className="lg:col-span-5 p-8 md:p-10 rounded-3xl bg-[var(--color-panel)] border border-[var(--color-border)] space-y-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-lime)] block">
+          <div className="lg:col-span-5 p-8 md:p-10 rounded-3xl bg-[#FFFFFF] border border-[#15171B]/[0.08] space-y-6">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#3657E8] block">
               The Three Pillars
             </span>
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-[var(--color-bg)] border border-white/5">
-                <span className="font-mono text-xs text-white font-semibold block mb-1">Commercial Acumen</span>
-                <p className="font-body text-xs text-[var(--color-muted)]">Understanding revenue models, buyer friction, and competitive positioning.</p>
+                <span className="font-mono text-xs text-[#15171B] font-semibold block mb-1">Commercial Acumen</span>
+                <p className="font-body text-xs text-[#6E7179]">Understanding revenue models, buyer friction, and competitive positioning.</p>
               </div>
               <div className="p-4 rounded-xl bg-[var(--color-bg)] border border-white/5">
-                <span className="font-mono text-xs text-[var(--color-lime)] font-semibold block mb-1">Creative Distinction</span>
-                <p className="font-body text-xs text-[var(--color-muted)]">Bespoke art direction, tactile typography, and spatial 3D interaction.</p>
+                <span className="font-mono text-xs text-[#3657E8] font-semibold block mb-1">Creative Distinction</span>
+                <p className="font-body text-xs text-[#6E7179]">Bespoke art direction, tactile typography, and spatial 3D interaction.</p>
               </div>
               <div className="p-4 rounded-xl bg-[var(--color-bg)] border border-white/5">
-                <span className="font-mono text-xs text-white font-semibold block mb-1">Engineering Rigor</span>
-                <p className="font-body text-xs text-[var(--color-muted)]">Sub-second edge execution, strict type safety, and zero technical debt.</p>
+                <span className="font-mono text-xs text-[#15171B] font-semibold block mb-1">Engineering Rigor</span>
+                <p className="font-body text-xs text-[#6E7179]">Sub-second edge execution, strict type safety, and zero technical debt.</p>
               </div>
             </div>
           </div>
@@ -226,17 +226,17 @@ export default function StudioPage() {
       </section>
 
       {/* 02 — THE FOUNDER'S PERSPECTIVE */}
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-panel)]">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[#FFFFFF]">
         <div className="container-px mx-auto max-w-[1440px]">
-          <div className="p-8 md:p-14 rounded-3xl bg-[var(--color-bg)] border border-[var(--color-border)] relative overflow-hidden">
+          <div className="p-8 md:p-14 rounded-3xl bg-[var(--color-bg)] border border-[#15171B]/[0.08] relative overflow-hidden">
             <div className="max-w-3xl space-y-6">
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-lime)] block">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#3657E8] block">
                 02 / Founder&apos;s Perspective
               </span>
-              <h2 className="font-display font-semibold text-2xl md:text-4xl text-white tracking-tight leading-tight">
+              <h2 className="font-display font-semibold text-2xl md:text-4xl text-[#15171B] tracking-tight leading-tight">
                 &ldquo;We founded Avorria on a simple premise: a compact, senior-led studio will always out-execute a bloated traditional agency.&rdquo;
               </h2>
-              <div className="font-body text-sm md:text-base text-[var(--color-muted)] space-y-4 leading-relaxed">
+              <div className="font-body text-sm md:text-base text-[#6E7179] space-y-4 leading-relaxed">
                 <p>
                   Having spent years observing client budgets swallowed by account management layers, junior handoffs, and misaligned incentives, our founding mission was clear: create an agency where clients partner directly with the principals who design and write the code.
                 </p>
@@ -245,7 +245,7 @@ export default function StudioPage() {
                 </p>
               </div>
 
-              <div className="pt-4 flex items-center gap-4 text-xs font-mono text-[var(--color-lime)]">
+              <div className="pt-4 flex items-center gap-4 text-xs font-mono text-[#3657E8]">
                 <span>The Founding Directorate · Avorria Studio</span>
                 <span aria-hidden>·</span>
                 <span>London &amp; New York</span>
@@ -256,13 +256,13 @@ export default function StudioPage() {
       </section>
 
       {/* 03 — HOW WE THINK (OPERATING PRINCIPLES) */}
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[var(--color-bg)]">
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="mb-14">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-lime)] block mb-3">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#3657E8] block mb-3">
               03 / Operating Principles
             </span>
-            <h2 className="font-display font-semibold text-3xl md:text-5xl text-white tracking-tight">
+            <h2 className="font-display font-semibold text-3xl md:text-5xl text-[#15171B] tracking-tight">
               The standards that govern every line of code.
             </h2>
           </div>
@@ -271,12 +271,12 @@ export default function StudioPage() {
             {PRINCIPLES.map((p) => (
               <div
                 key={p.num}
-                className="p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)] flex flex-col justify-between"
+                className="p-8 rounded-[var(--radius-card)] bg-[#FFFFFF] border border-[#15171B]/[0.08] flex flex-col justify-between"
               >
                 <div>
-                  <span className="font-mono text-xs text-[var(--color-lime)] block mb-4">{p.num}</span>
-                  <h3 className="font-display font-semibold text-xl text-white mb-3">{p.title}</h3>
-                  <p className="font-body text-sm text-[var(--color-muted)] leading-relaxed">{p.description}</p>
+                  <span className="font-mono text-xs text-[#3657E8] block mb-4">{p.num}</span>
+                  <h3 className="font-display font-semibold text-xl text-[#15171B] mb-3">{p.title}</h3>
+                  <p className="font-body text-sm text-[#6E7179] leading-relaxed">{p.description}</p>
                 </div>
               </div>
             ))}
@@ -285,13 +285,13 @@ export default function StudioPage() {
       </section>
 
       {/* 04 — HOW WE WORK (THE ENGAGEMENT JOURNEY) */}
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-panel)]">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[#FFFFFF]">
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="mb-14">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-lime)] block mb-3">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#3657E8] block mb-3">
               04 / Engagement Journey
             </span>
-            <h2 className="font-display font-semibold text-3xl md:text-5xl text-white tracking-tight">
+            <h2 className="font-display font-semibold text-3xl md:text-5xl text-[#15171B] tracking-tight">
               Eight stages from discovery to continuous scale.
             </h2>
           </div>
@@ -300,11 +300,11 @@ export default function StudioPage() {
             {ENGAGEMENT_JOURNEY.map((step) => (
               <div
                 key={step.step}
-                className="p-6 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)]"
+                className="p-6 rounded-2xl bg-[var(--color-bg)] border border-[#15171B]/[0.08]"
               >
-                <span className="font-mono text-xs text-[var(--color-lime)] block mb-2">{step.step}</span>
-                <h4 className="font-display font-semibold text-lg text-white mb-2">{step.title}</h4>
-                <p className="font-body text-xs text-[var(--color-muted)] leading-relaxed">{step.detail}</p>
+                <span className="font-mono text-xs text-[#3657E8] block mb-2">{step.step}</span>
+                <h4 className="font-display font-semibold text-lg text-[#15171B] mb-2">{step.title}</h4>
+                <p className="font-body text-xs text-[#6E7179] leading-relaxed">{step.detail}</p>
               </div>
             ))}
           </div>
@@ -312,13 +312,13 @@ export default function StudioPage() {
       </section>
 
       {/* 05 — OUR TECHNOLOGY */}
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[var(--color-bg)]">
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="mb-14">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-lime)] block mb-3">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#3657E8] block mb-3">
               05 / Technology Foundation
             </span>
-            <h2 className="font-display font-semibold text-3xl md:text-5xl text-white tracking-tight">
+            <h2 className="font-display font-semibold text-3xl md:text-5xl text-[#15171B] tracking-tight">
               Tools selected for durability and edge velocity.
             </h2>
           </div>
@@ -327,15 +327,15 @@ export default function StudioPage() {
             {SUPPORTED_TECHNOLOGIES.map((tech, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[var(--color-panel)] border border-[var(--color-border)] space-y-3"
+                className="p-6 rounded-2xl bg-[#FFFFFF] border border-[#15171B]/[0.08] space-y-3"
               >
                 <div>
-                  <span className="font-mono text-[10px] uppercase text-[var(--color-lime)] block mb-1">
+                  <span className="font-mono text-[10px] uppercase text-[#3657E8] block mb-1">
                     {tech.category}
                   </span>
-                  <h4 className="font-display font-semibold text-lg text-white">{tech.name}</h4>
+                  <h4 className="font-display font-semibold text-lg text-[#15171B]">{tech.name}</h4>
                 </div>
-                <p className="font-body text-xs text-[var(--color-muted)] leading-relaxed">
+                <p className="font-body text-xs text-[#6E7179] leading-relaxed">
                   {tech.rationale}
                 </p>
               </div>
@@ -345,13 +345,13 @@ export default function StudioPage() {
       </section>
 
       {/* 06 — OUR STANDARDS */}
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-panel)]">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[#FFFFFF]">
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="mb-14">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-lime)] block mb-3">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#3657E8] block mb-3">
               06 / Production Standards
             </span>
-            <h2 className="font-display font-semibold text-3xl md:text-5xl text-white tracking-tight">
+            <h2 className="font-display font-semibold text-3xl md:text-5xl text-[#15171B] tracking-tight">
               Non-negotiable benchmarks on every engagement.
             </h2>
           </div>
@@ -360,12 +360,12 @@ export default function StudioPage() {
             {ENGINEERING_STANDARDS.map((std, idx) => (
               <div
                 key={idx}
-                className="p-6 md:p-8 rounded-2xl bg-[var(--color-bg)] border border-[var(--color-border)] flex items-start gap-4"
+                className="p-6 md:p-8 rounded-2xl bg-[var(--color-bg)] border border-[#15171B]/[0.08] flex items-start gap-4"
               >
-                <CheckCircle2 size={18} className="text-[var(--color-lime)] shrink-0 mt-1" />
+                <CheckCircle2 size={18} className="text-[#3657E8] shrink-0 mt-1" />
                 <div className="space-y-1">
-                  <h4 className="font-display font-semibold text-base text-white">{std.label}</h4>
-                  <p className="font-body text-xs md:text-sm text-[var(--color-muted)] leading-relaxed">
+                  <h4 className="font-display font-semibold text-base text-[#15171B]">{std.label}</h4>
+                  <p className="font-body text-xs md:text-sm text-[#6E7179] leading-relaxed">
                     {std.description}
                   </p>
                 </div>

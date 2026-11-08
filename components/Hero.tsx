@@ -9,6 +9,8 @@ import MagneticButton from "./MagneticButton";
 import { ArrowUpRight, ArrowRight, Sparkles } from "lucide-react";
 
 const WebGLHero = dynamic(() => import("./WebGLHero"), { ssr: false });
+const AvorriaSculpturalObject = dynamic(() => import("./AvorriaSculpturalObject"), { ssr: false });
+
 
 const containerVariants = {
   hidden: {},
@@ -123,26 +125,21 @@ export default function Hero() {
             style={{ y: imageY }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-[#15171B]/10 bg-white group">
-              {/* Bespoke high-resolution editorial imagery */}
-              <Image
-                src="/imagery/hero/spatial-monolith.webp"
-                alt="Avorria Creative Technology & Spatial Engineering"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#15171B]/80 via-transparent to-transparent" />
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-[#15171B]/10 bg-gradient-to-b from-[#FFFFFF] via-[#F7F7F5] to-[#E5E5E0] group">
+              {/* Live Procedural 3D Signature Sculpture (Three.js WebGL) */}
+              <div className="absolute inset-0 z-0">
+                <AvorriaSculpturalObject className="w-full h-full" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#15171B]/70 via-transparent to-transparent pointer-events-none" />
 
               {/* Floating Architectural Annotation Card */}
               <div className="absolute bottom-6 left-6 right-6 p-5 rounded-lg bg-white/95 backdrop-blur-md border border-[#15171B]/10 flex items-center justify-between text-xs">
                 <div>
                   <span className="font-mono uppercase text-[10px] tracking-widest text-[#3657E8] block mb-1 font-semibold">
-                    Featured Showcase
+                    Interactive 3D Motif
                   </span>
                   <p className="font-display font-medium text-[#15171B] text-sm">
-                    Axiom Finance · Spatial WebGL Architecture
+                    Signature 3D Monolith · Real-Time WebGL
                   </p>
                 </div>
                 <Link
