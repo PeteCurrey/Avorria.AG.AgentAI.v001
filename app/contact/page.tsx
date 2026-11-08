@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { MapPin, Mail, Phone, CheckCircle2, ShieldCheck, Clock } from "lucide-react";
+import PageHero from "@/components/PageHero";
+
 
 export const metadata: Metadata = {
-  title: "Tell Us The Mission — Start Your Project",
+  title: "Start a Conversation — Commission an Avorria Project",
   description:
-    "Ready to build something remarkable? Tell us the mission. We respond within an average of 7h 42m. Studios in London (EC2A) and New York (NY 10013).",
+    "Tell us about your project. From bespoke web development to applied AI systems, we partner with ambitious leadership teams worldwide. London & New York.",
   alternates: { canonical: "https://avorria.com/contact" },
   openGraph: {
     url: "https://avorria.com/contact",
-    title: "Tell Us The Mission — Start Your Project | Avorria",
+    title: "Start a Conversation — Commission an Avorria Project | Avorria",
     description:
       "Tell us what you're building. Studios in London & New York. Direct partner access.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Contact Avorria — Tell Us The Mission" }],
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Contact Avorria — Start a Conversation" }],
   },
 };
 
@@ -34,9 +36,9 @@ const OFFICES = [
 const WHAT_HAPPENS_NEXT = [
   {
     step: "01",
-    title: "Brief Triage (Avg 7h 42m)",
+    title: "Brief Review & Triage (Within 24h)",
     description:
-      "Our founding partners review your technical scope, architecture feasibility, and milestone constraints directly.",
+      "Our founding partners review your commercial objectives, technical scope, and milestone requirements directly.",
   },
   {
     step: "02",
@@ -56,24 +58,21 @@ export default function ContactPage() {
   return (
     <>
       {/* ── Page Hero ── */}
-      <section className="pt-40 pb-16 container-px mx-auto max-w-[1440px]">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" />
-          <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
-            Initiate Project
-          </span>
-        </div>
-
-        {/* Required H1 */}
-        <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase mb-8">
-          TELL US THE<br />
-          <span className="text-gradient-lime">MISSION.</span>
-        </h1>
-
-        <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
-          Whether you need a full digital flagship rebuild, custom WebGL artistry, or autonomous AI systems — we review incoming briefs twice daily.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Initiate Project"
+        headline={
+          <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase">
+            TELL US THE<br />
+            <span className="text-gradient-lime">MISSION.</span>
+          </h1>
+        }
+        body={
+          <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
+            Whether you need a full digital flagship rebuild, custom WebGL artistry, or autonomous AI systems — we review incoming briefs twice daily.
+          </p>
+        }
+        className="pb-16"
+      />
 
       {/* ── Contact Grid: Left Info & 3-Step / Right Form ── */}
       <section className="border-t border-[var(--color-border)] pb-28">

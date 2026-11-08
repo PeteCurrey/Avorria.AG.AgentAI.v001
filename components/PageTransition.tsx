@@ -2,23 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-/**
- * Full-screen page transition curtain.
- *
- * On route change: obsidian panel slides UP from the bottom to cover the screen,
- * then slides UP off the top to reveal the new page.
- *
- * The curtain only runs when the pathname changes (not on first load),
- * and auto-dismisses after 600ms total.
- */
 export default function PageTransition({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
+
+  if (shouldReduceMotion) {
+    return <div key={pathname}>{children}</div>;
+  }
 
   return (
     <>

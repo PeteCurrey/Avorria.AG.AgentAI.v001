@@ -4,27 +4,66 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Preloader() {
-  const [complete, setComplete] = useState(false);
+  const [complete, setComplete] = useState(true); // Default true for SSR / initial paint
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Elegant progression to 100 in ~1.2s
+    // Check if user already saw the preloader in this session or prefers reduced motion
+    const hasVisited = typeof window !== "undefined" && sessionStorage.getItem("avorria_session_visited");
+    const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (hasVisited || prefersReducedMotion) {
+      setComplete(true); // eslint-disable-line react-hooks/set-state-in-effect
+      return;
+    }
+
+    // First visit: show preloader
+    setComplete(false);
+
+    // Progression to 100 in ~900ms
     const timer = setInterval(() => {
       setCount((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
+          try {
+            sessionStorage.setItem("avorria_session_visited", "true");
+          } catch {
+            // Safe fallback if sessionStorage is blocked
+          }
           setTimeout(() => {
-            setComplete(true);
-          }, 150);
+            setComplete(true); // eslint-disable-line react-hooks/set-state-in-effect
+          }, 120);
           return 100;
         }
-        const step = Math.floor(Math.random() * 8) + 5;
+        const step = Math.floor(Math.random() * 9) + 8;
         return Math.min(prev + step, 100);
       });
-    }, 40);
+    }, 35);
 
-    return () => clearInterval(timer);
+    // Allow instant dismissal on Escape key
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        clearInterval(timer);
+        try {
+          sessionStorage.setItem("avorria_session_visited", "true");
+        } catch {}
+        setComplete(true); // eslint-disable-line react-hooks/set-state-in-effect
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
+
+  const handleSkip = () => {
+    try {
+      sessionStorage.setItem("avorria_session_visited", "true");
+    } catch {}
+    setComplete(true);
+  };
 
   return (
     <AnimatePresence>
@@ -75,7 +114,14 @@ export default function Preloader() {
             </div>
             <div className="flex justify-between items-center text-[10px] uppercase tracking-widest text-[var(--color-muted)] font-mono">
               <span>GB (GMT) · US (EST)</span>
-              <span>INDEXING PRODUCTION ENVIRONMENT</span>
+              <button
+                type="button"
+                onClick={handleSkip}
+                className="hover:text-white transition-colors duration-200 cursor-pointer underline underline-offset-4"
+                aria-label="Skip introduction animation"
+              >
+                SKIP INTRO [ESC]
+              </button>
             </div>
           </div>
         </motion.div>

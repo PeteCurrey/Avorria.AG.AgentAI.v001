@@ -7,7 +7,26 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, company, budget, projectType, message, source } = body;
+    const {
+      name,
+      email,
+      phone,
+      company,
+      website,
+      industry,
+      needs,
+      objectives,
+      background,
+      existingTech,
+      mainRequirements,
+      timescale,
+      budget,
+      urgency,
+      alreadyScoped,
+      projectType,
+      message,
+      source,
+    } = body;
 
     // Validate name: 2+ characters
     if (!name || typeof name !== "string" || name.trim().length < 2) {
@@ -25,34 +44,41 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate message: 10+ chars, max 5000 chars
-    if (
-      !message ||
-      typeof message !== "string" ||
-      message.trim().length < 10 ||
-      message.trim().length > 5000
-    ) {
+    // Validate message or requirements (at least 5 characters in either)
+    const combinedDetail = (message || mainRequirements || background || "").trim();
+    if (combinedDetail.length < 5) {
       return NextResponse.json(
         {
           ok: false,
-          error: "Message must be between 10 and 5,000 characters long.",
+          error: "Please provide details regarding your project scope or requirements.",
         },
         { status: 400 }
       );
     }
 
-    // Insert lead into SQLite database
-    insertLead({
+    // Insert lead into SQLite database and permanent log
+    const result = insertLead({
       name: name.trim(),
       email: email.trim().toLowerCase(),
+      phone: phone ? String(phone).trim() : undefined,
       company: company ? String(company).trim() : undefined,
+      website: website ? String(website).trim() : undefined,
+      industry: industry ? String(industry).trim() : undefined,
+      needs: Array.isArray(needs) ? needs : undefined,
+      objectives: Array.isArray(objectives) ? objectives : undefined,
+      background: background ? String(background).trim() : undefined,
+      existingTech: existingTech ? String(existingTech).trim() : undefined,
+      mainRequirements: mainRequirements ? String(mainRequirements).trim() : undefined,
+      timescale: timescale ? String(timescale).trim() : undefined,
       budget: budget ? String(budget).trim() : undefined,
-      projectType: projectType ? String(projectType).trim() : undefined,
-      message: message.trim(),
-      source: source ? String(source).trim() : "contact-form",
+      urgency: urgency ? String(urgency).trim() : undefined,
+      alreadyScoped: alreadyScoped ? String(alreadyScoped).trim() : undefined,
+      projectType: projectType ? String(projectType).trim() : (Array.isArray(needs) ? needs.join(", ") : undefined),
+      message: combinedDetail,
+      source: source ? String(source).trim() : "commissioning-experience",
     });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, storage: result.storage });
   } catch (err) {
     console.error("Error in /api/contact:", err);
     return NextResponse.json(

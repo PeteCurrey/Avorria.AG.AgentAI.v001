@@ -16,6 +16,7 @@ import MagneticButton from "./MagneticButton";
 
 interface InteractiveService {
   id: string;
+  href: string;
   number: string;
   shortTitle: string;
   title: string;
@@ -28,76 +29,80 @@ interface InteractiveService {
 
 const INTERACTIVE_SERVICES: InteractiveService[] = [
   {
-    id: "immersive-web",
+    id: "build",
+    href: "/services/build",
     number: "01",
-    shortTitle: "Spatial Web & Flagships",
-    title: "Immersive Web & Spatial 3D Flagships",
+    shortTitle: "Website Design & Development",
+    title: "Bespoke Digital Platforms & High-Performance Web",
     icon: Globe,
     description:
-      "High-performance digital flagships engineered with Next.js 15, Three.js, and custom WebGL shaders. We achieve 60fps cinematic fluidity without compromising Core Web Vitals, accessibility, or mobile delivery.",
+      "Custom websites and digital platforms built to convert visitors, showcase brand authority, and load instantaneously on any device. We combine cinematic 3D craft with sub-second speeds, headless commerce, and zero compromise on accessibility.",
     tags: [
-      "WebGL / Three.js Shaders",
-      "Next.js 15 App Architecture",
-      "Sub-second Global LCP",
-      "Spatial Interaction Design",
+      "Next.js 16 App Architecture",
+      "Sub-Second Global LCP",
+      "Spatial 3D & WebGL",
+      "Headless Commerce & CMS",
       "WCAG 2.1 AA Compliance",
     ],
     proofSlug: "/work/axiom-finance",
-    proofTitle: "Axiom Finance Case Study",
+    proofTitle: "Fintech Platform Architecture",
   },
   {
-    id: "ai-systems",
+    id: "ai",
+    href: "/services/ai",
     number: "02",
-    shortTitle: "Applied AI & Agent Networks",
-    title: "Autonomous Systems & Applied AI Practice",
+    shortTitle: "AI Development & Automation",
+    title: "Intelligent AI Systems & Business Automation",
     icon: Brain,
     description:
-      "Enterprise-grade applied intelligence: domain-fine-tuned models, deterministic RAG pipelines, and autonomous multi-agent networks that orchestrate business workflows with zero human latency.",
+      "Practical AI solutions that automate processes, connect business knowledge, and create operational leverage. We implement secure RAG pipelines, autonomous task agents, and private vector storage.",
     tags: [
-      "Multi-Agent Orchestration",
-      "Enterprise RAG Architectures",
+      "Connected Enterprise Knowledge",
+      "Multi-Agent Workflow Routing",
+      "Private Vector Memory",
       "Deterministic Guardrails",
-      "Private Vector Stores",
-      "Automated Operational Flow",
+      "Human-in-the-Loop Controls",
     ],
     proofSlug: "/work/vanta-ai",
-    proofTitle: "Vanta AI Case Study",
+    proofTitle: "Enterprise Operations AI",
   },
   {
-    id: "e-commerce",
+    id: "systems",
+    href: "/services/systems",
     number: "03",
-    shortTitle: "Headless Digital Commerce",
-    title: "High-Performance Headless Commerce",
+    shortTitle: "Digital Systems & Integrations",
+    title: "Connected Enterprise Applications & Edge Workflows",
     icon: ShoppingBag,
     description:
-      "Modern headless commerce architectures (Shopify Plus, Medusa, custom microservices) engineered for enterprise velocity. Instant routing, real-time 3D product configurators, and checkouts tuned for maximum conversion.",
+      "Modern API architectures, edge middleware, and real-time data synchronization designed for scale. We connect legacy databases, enterprise software, and cloud platforms with zero data loss.",
     tags: [
-      "Headless Storefronts",
-      "3D Product Configurators",
-      "Shopify Plus Enterprise",
-      "Sub-100ms API Response",
-      "Global Checkout UX",
+      "Edge API Gateways",
+      "Real-Time Omnichannel Sync",
+      "ERP & Payment Ledger Sync",
+      "Sub-50ms Global Response",
+      "Zero-Data-Loss Queues",
     ],
     proofSlug: "/work/bloom-health",
-    proofTitle: "Bloom Health Case Study",
+    proofTitle: "Headless Commerce Architecture",
   },
   {
-    id: "brand-motion-3d",
+    id: "search",
+    href: "/services/search",
     number: "04",
-    shortTitle: "Brand Systems & Motion",
-    title: "Brand Strategy, Design Systems & Motion",
+    shortTitle: "Technical SEO & Search Architecture",
+    title: "Search Architecture & Content Infrastructure",
     icon: Sparkles,
     description:
-      "Comprehensive visual identity, typographic hierarchies, and motion languages built for digital-first enterprises. From generative 3D brand assets to multi-channel design tokens that scale across global touchpoints.",
+      "Code-level search optimization engineered directly into production systems. Server-side rendering, schema knowledge graphs, and Core Web Vitals remediation that ensure crawlers understand and rank your assets.",
     tags: [
-      "Enterprise Design Systems",
-      "3D Visual Direction",
-      "Motion Identity Systems",
-      "Typography Engineering",
-      "Multi-Channel Tokens",
+      "Edge SSR Pre-Rendering",
+      "JSON-LD Schema Knowledge Graph",
+      "Core Web Vitals Remediation",
+      "International Hreflang Routing",
+      "Sustainable Organic Authority",
     ],
-    proofSlug: "/work/nocturne-studio",
-    proofTitle: "Nocturne Studio Case Study",
+    proofSlug: "/work/meridian-arc",
+    proofTitle: "Architectural Showcase",
   },
 ];
 
@@ -114,7 +119,7 @@ export default function Services() {
     <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] relative bg-[var(--color-bg)] overflow-hidden">
       {/* Section annotation — 03 */}
       <span className="section-annotation hidden lg:block" aria-hidden="true">
-        03 — Services
+        03 — Capabilities
       </span>
 
       <div className="container-px mx-auto max-w-[1440px]">
@@ -129,12 +134,12 @@ export default function Services() {
             <div className="flex items-center gap-3 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-                Core Capabilities
+                03 / Capabilities &amp; Solutions
               </span>
             </div>
-            <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.98] tracking-[-0.042em] text-white">
-              Engineering impact at<br />
-              <span className="text-gradient-silver">institutional scale.</span>
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
+              Digital systems engineered to<br />
+              <span className="text-gradient-silver">grow, streamline &amp; scale.</span>
             </h2>
           </div>
 
@@ -264,22 +269,29 @@ export default function Services() {
                     </div>
                   </div>
 
-                  {/* Actions: SCOPE ENGAGEMENT + CASE STUDY */}
+                  {/* Actions: EXPLORE SERVICE + SCOPE ENGAGEMENT + CASE STUDY */}
                   <div className="pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center gap-4">
+                    <Link
+                      href={activeService.href}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors duration-200"
+                    >
+                      Explore Service
+                      <ArrowRight size={13} />
+                    </Link>
+
                     <MagneticButton>
                       <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-colors duration-200"
+                        href={`/contact?service=${activeService.id}`}
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-white font-mono text-xs uppercase tracking-wider hover:border-white transition-colors duration-200"
                       >
                         Scope Engagement
-                        <ArrowRight size={13} />
                       </Link>
                     </MagneticButton>
 
                     <Link
                       href={activeService.proofSlug}
                       data-cursor="view"
-                      className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[var(--color-border)] hover:border-white/30 text-white/90 hover:text-white font-mono text-xs uppercase tracking-wider transition-colors duration-200"
+                      className="inline-flex items-center gap-2 px-4 py-3 rounded-full border border-transparent hover:border-white/20 text-white/70 hover:text-white font-mono text-xs uppercase tracking-wider transition-colors duration-200"
                     >
                       Case Study
                       <ArrowUpRight size={13} className="text-[var(--color-muted)]" />

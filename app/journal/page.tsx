@@ -3,6 +3,7 @@ import { posts } from "@/lib/data";
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, Clock } from "lucide-react";
 import CTA from "@/components/CTA";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Playbooks, Not Hot Takes — The Avorria Journal",
@@ -24,24 +25,21 @@ export default function JournalPage() {
   return (
     <>
       {/* ── Page Hero ── */}
-      <section className="pt-40 pb-20 container-px mx-auto max-w-[1440px]">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" />
-          <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
-            Engineering & Design Intelligence
-          </span>
-        </div>
-
-        {/* Required H1 */}
-        <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase mb-8">
-          PLAYBOOKS, NOT<br />
-          <span className="text-gradient-lime">HOT TAKES.</span>
-        </h1>
-
-        <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
-          Deep architectural breakdowns, benchmarks, and production lessons from shipping high-stakes digital flagships and autonomous AI systems.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Engineering & Design Intelligence"
+        headline={
+          <h1 className="font-display font-extrabold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase">
+            PLAYBOOKS, NOT<br />
+            <span className="text-gradient-lime">HOT TAKES.</span>
+          </h1>
+        }
+        body={
+          <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
+            Deep architectural breakdowns, benchmarks, and production lessons from shipping high-stakes digital flagships and autonomous AI systems.
+          </p>
+        }
+        className="pb-20"
+      />
 
       {/* ── Journal Feed ── */}
       <section className="border-t border-[var(--color-border)]">

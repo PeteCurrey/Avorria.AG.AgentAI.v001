@@ -22,15 +22,15 @@ const ARCHITECTURE_MODULES = [
   {
     id: "rag",
     number: "01",
-    title: "Enterprise Knowledge & RAG",
-    tagline: "Proprietary Vector Memory",
+    title: "Connected Knowledge & Document Search",
+    tagline: "Enterprise RAG Architecture",
     icon: Database,
     overview:
-      "Enterprise-grade retrieval-augmented generation combining hybrid sparse/dense vector search with proprietary reranking models. Zero hallucinations, fully citeable outputs, and millisecond-level document synthesis.",
+      "Connect your company&apos;s scattered documents, databases, and customer records into a unified conversational knowledge engine. Your team gets instant, cited answers with zero hallucinations and complete data privacy.",
     specs: [
       { label: "Search Latency", value: "< 24ms p99" },
       { label: "Retrieval Precision", value: "99.4% MRR" },
-      { label: "Data Boundary", value: "VPC Air-Gapped" },
+      { label: "Data Boundary", value: "Private VPC Endpoint" },
       { label: "Supported Formats", value: "PDF, SQL, API, CRM" },
     ],
     architecture: [
@@ -44,21 +44,21 @@ const ARCHITECTURE_MODULES = [
   {
     id: "agents",
     number: "02",
-    title: "Autonomous Agent Orchestration",
-    tagline: "Multi-Role Agent Swarms",
+    title: "Intelligent Workflow Automation",
+    tagline: "Multi-Agent Task Orchestration",
     icon: Workflow,
     overview:
-      "State-machine governed multi-agent networks designed for high-stakes operational workflows. Specialized agents collaborate across analysis, execution, and verification phases with human-in-the-loop safety gates.",
+      "Specialized AI agents designed to handle multi-step operational tasks: routing client requests, reconciling data, generating reports, and automating manual bottlenecks with human-in-the-loop safety gates.",
     specs: [
-      { label: "Task Completion Rate", value: "98.7% Zero-Shot" },
-      { label: "Parallel Concurrency", value: "1,000+ Swarm Workers" },
+      { label: "Task Completion Rate", value: "98.7% Accuracy" },
+      { label: "Parallel Execution", value: "Multi-Agent Workers" },
       { label: "Failure Recovery", value: "Self-Healing Reflection" },
       { label: "Protocol", value: "JSON Schema Validated" },
     ],
     architecture: [
       "Coordinator Supervisor Model",
       "Domain-Specialized Subagents",
-      "Dynamic Memory & Tool Sinks",
+      "Dynamic Memory & Tool Integrations",
       "Self-Correction & Critique Loop",
       "Real-Time Telemetry & Traces",
     ],
@@ -66,11 +66,11 @@ const ARCHITECTURE_MODULES = [
   {
     id: "middleware",
     number: "03",
-    title: "High-Throughput Middleware",
-    tagline: "Sub-50ms API Pipelines",
+    title: "High-Performance API & System Bridges",
+    tagline: "Sub-50ms Pipeline Integration",
     icon: Zap,
     overview:
-      "Ultra-low-latency streaming bridges and webhook infrastructure built with Next.js edge runtimes and distributed Redis queues. Connects client frontends directly to model inference endpoints with real-time UI synchronization.",
+      "Ultra-low-latency streaming bridges and webhook infrastructure built with Next.js edge runtimes. Connects client frontends and legacy backends directly to AI models with real-time feedback.",
     specs: [
       { label: "Streaming TTFT", value: "< 140ms Global" },
       { label: "Uptime SLA", value: "99.99% Tier-1" },
@@ -88,14 +88,14 @@ const ARCHITECTURE_MODULES = [
   {
     id: "governance",
     number: "04",
-    title: "Security, Privacy & Governance",
-    tagline: "Institutional Risk Guardrails",
+    title: "Data Security, Privacy & Governance",
+    tagline: "Zero-Training Client Safeguards",
     icon: ShieldCheck,
     overview:
       "Hardened security posture engineered for regulated industries. We enforce zero model training on client IP, granular role-based access control, cryptographic verification, and comprehensive audit logs.",
     specs: [
       { label: "Compliance", value: "SOC-2 Type II Aligned" },
-      { label: "Data Retention", value: "Zero Zero-Day Storage" },
+      { label: "Data Retention", value: "Zero Public Storage" },
       { label: "Encryption", value: "AES-256 / TLS 1.3" },
       { label: "PII Masking", value: "Deterministic Redaction" },
     ],
@@ -124,9 +124,9 @@ export default function AILab() {
 
   return (
     <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
-      {/* Section annotation — 04 */}
+      {/* Section annotation — 05 */}
       <span className="section-annotation hidden lg:block" aria-hidden="true">
-        04 — Applied AI
+        05 — Applied AI
       </span>
 
       <div className="container-px mx-auto max-w-[1440px]">
@@ -141,18 +141,18 @@ export default function AILab() {
             <div className="flex items-center gap-3 mb-4">
               <Cpu size={15} className="text-[var(--color-lime)]" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-                Systems &amp; Applied AI Practice
+                05 / Applied AI &amp; Automation
               </span>
             </div>
-            <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.98] tracking-[-0.042em] text-white">
-              Deterministic intelligence for<br />
-              <span className="text-gradient-silver">enterprise operations.</span>
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
+              Intelligent systems engineered for<br />
+              <span className="text-gradient-silver">practical business value.</span>
             </h2>
           </div>
 
           <p className="font-body text-sm md:text-base text-[var(--color-muted)] max-w-md leading-relaxed">
-            We architect and deploy custom autonomous AI systems, domain-fine-tuned models,
-            and private knowledge infrastructures designed for institutional reliability.
+            We engineer AI and automation platforms that connect your company&apos;s knowledge,
+            streamline complex operational workflows, and empower teams to make better decisions faster.
           </p>
         </motion.div>
 
@@ -171,7 +171,7 @@ export default function AILab() {
               Operational Cycle Latency
             </span>
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-              Automated multi-agent execution replaces manual back-office pipelines with deterministic sub-second throughput.
+              Automated multi-agent execution replaces manual back-office bottlenecks with continuous sub-second task routing.
             </p>
           </motion.div>
 
@@ -185,10 +185,10 @@ export default function AILab() {
               {metric2}.4%
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
-              Deterministic Precision
+              Retrieval Precision
             </span>
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-              Hybrid vector indexing and strict JSON schema boundaries eliminate conversational hallucinations.
+              Hybrid vector search and semantic chunking deliver accurate, fully cited answers with zero conversational hallucinations.
             </p>
           </motion.div>
 
@@ -202,10 +202,10 @@ export default function AILab() {
               {metric3}%
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] block mb-3">
-              IP &amp; Privacy Sovereignty
+              Client IP Privacy
             </span>
             <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-              Zero training on enterprise client data. Complete compliance with GDPR, SOC-2, and private cloud VPC standards.
+              Zero public model training on enterprise client data. Private VPC endpoints, strict token quotas, and encrypted memory storage.
             </p>
           </motion.div>
         </div>

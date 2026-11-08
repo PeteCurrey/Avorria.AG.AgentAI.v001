@@ -43,7 +43,7 @@ export default function CTA() {
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#07070A]/50 shrink-0" />
           <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#07070A]/60">
-            Accepting Select Commissions · Q1 2027
+            08 / Start a Project · Commissions Open — Q1 2027
           </span>
         </motion.div>
 
@@ -53,9 +53,9 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(3rem,8vw,8rem)] leading-[0.95] tracking-[-0.048em] text-[#07070A] mb-10 max-w-5xl"
+          className="font-display text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.95] tracking-[-0.048em] text-[#07070A] mb-10 max-w-5xl"
         >
-          Architect your next digital flagship.
+          Turn ambitious ideas into exceptional digital reality.
         </motion.h2>
 
         <motion.p
@@ -63,10 +63,11 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="font-body text-[#07070A]/60 text-base md:text-lg max-w-xl mb-14 leading-[1.7]"
+          className="font-body text-[#07070A]/70 text-base md:text-lg max-w-2xl mb-14 leading-[1.7]"
         >
-          We collaborate with ambitious leadership teams across finance, autonomous
-          systems, and luxury commerce. Tell us what you are commissioning.
+          From high-performance websites and immersive digital platforms to intelligent automation
+          and bespoke AI systems, Avorria combines creative ambition with engineering precision.
+          Let&apos;s discuss how we can help your business grow and compete.
         </motion.p>
 
         {/* CTAs — obsidian on lime */}
@@ -82,7 +83,7 @@ export default function CTA() {
               href="/contact"
               className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-[#07070A] text-white font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-[#07070A] transition-all duration-200 shadow-lg group"
             >
-              Initiate a Partnership Briefing
+              Start a Conversation
               <ArrowRight
                 size={15}
                 className="group-hover:translate-x-1 transition-transform duration-200"
@@ -92,7 +93,7 @@ export default function CTA() {
 
           <a
             href="mailto:hello@avorria.com"
-            className="font-mono text-xs uppercase tracking-wider text-[#07070A]/50 hover:text-[#07070A] transition-colors duration-200 py-3"
+            className="font-mono text-xs uppercase tracking-wider text-[#07070A]/60 hover:text-[#07070A] transition-colors duration-200 py-3"
           >
             Direct Partner Desk: hello@avorria.com →
           </a>

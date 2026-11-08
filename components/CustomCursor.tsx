@@ -38,9 +38,14 @@ export default function CustomCursor() {
   const currentLabelRef = useRef<string>("");
 
   useEffect(() => {
-    // Fine-pointer devices only (mouse / trackpad)
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    setMounted(true);
+    // Fine-pointer and hover devices only (desktop mouse / trackpad)
+    if (
+      !window.matchMedia("(pointer: fine)").matches ||
+      window.matchMedia("(hover: none)").matches
+    ) {
+      return;
+    }
+    setMounted(true); // eslint-disable-line react-hooks/set-state-in-effect
 
     const handleMouseMove = (e: MouseEvent) => {
       const x = e.clientX;

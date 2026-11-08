@@ -13,29 +13,29 @@ const PROJECT_STATS: Record<
   Array<{ value: string; label: string }>
 > = {
   "axiom-finance": [
-    { value: "+340%", label: "Conversion" },
+    { value: "+340%", label: "Conversion Lift" },
     { value: "0.7s", label: "LCP Speed" },
-    { value: "CSSDA", label: "Award Winner" },
+    { value: "100/100", label: "Core Web Vitals" },
   ],
   "nocturne-studio": [
-    { value: "60fps", label: "WebGL Engine" },
-    { value: "4.2M", label: "Impressions" },
-    { value: "Awwwards", label: "Site of the Day" },
+    { value: "60fps", label: "WebGL Fluidity" },
+    { value: "4.2M", label: "Global Reach" },
+    { value: "100%", label: "Retina Canvas" },
   ],
   "vanta-ai": [
     { value: "8s", label: "Time-to-Value" },
-    { value: "-74%", label: "OpEx Cost" },
-    { value: "100/100", label: "Lighthouse" },
+    { value: "-74%", label: "Operational Overhead" },
+    { value: "100/100", label: "PageSpeed Score" },
   ],
   "bloom-health": [
-    { value: "+210%", label: "Shopify Rev" },
-    { value: "1.4s", label: "Global Checkout" },
-    { value: "98%", label: "Satisfaction" },
+    { value: "+210%", label: "Top-Line Lift" },
+    { value: "1.4s", label: "Checkout LCP" },
+    { value: "98%", label: "Retention" },
   ],
   "meridian-arc": [
-    { value: "4K", label: "3D Configurator" },
-    { value: "+180%", label: "Qualified Leads" },
-    { value: "FWA", label: "FWA of the Day" },
+    { value: "4K", label: "Spatial 3D Views" },
+    { value: "+180%", label: "Qualified Inquiries" },
+    { value: "60fps", label: "glTF Pipeline" },
   ],
 };
 
@@ -90,7 +90,7 @@ export default function Work() {
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)] relative">
         {/* Section annotation */}
         <span className="section-annotation hidden lg:block" aria-hidden="true">
-          Index — Selected Work
+          04 — Selected Work
         </span>
 
         {/* Section Header */}
@@ -100,11 +100,11 @@ export default function Work() {
               <div className="flex items-center gap-3 mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-                  Selected Work
+                  04 / Selected Work
                 </span>
               </div>
               <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
-                Engineered for <span className="text-gradient-silver">category leadership.</span>
+                Demonstrated craft &amp; <span className="text-gradient-silver">commercial impact.</span>
               </h2>
             </div>
 
@@ -229,7 +229,7 @@ export default function Work() {
                     VIEW ALL WORK
                   </h3>
                   <p className="font-body text-xs md:text-sm text-[var(--color-muted)] mt-2 max-w-xs">
-                    Explore all 47+ shipped digital flagships, WebGL experiences and AI platforms.
+                    Explore our full portfolio of bespoke websites, WebGL platforms, and intelligent systems.
                   </p>
                 </div>
               </Link>

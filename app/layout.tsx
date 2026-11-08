@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Award-winning digital agency in London & New York. We build immersive WebGL websites, Next.js apps and autonomous AI systems for ambitious global brands.",
+    "Creative engineering and design studio in London & New York. We build bespoke high-performance websites, Next.js web applications, and autonomous AI systems.",
 
   keywords: [
     "web design agency London",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "AI agents development",
     "headless e-commerce",
     "immersive website design",
-    "Awwwards agency",
+    "creative engineering studio",
     "framer motion development",
     "performance web design",
     "three.js development",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title:
       "Avorria — Performance-First Immersive Websites & AI Systems | UK + USA",
     description:
-      "Award-winning digital agency in London & New York. We build immersive WebGL websites, Next.js apps and autonomous AI systems for ambitious global brands.",
+      "Creative engineering and design studio in London & New York. We build bespoke high-performance websites, Next.js web applications, and autonomous AI systems.",
     images: [
       {
         url: "/og.jpg",
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
     title:
       "Avorria — Performance-First Immersive Websites & AI Systems | UK + USA",
     description:
-      "Award-winning digital agency in London & New York. Immersive websites + autonomous AI systems.",
+      "Creative engineering and design studio in London & New York. Immersive websites + autonomous AI systems.",
     images: ["/og.jpg"],
   },
 
@@ -222,7 +222,7 @@ const organizationJsonLd = {
               "@type": "Service",
               name: "Performance Web Design",
               description:
-                "Awwwards-calibre websites engineered for conversion with Core Web Vitals excellence.",
+                "Bespoke high-performance digital flagships engineered for conversion with Core Web Vitals excellence.",
             },
           },
           {
@@ -307,6 +307,13 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#050508] text-white">
+        {/* WCAG 2.2 AA Skip Link */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-[var(--color-lime)] focus:text-black focus:font-mono focus:text-xs focus:font-semibold focus:rounded-full focus:shadow-2xl focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <CursorSpotlight />
         <div className="film-grain" aria-hidden="true" />
         <Preloader />

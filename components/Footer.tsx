@@ -4,18 +4,17 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-const PRACTICE_AREAS = [
-  "WebGL & Three.js Engines",
-  "Autonomous AI Swarms",
-  "Next.js 16 Flagships",
-  "Headless E-Commerce",
-  "Custom RAG Architectures",
-  "3D Brand Visual Systems",
+const PRACTICE_SERVICES = [
+  { label: "Website Design & Development", href: "/services/build" },
+  { label: "AI Development & Automation", href: "/services/ai" },
+  { label: "Digital Systems & Integrations", href: "/services/systems" },
+  { label: "Technical SEO & Search Architecture", href: "/services/search" },
 ];
 
 const SITEMAP = [
   { label: "Selected Work", href: "/work" },
   { label: "Services", href: "/services" },
+  { label: "The Lab", href: "/lab" },
   { label: "The Studio", href: "/studio" },
   { label: "Journal", href: "/journal" },
   { label: "Contact", href: "/contact" },
@@ -49,8 +48,7 @@ export default function Footer() {
             </Link>
 
             <p className="font-body text-sm text-[var(--color-muted)] leading-relaxed max-w-xs">
-              Digital flagships and enterprise intelligence systems for ambitious
-              industry leaders.
+              Digital development and applied intelligence. Designing and engineering high-performance websites and intelligent business systems.
             </p>
 
             {/* Office addresses */}
@@ -89,9 +87,15 @@ export default function Footer() {
                 Practice
               </h4>
               <ul className="space-y-2.5">
-                {PRACTICE_AREAS.map((item) => (
-                  <li key={item} className="font-mono text-xs text-[var(--color-muted)]">
-                    {item}
+                {PRACTICE_SERVICES.map(({ label, href }) => (
+                  <li key={label}>
+                    <Link
+                      href={href}
+                      className="group inline-flex items-center gap-1 font-mono text-xs text-[var(--color-muted)] hover:text-white transition-colors duration-200"
+                    >
+                      {label}
+                      <ArrowUpRight size={10} className="text-white/20 group-hover:text-[var(--color-lime)] transition-colors duration-200" />
+                    </Link>
                   </li>
                 ))}
               </ul>

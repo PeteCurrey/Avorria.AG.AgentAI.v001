@@ -8,39 +8,39 @@ import Script from "next/script";
 const FAQS_6_ITEMS = [
   {
     id: "cost",
-    question: "How much does an Avorria digital flagship or AI system cost?",
+    question: "How much does an Avorria website or intelligent system cost?",
     answer:
-      "Our bespoke digital flagship engagements start from £14,000 / $18,000 for high-performance immersive websites and £24,000 / $30,000 for headless e-commerce. Enterprise AI systems and autonomous agent swarms begin at £16,000 / $20,000. Every proposal is delivered as a fixed-scope SLA with guaranteed timelines and zero hidden surprises.",
+      "Our bespoke digital platform engagements start from £14,000 / $18,000 for high-performance websites and £24,000 / $30,000 for headless e-commerce. Enterprise AI systems and intelligent workflow automation begin at £16,000 / $20,000. Every proposal is delivered as a clear, fixed-scope agreement with guaranteed delivery timelines and zero hidden surprises.",
   },
   {
     id: "speed",
     question: "How fast can you build and ship to production?",
     answer:
-      "We operate in concentrated senior sprints. A rapid Launch scope ships in 3 weeks, a Growth project in 6 weeks, and full-scale Flagship transformations deliver in 10 weeks. You receive an interactive prototype within 48 hours and live staging links from Week 1 onwards.",
+      "We operate in concentrated senior sprints. A focused Launch scope ships in 3 weeks, a Growth project in 6 weeks, and full-scale flagship platforms deliver in 10 weeks. You receive an interactive prototype within 48 hours and live staging links from Week 1 onwards.",
   },
   {
     id: "3d-seo",
     question: "Does WebGL and real-time 3D harm Core Web Vitals or SEO rankings?",
     answer:
-      "Never at Avorria. We treat performance as a fundamental design constraint: DPR is capped at 2×, Three.js shaders are code-split and loaded asynchronously, textures are served via next-gen AVIF/WebP, and all page markup is server-rendered with semantic HTML. Our projects consistently hit 95–100 PageSpeed scores.",
+      "Never at Avorria. We treat performance as a fundamental design constraint: device pixel ratio is capped at 2×, Three.js shaders are code-split and loaded asynchronously, textures are served via next-gen AVIF/WebP, and all page markup is server-rendered with semantic HTML. Our projects consistently hit 95–100 PageSpeed scores.",
   },
   {
     id: "ai",
     question: "Are your AI systems production-grade or just basic API wrappers?",
     answer:
-      "We engineer production-grade enterprise infrastructure. That includes custom domain fine-tuning on your proprietary datasets, high-throughput vector pipelines (Qdrant, Pinecone), deterministic fallback guardrails, and autonomous multi-agent networks that orchestrate complex business ops with a 99.9% uptime SLA.",
+      "We engineer custom production-grade systems tailored to your business operations. That includes secure retrieval pipelines (RAG) over your internal documentation, automated multi-step workflows, deterministic validation boundaries, and reliable API integrations that respect enterprise security and privacy standards.",
   },
   {
     id: "startup-vs-enterprise",
-    question: "Do you work with early-stage startups or strictly enterprises?",
+    question: "Do you work with high-growth startups or strictly enterprises?",
     answer:
-      "We actively work with both. We help venture-backed seed and Series A startups out-design and out-engineer incumbents on Day 1, while providing enterprise clients with the security, SOC2-readiness, and headless scalability demanded by global brands.",
+      "We actively work with both. We help venture-backed seed and Series A startups out-design and out-engineer incumbents from Day 1, while providing enterprise clients with the security, SOC-2 alignment, and headless scalability demanded by established brands.",
   },
   {
     id: "retainers",
     question: "What do ongoing retainers and post-launch partnerships look like?",
     answer:
-      "94% of our clients retain us post-launch. Our monthly partnership retainers reserve dedicated senior engineering capacity for continuous conversion optimization (CRO), ongoing 3D asset updates, feature expansions, and model monitoring for your production AI pipelines.",
+      "Most clients choose to continue working with us post-launch. Our monthly partnership retainers reserve dedicated senior engineering capacity for continuous conversion optimization (CRO), ongoing 3D asset updates, feature expansions, and model monitoring for your production systems.",
   },
 ];
 
@@ -71,9 +71,9 @@ export default function FAQ() {
       />
 
       <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
-        {/* Section annotation — 06 */}
+        {/* Section annotation — 07 */}
         <span className="section-annotation hidden lg:block" aria-hidden="true">
-          06 — Inquiries
+          07 — Inquiries
         </span>
 
         <div className="container-px mx-auto max-w-[1440px]">
@@ -83,18 +83,18 @@ export default function FAQ() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
                 <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-                  Frequently Addressed
+                  07 / Common Inquiries
                 </span>
               </div>
               <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white mb-6">
-                Institutional clarity.<br />
+                Commercial clarity.<br />
                 <span className="text-gradient-silver">Technical precision.</span>
               </h2>
               <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed mb-8">
-                Key considerations regarding engagement parameters, SLA standards, security governance, and delivery velocity.
+                Key considerations regarding engagement parameters, pricing models, technical standards, and delivery velocity.
               </p>
               <div className="p-6 card-arch bg-[var(--color-panel)] border border-[var(--color-border)] space-y-2">
-                <p className="font-display font-medium text-white text-sm">Complex enterprise scope?</p>
+                <p className="font-display font-medium text-white text-sm">Complex project scope?</p>
                 <p className="font-body text-xs text-[var(--color-muted)]">
                   Our practice directors respond to technical inquiries within 4 business hours.
                 </p>

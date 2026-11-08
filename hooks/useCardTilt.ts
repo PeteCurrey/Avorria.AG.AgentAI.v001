@@ -14,7 +14,14 @@ export function useCardTilt(maxDeg = 5) {
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Skip on touchscreens or when reduced motion is preferred
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(pointer: fine)").matches ||
+      window.matchMedia("(hover: none)").matches
+    ) {
+      return;
+    }
 
     let rect: DOMRect | null = null;
     let rafId: number | null = null;

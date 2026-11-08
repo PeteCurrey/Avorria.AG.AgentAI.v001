@@ -11,24 +11,24 @@ import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 
 export const metadata: Metadata = {
-  // Override default: home page title is the brand statement, not template
-  title: "Avorria — Performance-First Immersive Websites & AI Systems | UK + USA",
+  // Brand positioning: Digital Development & Applied Intelligence
+  title: "Avorria — Digital Development & Applied Intelligence | London · New York",
   description:
-    "Award-winning digital agency in London & New York. We craft immersive WebGL websites, Next.js applications and autonomous AI systems for ambitious brands worldwide.",
+    "We turn ambitious ideas into exceptional digital experiences and intelligent business systems. Bespoke web development, real-time 3D, and applied AI for ambitious businesses.",
   alternates: {
     canonical: "https://avorria.com",
   },
   openGraph: {
     url: "https://avorria.com",
-    title: "Avorria — Performance-First Immersive Websites & AI Systems | UK + USA",
+    title: "Avorria — Digital Development & Applied Intelligence | London · New York",
     description:
-      "Award-winning digital agency in London & New York. Immersive WebGL websites + autonomous AI systems.",
+      "We turn ambitious ideas into exceptional digital experiences and intelligent business systems. Web development, real-time 3D, and applied AI.",
     images: [
       {
         url: "/og.jpg",
         width: 1200,
         height: 630,
-        alt: "Avorria — Performance-First Digital Agency, London & New York",
+        alt: "Avorria — Digital Development & Applied Intelligence, London & New York",
       },
     ],
   },

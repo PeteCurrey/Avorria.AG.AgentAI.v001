@@ -11,16 +11,16 @@ const WebGLHero = dynamic(() => import("./WebGLHero"), { ssr: false });
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { delayChildren: 2.2, staggerChildren: 0.12 } },
+  visible: { transition: { delayChildren: 0.6, staggerChildren: 0.11 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 36 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
+      duration: 0.75,
       ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     },
   },
@@ -91,7 +91,7 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="flex items-center gap-2.5 mb-6">
           <span className="w-1 h-1 rounded-full bg-[var(--color-lime)] shrink-0" />
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
-            London · New York · Global Practice
+            London · New York · Digital Development &amp; Applied Intelligence
           </span>
         </motion.div>
 
@@ -107,15 +107,16 @@ export default function Hero() {
           </motion.h1>
         </motion.div>
 
-        {/* Subtitle + CTAs — compact & elegant */}
+        {/* Subtitle + CTAs — concise, commercial & confident */}
         <motion.div style={{ y: subtextY }} className="max-w-2xl">
           <motion.p
             variants={itemVariants}
-            className="font-body text-sm sm:text-base text-[var(--color-muted)] mb-8 leading-[1.65] max-w-lg"
+            className="font-body text-sm sm:text-base text-[var(--color-muted)] mb-8 leading-[1.65] max-w-xl"
           >
-            Avorria partners with ambitious industry leaders to design and engineer
-            immersive WebGL platforms, custom autonomous systems, and
-            category-defining digital experiences built for enduring scale.
+            We turn ambitious ideas into exceptional digital experiences and intelligent business systems.
+            From high-performance websites and immersive digital platforms to bespoke automation,
+            Avorria combines creative ambition with engineering precision to help businesses grow,
+            operate efficiently, and compete effectively.
           </motion.p>
 
           <motion.div
@@ -127,7 +128,7 @@ export default function Hero() {
                 href="/contact"
                 className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-medium text-xs sm:text-sm hover:bg-[var(--color-lime)] transition-all duration-200 group shadow-[0_4px_20px_rgba(255,255,255,0.08)]"
               >
-                Initiate an Engagement
+                Start a Conversation
                 <ArrowRight
                   size={14}
                   className="group-hover:translate-x-1 transition-transform duration-200"
@@ -151,12 +152,12 @@ export default function Hero() {
           className="mt-14 pt-5 border-t border-[var(--color-border)] hidden md:grid grid-cols-3 gap-8 text-left"
         >
           <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Practice Focus</span>
-            <span className="font-mono text-[11px] text-white/60">Immersive 3D · Next.js 16 Flagships</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Core Focus</span>
+            <span className="font-mono text-[11px] text-white/60">Digital Experiences · Next.js 16</span>
           </div>
           <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">AI Infrastructure</span>
-            <span className="font-mono text-[11px] text-white/60">Domain-Trained Agent Swarms</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Applied Systems</span>
+            <span className="font-mono text-[11px] text-white/60">Intelligent AI &amp; Workflow Automation</span>
           </div>
           <div>
             <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Availability</span>

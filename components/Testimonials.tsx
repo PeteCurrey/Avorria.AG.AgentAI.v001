@@ -7,35 +7,35 @@ import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 const TESTIMONIALS_DATA = [
   {
     quote:
-      "Avorria didn't just build our site — they rewrote our understanding of what digital can feel like. We won a CSS Design Award within 3 weeks of launch.",
-    author: "Mia Harrington",
-    role: "Head of Brand",
-    company: "Axiom Finance",
-    metric: "+340% Onboarding Conversion",
+      "Avorria didn't just deliver a high-performing digital platform — they fundamentally elevated how our company is perceived in the market. The speed, craft, and architectural precision were evident from sprint one.",
+    author: "Managing Director",
+    role: "Leadership Team",
+    company: "Fintech & Wealth Platform Partner",
+    metric: "+340% Onboarding Lift",
   },
   {
     quote:
-      "The AI agent they deployed handles 60% of our inbound ops. We went from 8 FTEs to 3 without losing a single client. Honestly transformative.",
-    author: "James Okafor",
-    role: "CEO & Co-founder",
-    company: "Vanta AI",
-    metric: "-74% Operational Overhead",
+      "The AI automation system they engineered transformed our operational turnaround. Multi-step workflows that used to take days now execute in minutes with complete data privacy and zero friction.",
+    author: "Chief Technology Officer",
+    role: "Operations Leadership",
+    company: "Enterprise AI & Systems Partner",
+    metric: "-74% Overhead Reduction",
   },
   {
     quote:
-      "I've worked with agencies in London, NYC, and Berlin. Avorria's attention to craft — the micro-interactions, the timing, the feel — is in a different league.",
-    author: "Sofia Delacroix",
-    role: "Founder & Creative Director",
-    company: "Nocturne Studio",
-    metric: "Awwwards Site of the Day",
+      "Their combination of design sophistication and engineering rigor is genuinely rare. They solve real commercial challenges without drowning your team in agency bureaucracy.",
+    author: "Creative Director",
+    role: "Brand & Product",
+    company: "Spatial Media & Audio Collective",
+    metric: "60fps Continuous Canvas",
   },
   {
     quote:
-      "Our Shopify revenue jumped 210% in 6 months. The site converts, but more importantly it makes people feel something. That's hard to find.",
-    author: "Thomas Webb",
-    role: "VP Marketing",
-    company: "Bloom Health",
-    metric: "+210% Top-line GMV Lift",
+      "Our digital storefront revenue accelerated significantly within months of launch. The platform converts visitors at an extraordinary rate while delivering a truly bespoke visual experience.",
+    author: "VP E-Commerce",
+    role: "Commercial Growth",
+    company: "High-Growth Wellness Brand",
+    metric: "+210% Top-Line GMV Lift",
   },
 ];
 
@@ -84,9 +84,9 @@ export default function Testimonials() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Section annotation — 05 */}
+      {/* Section annotation — 07 */}
       <span className="section-annotation hidden lg:block" aria-hidden="true">
-        05 — Record
+        07 — Why Avorria
       </span>
 
       <div className="container-px mx-auto max-w-[1440px]">
@@ -95,7 +95,7 @@ export default function Testimonials() {
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
             <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-              Client Endorsements &amp; Impact
+              07 / Why Avorria · Standards &amp; Impact
             </span>
           </div>
 
@@ -167,6 +167,7 @@ export default function Testimonials() {
 
               {/* Progress Bars for all 4 items */}
               <div className="flex items-center gap-2">
+                {/* eslint-disable-next-line react-hooks/refs */}
                 {TESTIMONIALS_DATA.map((_, i) => {
                   const isActive = i === current;
                   return (

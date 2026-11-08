@@ -10,13 +10,23 @@ export default function WebGLHero() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Renderer with high performance settings
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+
+    // Renderer with high performance settings and WebGL availability guard
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+    } catch (e) {
+      console.warn("WebGL initialization skipped:", e);
+      return;
+    }
+
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
@@ -90,13 +100,22 @@ export default function WebGLHero() {
     mesh.rotation.x = 0.58;
     scene.add(mesh);
 
-    // Mouse influence (smoothed)
+    // Mouse influence (smoothed) — only for fine pointer devices
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     const handleMouse = (e: MouseEvent) => {
       mouse.targetX = (e.clientX / window.innerWidth - 0.5) * 1.2;
       mouse.targetY = -(e.clientY / window.innerHeight - 0.5) * 1.2;
     };
-    window.addEventListener("mousemove", handleMouse, { passive: true });
+    if (isFinePointer) {
+      window.addEventListener("mousemove", handleMouse, { passive: true });
+    }
+
+    // Context loss handler
+    const handleContextLost = (e: Event) => {
+      e.preventDefault();
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+    canvas.addEventListener("webglcontextlost", handleContextLost);
 
     // Resize
     const handleResize = () => {
@@ -119,6 +138,20 @@ export default function WebGLHero() {
     );
     observer.observe(canvas);
 
+    // If reduced motion is preferred, render one frame and pause
+    if (prefersReducedMotion) {
+      renderer.render(scene, camera);
+      return () => {
+        observer.disconnect();
+        if (isFinePointer) window.removeEventListener("mousemove", handleMouse);
+        canvas.removeEventListener("webglcontextlost", handleContextLost);
+        window.removeEventListener("resize", handleResize);
+        geo.dispose();
+        mat.dispose();
+        renderer.dispose();
+      };
+    }
+
     // Animate: 100% GPU-accelerated matrix transforms (0% CPU buffer uploads!)
     let rafId: number;
     let clock = 0;
@@ -128,8 +161,10 @@ export default function WebGLHero() {
       if (!isVisible) return;
 
       clock += 0.008;
-      mouse.x += (mouse.targetX - mouse.x) * 0.05;
-      mouse.y += (mouse.targetY - mouse.y) * 0.05;
+      if (isFinePointer) {
+        mouse.x += (mouse.targetX - mouse.x) * 0.05;
+        mouse.y += (mouse.targetY - mouse.y) * 0.05;
+      }
 
       // GPU matrix transformations without mutating geometry buffers
       mesh.rotation.z = Math.sin(clock * 0.6) * 0.04 + mouse.x * 0.12;
@@ -148,7 +183,8 @@ export default function WebGLHero() {
     return () => {
       cancelAnimationFrame(rafId);
       observer.disconnect();
-      window.removeEventListener("mousemove", handleMouse);
+      if (isFinePointer) window.removeEventListener("mousemove", handleMouse);
+      canvas.removeEventListener("webglcontextlost", handleContextLost);
       window.removeEventListener("resize", handleResize);
       geo.dispose();
       mat.dispose();

@@ -8,53 +8,53 @@ import { useCountUp } from "@/hooks/useCountUp";
 const PROCESS_STEPS = [
   {
     number: "01",
-    title: "Architecture & Discovery",
-    badge: "Risk Elimination",
+    title: "Strategy & Architecture",
+    badge: "Commercial Alignment",
     timeline: "WEEKS 01–02",
     icon: Compass,
     description:
-      "Comprehensive technical discovery, visual direction spikes, and an interactive architectural prototype. We de-risk core technical hypotheses and align executive stakeholders before enterprise buildout.",
+      "Comprehensive technical discovery, interactive visual spikes, and clear system architecture. We de-risk core technical decisions and align executive goals before engineering begins.",
     deliverables: [
-      "Interactive Architectural Spike",
-      "Core Web Vitals Performance Budget",
-      "Technical Stack & Security Specification",
+      "Interactive Architecture Prototype",
+      "Performance Budget & Tech Stack Spec",
+      "Product Roadmap & Security Blueprint",
     ],
   },
   {
     number: "02",
-    title: "High-Velocity Engineering",
-    badge: "Dedicated Senior Pods",
+    title: "Rapid Agile Engineering",
+    badge: "Dedicated Senior Pod",
     timeline: "WEEKS 02–08",
     icon: Code2,
     description:
-      "Focused two-week delivery cycles executed exclusively by principal engineers and senior designers. Next.js 15 App Architecture, bespoke WebGL pipelines, and weekly preview deployments.",
+      "Focused two-week delivery cycles executed exclusively by senior engineers and designers. Next.js 16 App Architecture, real-time feedback loops, and weekly live preview deployments.",
     deliverables: [
-      "Weekly Staging Environments",
-      "Automated CI/CD & Visual Regression Gates",
-      "Direct Technical Leadership Access",
+      "Weekly Staging Preview Deployments",
+      "Automated Testing & Regression Gates",
+      "Direct Senior Engineering Access",
     ],
   },
   {
     number: "03",
-    title: "Global Scale & Governance",
-    badge: "Enterprise SLA",
+    title: "Launch, Scale & Governance",
+    badge: "Long-Term Partnership",
     timeline: "POST-LAUNCH",
     icon: ShieldCheck,
     description:
-      "Multi-region edge deployment, real-time observability instrumentation, and continuous AI model fine-tuning. We transition into structured long-term governance retainers.",
+      "Production rollout across global edge infrastructure, team handover, and structured long-term partnership retainers to continuously expand features and optimize conversion.",
     deliverables: [
-      "Global Multi-Region Edge Rollout",
-      "Continuous Performance Monitoring",
-      "Dedicated Evolution Retainer",
+      "Global Edge Rollout & DNS Transition",
+      "Real-Time Observability & Monitoring",
+      "Ongoing Evolution & Support Retainer",
     ],
   },
 ];
 
-const INSTITUTIONAL_STATS = [
-  { value: "47+", label: "Digital Flagships Delivered", detail: "Global enterprise & hyper-growth clients" },
-  { value: "100", label: "Core Vitals Perfect Score", detail: "Sub-second LCP benchmarked globally" },
-  { value: "14", label: "£M+ Client Revenue Generated", detail: "Measurable commercial conversion lift" },
-  { value: "94%", label: "Institutional Retainer Rate", detail: "Multi-year client partnerships" },
+const DELIVERY_BENCHMARKS = [
+  { value: "100", label: "Performance Score", detail: "Sub-second LCP benchmarked globally" },
+  { value: "100%", label: "Senior Team Execution", detail: "Direct collaboration with principal talent" },
+  { value: "0", label: "Agency Bureaucracy", detail: "Lean, transparent 2-week delivery sprints" },
+  { value: "24/7", label: "Production Reliability", detail: "Engineered for resilient high-availability" },
 ];
 
 // Individual stat that count-ups when in view
@@ -96,9 +96,9 @@ export default function Process() {
       className="border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden"
       ref={ref}
     >
-      {/* Section annotation — 02 */}
+      {/* Section annotation — 06 */}
       <span className="section-annotation hidden lg:block" aria-hidden="true">
-        02 — Methodology
+        06 — How We Work
       </span>
 
       {/* ── Process 3 Cards ── */}
@@ -114,17 +114,16 @@ export default function Process() {
             <div className="flex items-center gap-3 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-                Delivery Methodology
+                06 / How We Work &amp; Partnership
               </span>
             </div>
-            <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.98] tracking-[-0.042em] text-white">
-              Principal engineering.<br />
-              <span className="text-gradient-silver">Institutional rigor.</span>
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
+              Collaborative delivery with<br />
+              <span className="text-gradient-silver">senior engineering leadership.</span>
             </h2>
           </div>
           <p className="font-body text-sm md:text-base text-[var(--color-muted)] max-w-sm leading-relaxed">
-            We assemble compact, senior-only engineering pods. Clients collaborate directly
-            with founding engineers and principal designers — zero agency overhead.
+            We work as an integrated senior pod with your team. Direct access to principal designers and engineers, rapid feedback loops, and zero agency bureaucracy.
           </p>
         </motion.div>
 
@@ -200,7 +199,7 @@ export default function Process() {
       <div ref={statsRef} className="border-y border-[var(--color-border)] bg-[var(--color-panel)] py-14 select-none">
         <div className="container-px mx-auto max-w-[1440px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            {INSTITUTIONAL_STATS.map((stat, i) => (
+            {DELIVERY_BENCHMARKS.map((stat, i) => (
               <StatItem
                 key={i}
                 value={stat.value}

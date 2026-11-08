@@ -66,6 +66,32 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // ── Permanent 308 redirects for service routes ─────────────────────────────
+  async redirects() {
+    return [
+      {
+        source: "/services/web",
+        destination: "/services/build",
+        permanent: true,
+      },
+      {
+        source: "/services/automation",
+        destination: "/services/ai",
+        permanent: true,
+      },
+      {
+        source: "/services/integrations",
+        destination: "/services/systems",
+        permanent: true,
+      },
+      {
+        source: "/services/seo",
+        destination: "/services/search",
+        permanent: true,
+      },
+    ];
+  },
+
   // ── Compiler ──────────────────────────────────────────────────────────────
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",

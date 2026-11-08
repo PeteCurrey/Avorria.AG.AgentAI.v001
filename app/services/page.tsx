@@ -3,9 +3,10 @@ import Link from "next/link";
 import {
   Globe,
   Brain,
-  ShoppingBag,
-  Sparkles,
+  Layers,
+  Search,
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
   Clock,
   Coins,
@@ -13,96 +14,128 @@ import {
 } from "lucide-react";
 import CTA from "@/components/CTA";
 import MagneticButton from "@/components/MagneticButton";
+import ServicesMatrix from "@/components/ServicesMatrix";
+import PageHero from "@/components/PageHero";
+
+
+const servicesHubSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://avorria.com/services#breadcrumbs",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://avorria.com" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://avorria.com/services" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://avorria.com/services#list",
+      name: "Avorria Commercial Engineering Practices",
+      itemListElement: [
+        { "@type": "SiteNavigationElement", position: 1, name: "Website Design & Development", url: "https://avorria.com/services/build" },
+        { "@type": "SiteNavigationElement", position: 2, name: "AI Development & Business Automation", url: "https://avorria.com/services/ai" },
+        { "@type": "SiteNavigationElement", position: 3, name: "Digital Systems & Integrations", url: "https://avorria.com/services/systems" },
+        { "@type": "SiteNavigationElement", position: 4, name: "Technical SEO & Search Architecture", url: "https://avorria.com/services/search" }
+      ]
+    }
+  ]
+};
 
 export const metadata: Metadata = {
-  title: "Capabilities That Compound — WebGL, AI & Headless Systems",
+  title: "Commercial Services & Engineering Capabilities",
   description:
-    "Explore Avorria's four core engineering disciplines. High-performance WebGL websites, autonomous AI agent swarms, headless e-commerce, and 3D brand identity. London & New York.",
+    "Explore Avorria's four core engineering disciplines: Website Design & Development, AI Development & Business Automation, Digital Systems & Integrations, and Technical SEO & Search Architecture.",
   alternates: { canonical: "https://avorria.com/services" },
   openGraph: {
     url: "https://avorria.com/services",
-    title: "Capabilities That Compound | Avorria Services",
+    title: "Commercial Services & Engineering Capabilities",
     description:
-      "Fixed-price senior sprints across WebGL flagships, autonomous AI systems, headless commerce, and brand motion.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Avorria Capabilities That Compound" }],
+      "Senior-led practices across web flagships, applied AI systems, digital systems integrations, and technical SEO architecture. London & New York.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Avorria Commercial Services & Capabilities" }],
   },
 };
 
 const SERVICE_BLOCKS = [
   {
-    id: "immersive-web",
+    id: "build",
+    href: "/services/build",
     number: "01",
     icon: Globe,
-    title: "Immersive Web & 3D Flagships",
-    tagline: "Websites that feel like cinema and convert like software.",
+    title: "Website Design & Development",
+    tagline: "Bespoke digital platforms engineered for performance, brand distinction, and growth.",
     description:
-      "We build category-defining web experiences powered by Next.js 15, Three.js, and custom GLSL shaders. Sub-second load times with zero compromise on motion art direction.",
+      "We build category-defining web experiences powered by Next.js 16, Three.js, and custom GLSL shaders. Sub-second load times with zero compromise on motion art direction, e-commerce conversion, or accessibility.",
     price: "From £14,000 / $18,000",
     timeline: "3–6 Weeks Delivery",
     deliverables: [
       "Custom WebGL / Three.js 60fps canvas engine",
-      "Next.js 15 App Router + Turbopack architecture",
+      "Next.js 16 App Router + Turbopack architecture",
       "100/100 Core Web Vitals guarantee (sub-second LCP)",
-      "Bespoke GSAP & Lenis momentum smooth scroll",
+      "Headless e-commerce (Shopify Plus / Medusa)",
       "Headless CMS integration (Sanity, Storyblok, Contentful)",
       "Cross-device retina & mobile responsive QA audit",
     ],
   },
   {
-    id: "ai-systems",
+    id: "ai",
+    href: "/services/ai",
     number: "02",
     icon: Brain,
-    title: "Autonomous AI Systems & Agents",
-    tagline: "Intelligence deployed directly into your operations.",
+    title: "AI Development & Business Automation",
+    tagline: "Practical AI solutions that automate processes and create operational leverage.",
     description:
-      "Enterprise-grade AI engineering: domain-trained fine-tuning, high-throughput RAG pipelines, and autonomous multi-agent networks that orchestrate high-stakes business ops 24/7.",
+      "Intelligent AI systems that connect your business knowledge, automate complex workflows, and help your team make faster, better decisions. We implement secure RAG pipelines, autonomous task agents, and private vector storage.",
     price: "From £16,000 / $20,000",
     timeline: "4–8 Weeks Delivery",
     deliverables: [
-      "Custom model fine-tuning on proprietary company datasets",
-      "Enterprise RAG vector architecture (Qdrant, Pinecone)",
-      "Autonomous multi-agent orchestration swarms",
-      "Deterministic safety rails, evaluation harnesses & fallbacks",
+      "Connected knowledge base & enterprise RAG architecture",
+      "Automated multi-agent workflow routing & task execution",
+      "Private vector indexing with strict zero-public-training boundaries",
+      "Deterministic safety guardrails, evaluation harnesses & fallbacks",
       "Native integrations into ERP, CRM, and internal databases",
-      "Automated telemetry dashboard with 99.9% uptime SLA",
+      "Operational telemetry dashboard with enterprise SLA",
     ],
   },
   {
-    id: "e-commerce",
+    id: "systems",
+    href: "/services/systems",
     number: "03",
-    icon: ShoppingBag,
-    title: "Headless Performance E-Commerce",
-    tagline: "Instant page switches. Unmatched checkout conversion.",
+    icon: Layers,
+    title: "Digital Systems & Integrations",
+    tagline: "Connected applications, integrations, and intelligent workflows that reduce friction.",
     description:
-      "Composable commerce engineered for hyper-growth brands. We replace sluggish monolithic stores with lightning-fast headless storefronts with custom 3D configurators.",
-    price: "From £24,000 / $30,000",
-    timeline: "6–10 Weeks Delivery",
+      "Modern API architectures, edge middleware, and real-time data synchronization designed for scale. We connect legacy databases, enterprise software, and cloud platforms with zero data loss.",
+    price: "From £18,000 / $22,000",
+    timeline: "4–8 Weeks Delivery",
     deliverables: [
-      "Shopify Plus or Medusa composable headless backend",
-      "Instant routing with zero layout shift (CLS 0.00)",
-      "Interactive 3D WebGL product configurator & customizer",
-      "Optimized global localized checkout flows (multi-currency)",
-      "Seamless ERP, 3PL inventory, and marketing automation sync",
-      "Conversion-rate-optimized (CRO) micro-interaction design",
+      "Edge API gateways & Next.js worker middleware",
+      "Omnichannel stock & order synchronization pipelines",
+      "ERP & ledger integration (SAP, NetSuite, Stripe)",
+      "Asynchronous event queues with automated retry backoff",
+      "Distributed Redis caching with sub-8ms state resolution",
+      "Full observability, payload tracing, and error alerting",
     ],
   },
   {
-    id: "brand-motion-3d",
+    id: "search",
+    href: "/services/search",
     number: "04",
-    icon: Sparkles,
-    title: "Brand Identity, Motion & 3D",
-    tagline: "The visual and kinetic soul of your company.",
+    icon: Search,
+    title: "Technical SEO & Search Architecture",
+    tagline: "Search architecture and content infrastructure that earn sustainable organic visibility.",
     description:
-      "A complete design system built for modern screens. From procedural 3D art direction and motion languages to comprehensive typographic guidelines that command authority.",
-    price: "From £12,000 / $15,000",
-    timeline: "3–5 Weeks Delivery",
+      "Code-level search optimization engineered directly into production systems. Server-side rendering, schema knowledge graphs, and Core Web Vitals remediation that ensure crawlers understand and rank your assets.",
+    price: "From £8,500 / $11,000",
+    timeline: "2–4 Weeks Delivery",
     deliverables: [
-      "Comprehensive visual identity & logo architecture",
-      "Custom generative 3D brand assets & render library",
-      "Motion design system & UI kinetic principles",
-      "Full design token system & Figma master component library",
-      "Sonic brand identity & bespoke sound design kit",
-      "Production-ready typography and multi-channel asset pack",
+      "Edge SSR pre-rendering delivering full HTML in < 50ms",
+      "Entity-linked JSON-LD Schema.org knowledge graph",
+      "Core Web Vitals remediation (LCP, CLS, INP optimization)",
+      "International hreflang & multi-domain routing architecture",
+      "Headless content modeling for non-branded search capture",
+      "Automated crawl monitoring and XML sitemap pipelines",
     ],
   },
 ];
@@ -110,25 +143,27 @@ const SERVICE_BLOCKS = [
 export default function ServicesPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesHubSchema) }} />
       {/* ── Page Hero ── */}
-      <section className="pt-40 pb-20 container-px mx-auto max-w-[1440px]">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="w-2 h-2 rounded-full bg-[var(--color-lime)]" />
-          <span className="font-body text-xs uppercase tracking-[0.28em] text-[var(--color-muted)]">
-            Services & Deliverables
-          </span>
-        </div>
-
-        {/* Required H1 */}
-        <h1 className="font-display font-semibold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase mb-8">
-          CAPABILITIES THAT<br />
-          <span className="text-gradient-silver">COMPOUND.</span>
-        </h1>
-
-        <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
-          Four senior-led disciplines. Fixed pricing, predictable sprint timelines, and guaranteed production outcomes. Zero junior delegation.
-        </p>
-      </section>
+      <PageHero
+        eyebrow="Commercial Services & Architecture"
+        headline={
+          <h1 className="font-display font-semibold text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.96] tracking-tight text-white uppercase">
+            FOUR SENIOR DISCIPLINES.<br />
+            <span className="text-gradient-silver">MEASURABLE IMPACT.</span>
+          </h1>
+        }
+        body={
+          <div className="space-y-12">
+            <p className="font-body text-[var(--color-muted)] text-lg md:text-xl max-w-2xl leading-relaxed">
+              We design, engineer, and implement technology across four core commercial capabilities. Dedicated senior pods, locked sprint timelines, and verified production outcomes.
+            </p>
+            {/* Interactive Discipline Selector & Technical Matrix */}
+            <ServicesMatrix />
+          </div>
+        }
+        className="pb-20"
+      />
 
       {/* ── Triage Banner ── */}
       <section className="container-px mx-auto max-w-[1440px] mb-20">
@@ -162,7 +197,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── 4 Detail Blocks with Deliverables Checklist, Price, Timeline & SCOPE THIS ── */}
+      {/* ── 4 Detail Blocks with Deliverables Checklist, Price, Timeline & Links to Dedicated Pages ── */}
       <section className="border-t border-[var(--color-border)]">
         <div className="container-px mx-auto max-w-[1440px] divide-y divide-[var(--color-border)]">
           {SERVICE_BLOCKS.map((service) => {
@@ -173,7 +208,7 @@ export default function ServicesPage() {
                 id={service.id}
                 className="py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
               >
-                {/* Left Column: Number, Title, Description, Meta, SCOPE THIS */}
+                {/* Left Column: Number, Title, Description, Meta, Explore & Scope */}
                 <div className="lg:col-span-5 space-y-8">
                   <div>
                     <div className="flex items-center gap-4 mb-6">
@@ -219,17 +254,23 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* SCOPE THIS button */}
-                  <div>
-                    <MagneticButton>
-                      <Link
-                        href={`/contact?service=${service.id}`}
-                        className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-black font-display font-semibold text-xs uppercase tracking-wider hover:bg-[var(--color-lime)] hover:text-black transition-all duration-200 shadow-md group"
-                      >
-                        SCOPE THIS
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-                      </Link>
-                    </MagneticButton>
+                  {/* Action Buttons: Dedicated Page + Direct Scope */}
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-semibold text-xs uppercase tracking-wider hover:bg-white transition-colors duration-200"
+                    >
+                      EXPLORE SERVICE
+                      <ArrowRight size={13} />
+                    </Link>
+
+                    <Link
+                      href={`/contact?service=${service.id}`}
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white font-mono text-xs uppercase tracking-wider hover:border-white transition-colors duration-200"
+                    >
+                      SCOPE THIS
+                      <ArrowUpRight size={13} className="text-[var(--color-muted)]" />
+                    </Link>
                   </div>
                 </div>
 

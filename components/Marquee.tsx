@@ -5,7 +5,7 @@ import React from "react";
 const MARQUEE_ITEMS = [
   "Spatial WebGL Experiences",
   "Enterprise Agent Swarms",
-  "Next.js 15 Flagships",
+  "Next.js 16 Flagships",
   "Headless Commerce",
   "Brand Identity Systems",
   "Real-Time 3D Configurators",

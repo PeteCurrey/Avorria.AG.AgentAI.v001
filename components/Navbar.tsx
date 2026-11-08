@@ -9,8 +9,9 @@ import MagneticButton from "./MagneticButton";
 const NAV_LINKS = [
   { href: "/work", label: "Selected Work", num: "01", tag: "Case Studies" },
   { href: "/services", label: "Capabilities", num: "02", tag: "Core Practice" },
-  { href: "/studio", label: "The Studio", num: "03", tag: "Doctrine & Pods" },
-  { href: "/journal", label: "Journal", num: "04", tag: "Insights" },
+  { href: "/lab", label: "The Lab", num: "03", tag: "Capability Showroom" },
+  { href: "/studio", label: "The Studio", num: "04", tag: "Doctrine & Pods" },
+  { href: "/journal", label: "Journal", num: "05", tag: "Insights" },
 ];
 
 export default function Navbar() {
@@ -76,7 +77,7 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-300 ${
           scrolled && !menuOpen
             ? "py-2.5 bg-[#07070A]/90 backdrop-blur-xl border-b border-[var(--color-border)] shadow-xl"
@@ -211,10 +212,10 @@ export default function Navbar() {
                   >
                     <div className="flex items-baseline gap-6 sm:gap-10">
                       <span className="font-mono text-xs text-[var(--color-lime)]">
-                        05
+                        06
                       </span>
                       <span className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-none text-[var(--color-lime)] tracking-[-0.04em] group-hover:translate-x-3 transition-transform duration-300">
-                        Initiate Project
+                        Start a Project
                       </span>
                     </div>
                     <ArrowUpRight
@@ -229,10 +230,10 @@ export default function Navbar() {
               <div className="lg:col-span-4 lg:pl-12 lg:border-l border-white/5 space-y-10 pt-4">
                 <div>
                   <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/30 block mb-3">
-                    Institutional Practice
+                    Applied Practice
                   </span>
                   <p className="font-body text-sm text-[var(--color-muted)] leading-relaxed">
-                    Digital flagships, custom WebGL environments, and autonomous AI infrastructure. Built for enterprise scale.
+                    Digital development and applied intelligence. Designing and engineering high-performance websites and intelligent business systems that help companies grow and compete.
                   </p>
                 </div>
 

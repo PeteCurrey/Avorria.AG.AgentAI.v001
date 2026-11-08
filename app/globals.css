@@ -246,4 +246,52 @@
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
   }
+
+  /* ── Clip-path text mask reveal ────────────────────────────────────────────
+   * Wraps a container whose inner text slides up into view from below
+   * a clipping rectangle. Zero layout shift, compositor-only.
+   * Usage: parent gets overflow-hidden, child gets .reveal-mask-inner
+   * ────────────────────────────────────────────────────────────────────────── */
+  @keyframes reveal-mask {
+    from { clip-path: inset(0 0 100% 0); transform: translateY(16px); }
+    to   { clip-path: inset(0 0 0% 0);   transform: translateY(0); }
+  }
+
+  /* ── Image reveal: inset wipe from right ─────────────────────────────────── */
+  @keyframes reveal-wipe-right {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+  }
+
+  /* ── Stagger utility: each direct child animates in with offset delay ────── */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .stagger-children.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+  .stagger-children.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 90ms; }
+  .stagger-children.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 180ms; }
+  .stagger-children.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 270ms; }
+  .stagger-children.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 360ms; }
+  .stagger-children.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 450ms; }
+
+  /* ── WCAG 2.2 AA Focus Visible ─────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--color-lime) !important;
+    outline-offset: 3px !important;
+  }
+
+  /* ── Respect prefers-reduced-motion for all CSS animations ───────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .stagger-children > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-marquee-css,
+    .animate-marquee-css-reverse {
+      animation-duration: 0.01ms !important;
+    }
+  }
 }
