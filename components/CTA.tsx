@@ -7,27 +7,19 @@ import { ArrowRight } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
 /**
- * CTA — full-bleed lime inversion.
+ * CTA — High-Impact Cobalt Section
  *
- * After 2,500px of deep obsidian, a sudden full-bleed chartreuse section
- * is the colour punctuation of the entire site. All type inverts to obsidian.
- * This is the single most impactful visual moment on the page.
+ * Replaces the old green background with Cobalt (#3657E8).
+ * Premium architectural typography with pure white text and an understated
+ * white consultation initiation button.
  */
 export default function CTA() {
   return (
-    <section className="relative overflow-hidden" style={{ backgroundColor: "var(--color-lime)" }}>
-      {/* Large typographic arrow anchor — bottom-right depth element */}
+    <section className="relative overflow-hidden bg-[#3657E8] text-white">
+      {/* Large typographic arrow anchor */}
       <span
         aria-hidden="true"
-        className="absolute right-0 bottom-0 font-display leading-none select-none pointer-events-none"
-        style={{
-          fontSize: "clamp(12rem, 30vw, 28rem)",
-          fontWeight: 200,
-          letterSpacing: "-0.05em",
-          color: "rgba(0,0,0,0.07)",
-          lineHeight: 0.85,
-          transform: "translate(6%, 12%)",
-        }}
+        className="absolute right-0 bottom-0 font-display leading-none select-none pointer-events-none text-white/[0.08] text-[clamp(12rem,30vw,28rem)] font-extralight tracking-[-0.05em] translate-x-[6%] translate-y-[12%]"
       >
         →
       </span>
@@ -41,62 +33,58 @@ export default function CTA() {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3 mb-10"
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#07070A]/50 shrink-0" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#07070A]/60">
-            08 / Start a Project · Commissions Open — Q1 2027
+          <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/80">
+            07 / Direct Engagement · Q1 2027 Commissioning Schedule
           </span>
         </motion.div>
 
-        {/* Headline — maximum type scale, inverted */}
+        {/* Headline */}
         <motion.h2
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(2.8rem,7.5vw,7.5rem)] leading-[0.95] tracking-[-0.048em] text-[#07070A] mb-10 max-w-5xl"
+          className="font-display text-[clamp(2.8rem,7vw,7rem)] leading-[0.96] tracking-[-0.045em] text-white mb-10 max-w-5xl font-light uppercase"
         >
-          Turn ambitious ideas into exceptional digital reality.
+          Turn ambitious vision into exceptional digital reality.
         </motion.h2>
 
+        {/* Supporting description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-          className="font-body text-[#07070A]/70 text-base md:text-lg max-w-2xl mb-14 leading-[1.7]"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="font-body text-white/80 text-base md:text-xl max-w-2xl mb-12 leading-relaxed font-light"
         >
-          From high-performance websites and immersive digital platforms to intelligent automation
-          and bespoke AI systems, Avorria combines creative ambition with engineering precision.
-          Let&apos;s discuss how we can help your business grow and compete.
+          We partner with founders, executive teams, and creative directors who refuse to accept generic digital experiences. Senior pod access from discovery to deployment.
         </motion.p>
 
-        {/* CTAs — obsidian on lime */}
+        {/* Action Button */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-start sm:items-center gap-5"
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="flex flex-wrap items-center gap-6"
         >
           <MagneticButton>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-[#07070A] text-white font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-[#07070A] transition-all duration-200 shadow-lg group"
+              className="inline-flex items-center gap-3 px-9 py-5 rounded-full bg-white text-[#15171B] font-display font-medium text-sm md:text-base hover:bg-[#F7F7F5] transition-all duration-300 shadow-xl group"
             >
-              Start a Conversation
+              <span>Initiate Project Commission</span>
               <ArrowRight
-                size={15}
+                size={16}
                 className="group-hover:translate-x-1 transition-transform duration-200"
               />
             </Link>
           </MagneticButton>
 
-          <a
-            href="mailto:hello@avorria.com"
-            className="font-mono text-xs uppercase tracking-wider text-[#07070A]/60 hover:text-[#07070A] transition-colors duration-200 py-3"
-          >
-            Direct Partner Desk: hello@avorria.com →
-          </a>
+          <span className="font-mono text-xs text-white/70">
+            Direct response within 24 hours · NDA signed on request
+          </span>
         </motion.div>
       </div>
     </section>

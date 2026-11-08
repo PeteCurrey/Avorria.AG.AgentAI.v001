@@ -95,13 +95,13 @@ export default function Navbar() {
             aria-label="Avorria homepage"
             className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-full p-0.5"
           >
-            <div className="w-6 h-6 rounded-full border border-white/20 bg-white/5 flex items-center justify-center transition-transform duration-500 ease-out group-hover:rotate-180">
+            <div className="w-6 h-6 rounded-full border border-white/20 bg-[#15171B]/5 flex items-center justify-center transition-transform duration-500 ease-out group-hover:rotate-180">
               <span className="font-display text-[10px] text-white">
                 A
               </span>
             </div>
             <span className="font-display text-sm tracking-[-0.03em] text-white font-medium">
-              AVORRIA<span className="text-[var(--color-lime)]">.</span>
+              AVORRIA<span className="text-[#3657E8]">.</span>
             </span>
           </Link>
 
@@ -134,7 +134,7 @@ export default function Navbar() {
                   {menuOpen ? "CLOSE" : "MENU"}
                 </span>
                 <span
-                  className={`block w-2.5 h-[1px] bg-white transition-transform duration-300 ${
+                  className={`block w-2.5 h-[1px] bg-[#15171B] transition-transform duration-300 ${
                     menuOpen ? "rotate-45" : ""
                   }`}
                 />
@@ -172,7 +172,7 @@ export default function Navbar() {
             <div className="container-px mx-auto max-w-[1440px] w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start my-auto">
               {/* Navigation Index (8 cols) */}
               <div className="lg:col-span-8 space-y-2">
-                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--color-lime)] block mb-6">
+                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[#3657E8] block mb-6">
                   Index / Navigation
                 </span>
 
@@ -185,7 +185,7 @@ export default function Navbar() {
                       className="group flex items-baseline justify-between py-4 border-b border-white/5 hover:border-white/20 transition-colors duration-200"
                     >
                       <div className="flex items-baseline gap-6 sm:gap-10">
-                        <span className="font-mono text-xs text-white/30 group-hover:text-[var(--color-lime)] transition-colors duration-200">
+                        <span className="font-mono text-xs text-[#15171B]/40 group-hover:text-[#3657E8] transition-colors duration-200">
                           {num}
                         </span>
                         <span className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-none text-white tracking-[-0.04em] group-hover:text-white group-hover:translate-x-3 transition-all duration-300">
@@ -198,7 +198,7 @@ export default function Navbar() {
                         </span>
                         <ArrowUpRight
                           size={24}
-                          className="text-white/20 group-hover:text-[var(--color-lime)] group-hover:rotate-45 transition-all duration-200"
+                          className="text-white/20 group-hover:text-[#3657E8] group-hover:rotate-45 transition-all duration-200"
                         />
                       </div>
                     </Link>
@@ -208,19 +208,19 @@ export default function Navbar() {
                   <Link
                     href="/contact"
                     onClick={() => setMenuOpen(false)}
-                    className="group flex items-baseline justify-between py-5 border-b border-white/10 hover:border-[var(--color-lime)] transition-colors duration-200"
+                    className="group flex items-baseline justify-between py-5 border-b border-[#15171B]/10 hover:border-[var(--color-lime)] transition-colors duration-200"
                   >
                     <div className="flex items-baseline gap-6 sm:gap-10">
-                      <span className="font-mono text-xs text-[var(--color-lime)]">
+                      <span className="font-mono text-xs text-[#3657E8]">
                         06
                       </span>
-                      <span className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-none text-[var(--color-lime)] tracking-[-0.04em] group-hover:translate-x-3 transition-transform duration-300">
+                      <span className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-none text-[#3657E8] tracking-[-0.04em] group-hover:translate-x-3 transition-transform duration-300">
                         Start a Project
                       </span>
                     </div>
                     <ArrowUpRight
                       size={24}
-                      className="text-[var(--color-lime)] group-hover:rotate-45 transition-transform duration-200"
+                      className="text-[#3657E8] group-hover:rotate-45 transition-transform duration-200"
                     />
                   </Link>
                 </nav>
@@ -229,7 +229,7 @@ export default function Navbar() {
               {/* Sidebar Info & Direct Desks (4 cols) */}
               <div className="lg:col-span-4 lg:pl-12 lg:border-l border-white/5 space-y-10 pt-4">
                 <div>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/30 block mb-3">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#15171B]/40 block mb-3">
                     Applied Practice
                   </span>
                   <p className="font-body text-sm text-[var(--color-muted)] leading-relaxed">
@@ -239,22 +239,22 @@ export default function Navbar() {
 
                 <div className="space-y-4">
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/30 block mb-1">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#15171B]/40 block mb-1">
                       Direct Partner Desk
                     </span>
                     <a
                       href="mailto:hello@avorria.com"
-                      className="font-mono text-xs text-white hover:text-[var(--color-lime)] transition-colors duration-200"
+                      className="font-mono text-xs text-white hover:text-[#3657E8] transition-colors duration-200"
                     >
                       hello@avorria.com
                     </a>
                   </div>
 
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/30 block mb-1">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#15171B]/40 block mb-1">
                       Global Availability
                     </span>
-                    <span className="font-mono text-xs text-[var(--color-lime)]">
+                    <span className="font-mono text-xs text-[#3657E8]">
                       Commissions Open — Q1 2027
                     </span>
                   </div>
@@ -264,18 +264,18 @@ export default function Navbar() {
                 <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/5 font-mono text-xs text-[var(--color-muted)]">
                   <div>
                     <span className="text-white/60 block mb-0.5">London</span>
-                    <span className="text-[11px] text-white/30">EC2A · UK</span>
+                    <span className="text-[11px] text-[#15171B]/40">EC2A · UK</span>
                   </div>
                   <div>
                     <span className="text-white/60 block mb-0.5">New York</span>
-                    <span className="text-[11px] text-white/30">NY 10013 · US</span>
+                    <span className="text-[11px] text-[#15171B]/40">NY 10013 · US</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Bottom Bar inside overlay */}
-            <div className="container-px mx-auto max-w-[1440px] w-full pt-8 border-t border-white/5 flex items-center justify-between font-mono text-[11px] text-white/30">
+            <div className="container-px mx-auto max-w-[1440px] w-full pt-8 border-t border-white/5 flex items-center justify-between font-mono text-[11px] text-[#15171B]/40">
               <span>Press [ESC] to dismiss index</span>
               <span>© {new Date().getFullYear()} AVORRIA LTD.</span>
             </div>

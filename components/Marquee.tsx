@@ -17,7 +17,7 @@ export default function Marquee() {
   const list = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 
   return (
-    <section className="relative overflow-hidden border-y border-[var(--color-border)] select-none bg-[var(--color-bg)]">
+    <section className="relative overflow-hidden border-y border-[#15171B]/[0.08] select-none bg-[#FFFFFF]">
       {/* Single Architectural Monospace Stream */}
       <div className="py-5 overflow-hidden flex">
         <div className="animate-marquee-css flex items-center whitespace-nowrap">
@@ -26,11 +26,11 @@ export default function Marquee() {
               key={`item-${idx}`}
               className="inline-flex items-center gap-8 md:gap-12 px-6 md:px-8 shrink-0"
             >
-              <span className="font-display font-medium text-base md:text-xl tracking-wider uppercase text-white/90 hover:text-white transition-colors duration-200">
+              <span className="font-display font-medium text-base md:text-xl tracking-wider uppercase text-[#15171B]/80 hover:text-[#3657E8] transition-colors duration-200">
                 {item}
               </span>
               <span
-                className="text-[var(--color-lime)] text-xs font-mono"
+                className="text-[#3657E8] text-xs font-mono"
                 aria-hidden="true"
               >
                 /

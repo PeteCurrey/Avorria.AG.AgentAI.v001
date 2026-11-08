@@ -3,11 +3,20 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { projects } from "@/lib/data";
 import { useCardTilt } from "@/hooks/useCardTilt";
 
-// Stats metadata for selected work items
+// Real photographic asset mapping
+const PROJECT_IMAGES: Record<string, string> = {
+  "axiom-finance": "/imagery/projects/axiom-finance.webp",
+  "nocturne-studio": "/imagery/projects/nocturne-studio.webp",
+  "vanta-ai": "/imagery/projects/vanta-ai.webp",
+  "bloom-health": "/imagery/projects/bloom-health.webp",
+  "meridian-arc": "/imagery/projects/meridian-arc.webp",
+};
+
 const PROJECT_STATS: Record<
   string,
   Array<{ value: string; label: string }>
@@ -15,7 +24,7 @@ const PROJECT_STATS: Record<
   "axiom-finance": [
     { value: "+340%", label: "Conversion Lift" },
     { value: "0.7s", label: "LCP Speed" },
-    { value: "100/100", label: "Core Web Vitals" },
+    { value: "Green CWV", label: "Core Web Vitals" },
   ],
   "nocturne-studio": [
     { value: "60fps", label: "WebGL Fluidity" },
@@ -23,25 +32,24 @@ const PROJECT_STATS: Record<
     { value: "100%", label: "Retina Canvas" },
   ],
   "vanta-ai": [
-    { value: "8s", label: "Time-to-Value" },
-    { value: "-74%", label: "Operational Overhead" },
-    { value: "100/100", label: "PageSpeed Score" },
+    { value: "8s", label: "Time-to-Proof" },
+    { value: "-74%", label: "Overhead Reduced" },
+    { value: "Passing", label: "PageSpeed Core" },
   ],
   "bloom-health": [
-    { value: "+210%", label: "Top-Line Lift" },
+    { value: "+210%", label: "Top-Line GMV" },
     { value: "1.4s", label: "Checkout LCP" },
-    { value: "98%", label: "Retention" },
+    { value: "98%", label: "Retention Rate" },
   ],
   "meridian-arc": [
     { value: "4K", label: "Spatial 3D Views" },
-    { value: "+180%", label: "Qualified Inquiries" },
+    { value: "+180%", label: "Inquiries" },
     { value: "60fps", label: "glTF Pipeline" },
   ],
 };
 
-// ── TiltCard — wraps each project card with 3D hover tilt ───────────────────
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const tiltRef = useCardTilt(5);
+  const tiltRef = useCardTilt(4);
   return (
     <div ref={tiltRef} className={className}>
       {children}
@@ -54,15 +62,12 @@ export default function Work() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [scrollDistance, setScrollDistance] = useState(0);
 
-  // Measure exact horizontal overflow distance dynamically
   useEffect(() => {
     const calculateDistance = () => {
       if (!trackRef.current) return;
       const trackWidth = trackRef.current.scrollWidth;
-      const windowWidth = window.innerWidth;
-      // Extra offset to ensure the final card is shown fully with clean margins
-      const distance = Math.max(0, trackWidth - windowWidth + 120);
-      setScrollDistance(distance);
+      const viewportWidth = window.innerWidth;
+      setScrollDistance(Math.max(0, trackWidth - viewportWidth + 120));
     };
 
     calculateDistance();
@@ -70,7 +75,6 @@ export default function Work() {
     return () => window.removeEventListener("resize", calculateDistance);
   }, []);
 
-  // Track progress strictly while the container is pinned
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -81,161 +85,123 @@ export default function Work() {
   return (
     <section
       ref={containerRef}
-      style={{
-        height: scrollDistance ? `${scrollDistance + (typeof window !== "undefined" ? window.innerHeight : 900)}px` : "400vh",
-      }}
-      className="relative bg-[var(--color-bg)]"
+      className="relative h-[320vh] bg-[#F7F7F5] border-b border-[#15171B]/[0.08]"
     >
-      {/* Sticky Viewport Stage - Freezes vertical scroll while translating horizontally */}
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden border-t border-[var(--color-border)] relative">
-        {/* Section annotation */}
-        <span className="section-annotation hidden lg:block" aria-hidden="true">
-          04 — Selected Work
-        </span>
-
-        {/* Section Header */}
-        <div className="container-px mx-auto max-w-[1440px] w-full mb-8 shrink-0">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
-                <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
-                  04 / Selected Work
-                </span>
-              </div>
-              <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
-                Demonstrated craft &amp; <span className="text-gradient-silver">commercial impact.</span>
-              </h2>
+      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+        {/* Editorial Section Header */}
+        <div className="container-px mx-auto max-w-[1440px] w-full mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div className="space-y-3">
+            <div className="flex items-center gap-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3657E8]" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#6E7179]">
+                03 / Selected Client Commissions
+              </span>
             </div>
-
-            <div className="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-[var(--color-muted)]">
-              <span>Scroll down to navigate through all projects</span>
-              <span className="text-white">→</span>
-            </div>
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.8rem)] text-[#15171B] leading-[1.02] tracking-[-0.04em]">
+              Engineering that drives market authority.
+            </h2>
           </div>
-        </div>
 
-        {/* Horizontal Scrolling Row */}
-        <div className="w-full overflow-hidden" data-cursor="drag">
-          <motion.div
-            ref={trackRef}
-            style={{ x }}
-            className="flex gap-8 items-stretch will-change-transform pl-4 md:pl-16 pr-20"
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-[#15171B]/12 text-[#15171B] font-display text-xs uppercase tracking-wider font-medium hover:border-[#3657E8] hover:text-[#3657E8] transition-colors shadow-sm"
           >
-            {projects.map((project) => {
-              const stats = PROJECT_STATS[project.slug] || [
-                { value: "100%", label: "Performance" },
-                { value: "Next.js", label: "Architecture" },
-                { value: "2025", label: "Delivered" },
-              ];
-
-              return (
-                <TiltCard
-                  key={project.slug}
-                  className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 card-arch p-6 md:p-8 bg-[var(--color-panel)] border border-[var(--color-border)] hover:border-white/30 transition-colors duration-300 flex flex-col justify-between group shadow-xl"
-                >
-                  <Link
-                    href={`/work/${project.slug}`}
-                    data-cursor="view"
-                    aria-label={`View ${project.title} case study`}
-                    className="flex flex-col h-full justify-between"
-                  >
-                    <div>
-                      {/* Image Showcase */}
-                      <div className="h-[340px] rounded-sm overflow-hidden relative mb-6 bg-gradient-to-br from-[#12121B] via-[#0C0C12] to-[#07070A] border border-white/5">
-                        {/* Hover Zoom Visual */}
-                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-transform duration-500 ease-out group-hover:scale-105">
-                          <span className="font-display font-semibold text-2xl md:text-3xl text-white/30 uppercase tracking-widest text-center select-none">
-                            {project.title}
-                          </span>
-                          <span className="mt-2 text-xs font-mono tracking-widest text-white/50">
-                            {project.category}
-                          </span>
-                        </div>
-
-                        {/* Category + Year Pills */}
-                        <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
-                          <span className="px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white">
-                            {project.category}
-                          </span>
-                          <span className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider bg-black/60 backdrop-blur-md border border-white/10 text-white/80">
-                            {project.year}
-                          </span>
-                        </div>
-
-                        {/* Subtle Gradient Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-panel)] via-transparent to-transparent opacity-80" />
-                      </div>
-
-                      {/* Title + Luxury Arrow */}
-                      <div className="flex items-start justify-between gap-4 mb-3">
-                        <div>
-                          <h3 className="font-display font-semibold text-2xl md:text-3xl text-white group-hover:text-white transition-colors duration-200">
-                            {project.title}
-                          </h3>
-                          <p className="text-[var(--color-muted)] text-sm mt-1 line-clamp-1">
-                            {project.tagline}
-                          </p>
-                        </div>
-
-                        {/* Architectural Circular Arrow */}
-                        <div className="w-10 h-10 rounded-full border border-white/20 bg-white/5 text-white group-hover:bg-white group-hover:text-black group-hover:border-white flex items-center justify-center shrink-0 transition-all duration-300">
-                          <ArrowUpRight
-                            size={18}
-                            className="group-hover:rotate-45 transition-transform duration-300"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Stats Strip (3 columns) */}
-                    <div className="grid grid-cols-3 gap-3 pt-5 mt-4 border-t border-[var(--color-border)]">
-                      {stats.map((st, sIdx) => (
-                        <div key={sIdx} className="space-y-0.5">
-                          <p className="font-display font-bold text-base md:text-lg text-white group-hover:text-[var(--color-lime)] transition-colors duration-200">
-                            {st.value}
-                          </p>
-                          <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-muted)]">
-                            {st.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </Link>
-                </TiltCard>
-              );
-            })}
-
-            {/* End Card: VIEW ALL WORK */}
-            <TiltCard className="w-[82vw] sm:w-[50vw] lg:w-[38vw] shrink-0 card-arch border-2 border-dashed border-[var(--color-border)] hover:border-white/40 bg-[var(--color-panel)]/40 hover:bg-[var(--color-panel)] transition-colors duration-300 flex flex-col items-center justify-center p-12 text-center group shadow-xl">
-              <Link
-                href="/work"
-                data-cursor="view"
-                aria-label="View all portfolio projects"
-                className="flex flex-col items-center justify-center gap-6"
-              >
-                <div className="w-20 h-20 rounded-full border border-white/20 group-hover:border-white flex items-center justify-center group-hover:bg-white text-white group-hover:text-black transition-all duration-300 shadow-xl">
-                  <ArrowRight
-                    size={28}
-                    className="group-hover:translate-x-1 transition-transform duration-300"
-                  />
-                </div>
-
-                <div>
-                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)] mb-2 block">
-                    Portfolio Archive
-                  </span>
-                  <h3 className="font-display font-semibold text-3xl md:text-4xl text-white group-hover:text-white transition-colors duration-200">
-                    VIEW ALL WORK
-                  </h3>
-                  <p className="font-body text-xs md:text-sm text-[var(--color-muted)] mt-2 max-w-xs">
-                    Explore our full portfolio of bespoke websites, WebGL platforms, and intelligent systems.
-                  </p>
-                </div>
-              </Link>
-            </TiltCard>
-          </motion.div>
+            <span>View All 5 Case Studies</span>
+            <ArrowRight size={14} />
+          </Link>
         </div>
+
+        {/* Horizontal Track with Real High-Res Imagery */}
+        <motion.div
+          ref={trackRef}
+          style={{ x }}
+          className="flex gap-8 pl-[clamp(1.5rem,5.5vw,6rem)] pr-[clamp(1.5rem,5.5vw,6rem)] will-change-transform"
+        >
+          {projects.map((project, idx) => {
+            const stats = PROJECT_STATS[project.slug] ?? [];
+            const imgSrc = PROJECT_IMAGES[project.slug] ?? "/imagery/hero/spatial-monolith.webp";
+
+            return (
+              <TiltCard
+                key={project.slug}
+                className="w-[84vw] sm:w-[56vw] lg:w-[42vw] shrink-0 bg-white rounded-2xl border border-[#15171B]/10 overflow-hidden group shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-between p-6 card-arch"
+              >
+                <Link href={`/work/${project.slug}`} className="flex flex-col h-full justify-between">
+                  {/* High-Resolution Project Showcase Image */}
+                  <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-[#E5E5E0] mb-6">
+                    <Image
+                      src={imgSrc}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 85vw, 45vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#15171B]/60 via-transparent to-transparent opacity-60" />
+
+                    {/* Metadata Pills */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-white/95 backdrop-blur-md text-[#15171B] font-medium">
+                        {project.category}
+                      </span>
+                      <span className="px-3 py-1 rounded-full text-[10px] font-mono tracking-wider bg-white/95 backdrop-blur-md text-[#6E7179]">
+                        {project.year}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Title & Arrow */}
+                  <div>
+                    <div className="flex items-start justify-between gap-4 mb-2">
+                      <h3 className="font-display font-medium text-2xl text-[#15171B] group-hover:text-[#3657E8] transition-colors">
+                        {project.title}
+                      </h3>
+                      <div className="w-9 h-9 rounded-full bg-[#F7F7F5] border border-[#15171B]/10 flex items-center justify-center text-[#15171B] group-hover:bg-[#3657E8] group-hover:text-white transition-all shrink-0">
+                        <ArrowUpRight size={16} />
+                      </div>
+                    </div>
+
+                    <p className="font-body text-xs text-[#6E7179] line-clamp-2 leading-relaxed mb-6 font-light">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  {/* Stats Strip */}
+                  <div className="grid grid-cols-3 gap-3 pt-4 border-t border-[#15171B]/[0.08]">
+                    {stats.map((st, sIdx) => (
+                      <div key={sIdx} className="space-y-0.5">
+                        <p className="font-display font-semibold text-base text-[#15171B] group-hover:text-[#3657E8] transition-colors">
+                          {st.value}
+                        </p>
+                        <p className="text-[9px] font-mono uppercase tracking-wider text-[#6E7179]">
+                          {st.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </Link>
+              </TiltCard>
+            );
+          })}
+
+          {/* End Card */}
+          <TiltCard className="w-[84vw] sm:w-[56vw] lg:w-[32vw] shrink-0 bg-white rounded-2xl border-2 border-dashed border-[#15171B]/15 hover:border-[#3657E8] transition-colors p-8 flex flex-col items-center justify-center text-center group shadow-sm">
+            <span className="w-12 h-12 rounded-full bg-[#3657E8]/10 text-[#3657E8] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <ArrowRight size={20} />
+            </span>
+            <h3 className="font-display font-medium text-2xl text-[#15171B] mb-3">
+              Have a high-stakes release?
+            </h3>
+            <p className="font-body text-xs text-[#6E7179] max-w-xs mb-6 leading-relaxed font-light">
+              We build dedicated teams around senior engineers and designers for focused 3 to 8 week delivery sprints.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#3657E8] text-white font-display text-xs uppercase tracking-wider font-medium hover:bg-[#2544CC] transition-colors shadow-md"
+            >
+              Start Project Inquiry
+            </Link>
+          </TiltCard>
+        </motion.div>
       </div>
     </section>
   );

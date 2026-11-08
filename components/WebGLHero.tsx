@@ -38,7 +38,7 @@ export default function WebGLHero() {
       0.1,
       100
     );
-    camera.position.set(0, -0.9, 4.8);
+    camera.position.set(0, -0.7, 4.2);
     camera.lookAt(0, 0, 0);
 
     // Pre-calculated Architectural Topological Lattice
@@ -48,9 +48,9 @@ export default function WebGLHero() {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
 
-    const colorPlatinum = new THREE.Color("#CBD5E1");
-    const colorAccent = new THREE.Color("#D6FF3F");
-    const colorMuted = new THREE.Color("#334155");
+    const colorPlatinum = new THREE.Color("#3657E8"); // Cobalt
+    const colorAccent = new THREE.Color("#E77B68"); // Soft Coral
+    const colorMuted = new THREE.Color("#A8ABB2"); // Stone Graphite
 
     let idx = 0;
     const spacingX = 0.24;

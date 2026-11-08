@@ -29,13 +29,13 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#07070A] text-white">
+    <footer className="relative overflow-hidden bg-[#15171B] text-white">
       {/* Top rule */}
-      <div className="border-t border-[var(--color-border)]" />
+      <div className="border-t border-white/10" />
 
       {/* ── Three-column content strip ─────────────────────────────────────── */}
       <div className="container-px mx-auto max-w-[1440px] pt-20 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[var(--color-border)]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
 
           {/* Col 1: Brand + Offices */}
           <div className="md:col-span-5 space-y-8">
@@ -44,28 +44,28 @@ export default function Footer() {
               aria-label="Avorria homepage"
               className="font-display text-2xl tracking-[-0.04em] text-white inline-block"
             >
-              AVORRIA<span className="text-[var(--color-lime)]">.</span>
+              AVORRIA<span className="text-[#3657E8]">.</span>
             </Link>
 
-            <p className="font-body text-sm text-[var(--color-muted)] leading-relaxed max-w-xs">
+            <p className="font-body text-sm text-[#A8ABB2] leading-relaxed max-w-xs">
               Digital development and applied intelligence. Designing and engineering high-performance websites and intelligent business systems.
             </p>
 
             {/* Office addresses */}
             <div className="space-y-4">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/30 block mb-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-1">
                   London
                 </span>
-                <span className="font-mono text-xs text-[var(--color-muted)]">
+                <span className="font-mono text-xs text-[#A8ABB2]">
                   Shoreditch · EC2A · United Kingdom
                 </span>
               </div>
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/30 block mb-1">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50 block mb-1">
                   New York
                 </span>
-                <span className="font-mono text-xs text-[var(--color-muted)]">
+                <span className="font-mono text-xs text-[#A8ABB2]">
                   Tribeca · NY 10013 · United States
                 </span>
               </div>
@@ -83,7 +83,7 @@ export default function Footer() {
           {/* Col 2: Practice + Navigation */}
           <div className="md:col-span-3 space-y-8">
             <div>
-              <h4 className="font-mono text-[10px] font-light uppercase tracking-[0.22em] text-white/30 mb-5">
+              <h4 className="font-mono text-[10px] font-light uppercase tracking-[0.22em] text-white/50 mb-5">
                 Practice
               </h4>
               <ul className="space-y-2.5">
@@ -91,10 +91,10 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="group inline-flex items-center gap-1 font-mono text-xs text-[var(--color-muted)] hover:text-white transition-colors duration-200"
+                      className="group inline-flex items-center gap-1 font-mono text-xs text-[#A8ABB2] hover:text-[#3657E8] transition-colors duration-200"
                     >
                       {label}
-                      <ArrowUpRight size={10} className="text-white/20 group-hover:text-[var(--color-lime)] transition-colors duration-200" />
+                      <ArrowUpRight size={10} className="text-white/20 group-hover:text-[#3657E8] transition-colors duration-200" />
                     </Link>
                   </li>
                 ))}
@@ -105,7 +105,7 @@ export default function Footer() {
           {/* Col 3: Navigation + Social + Contact */}
           <div className="md:col-span-4 space-y-8">
             <div>
-              <h4 className="font-mono text-[10px] font-light uppercase tracking-[0.22em] text-white/30 mb-5">
+              <h4 className="font-mono text-[10px] font-light uppercase tracking-[0.22em] text-white/50 mb-5">
                 Navigation
               </h4>
               <ul className="space-y-2.5">
@@ -113,7 +113,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="group inline-flex items-center gap-1.5 font-mono text-xs text-[var(--color-muted)] hover:text-white transition-colors duration-200"
+                      className="group inline-flex items-center gap-1.5 font-mono text-xs text-[#A8ABB2] hover:text-[#3657E8] transition-colors duration-200"
                     >
                       {label}
                       <ArrowUpRight
@@ -127,7 +127,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="font-mono text-[10px] font-light uppercase tracking-[0.22em] text-white/30 mb-5">
+              <h4 className="font-mono text-[10px] font-light uppercase tracking-[0.22em] text-white/50 mb-5">
                 Follow
               </h4>
               <ul className="space-y-2.5">
@@ -137,7 +137,7 @@ export default function Footer() {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-1.5 font-mono text-xs text-[var(--color-muted)] hover:text-white transition-colors duration-200"
+                      className="group inline-flex items-center gap-1.5 font-mono text-xs text-[#A8ABB2] hover:text-[#3657E8] transition-colors duration-200"
                     >
                       {label}
                       <ArrowUpRight
@@ -152,7 +152,7 @@ export default function Footer() {
 
             <a
               href="mailto:hello@avorria.com"
-              className="inline-block font-mono text-sm text-white hover:text-[var(--color-lime)] transition-colors duration-200"
+              className="inline-block font-mono text-sm text-white hover:text-[#3657E8] transition-colors duration-200"
             >
               hello@avorria.com
             </a>
@@ -165,10 +165,10 @@ export default function Footer() {
             © {new Date().getFullYear()} Avorria Ltd. All rights reserved.
           </p>
           <div className="flex items-center gap-6 font-mono text-[11px] text-white/25">
-            <Link href="/privacy" className="hover:text-white/50 transition-colors duration-200">
+            <Link href="/privacy" className="hover:text-[#3657E8]/50 transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-white/50 transition-colors duration-200">
+            <Link href="/terms" className="hover:text-[#3657E8]/50 transition-colors duration-200">
               Terms
             </Link>
           </div>

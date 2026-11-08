@@ -123,7 +123,7 @@ export default function AILab() {
   const metric3 = useCountUp("100", metricsInView, 1200);
 
   return (
-    <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
+    <section ref={sectionRef} className="section-pad border-t border-white/10 bg-[var(--color-bg)] relative overflow-hidden">
       {/* Section annotation — 05 */}
       <span className="section-annotation hidden lg:block" aria-hidden="true">
         05 — Applied AI
@@ -135,11 +135,11 @@ export default function AILab() {
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-[var(--color-border)]"
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 pb-8 border-b border-white/10"
         >
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Cpu size={15} className="text-[var(--color-lime)]" />
+              <Cpu size={15} className="text-[#3657E8]" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
                 05 / Applied AI &amp; Automation
               </span>
@@ -162,7 +162,7 @@ export default function AILab() {
             initial={{ opacity: 0, y: 24 }}
             animate={metricsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0, ease: [0.16, 1, 0.3, 1] }}
-            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]"
+            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[#22242A] border border-white/10"
           >
             <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1 tabular-nums">
               -{metric1}%
@@ -179,7 +179,7 @@ export default function AILab() {
             initial={{ opacity: 0, y: 24 }}
             animate={metricsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]"
+            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[#22242A] border border-white/10"
           >
             <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1 tabular-nums">
               {metric2}.4%
@@ -196,7 +196,7 @@ export default function AILab() {
             initial={{ opacity: 0, y: 24 }}
             animate={metricsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
-            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)]"
+            className="p-6 md:p-8 rounded-[var(--radius-card)] bg-[#22242A] border border-white/10"
           >
             <span className="font-display font-bold text-3xl md:text-4xl text-white block mb-1 tabular-nums">
               {metric3}%
@@ -229,15 +229,15 @@ export default function AILab() {
                   className={`p-6 rounded-[var(--radius-card)] border text-left transition-all duration-200 cursor-pointer flex items-center justify-between ${
                     isSelected
                       ? "bg-[var(--color-panel-elevated)] border-white/20 text-white shadow-xl"
-                      : "bg-[var(--color-panel)] border-[var(--color-border)] text-white/70 hover:border-white/15 hover:text-white"
+                      : "bg-[#22242A] border-white/10 text-white/70 hover:border-white/15 hover:text-white"
                   }`}
                 >
                   <div className="flex items-center gap-4">
                     <div
                       className={`w-9 h-9 rounded-lg flex items-center justify-center border ${
                         isSelected
-                          ? "bg-white/10 border-white/20 text-[var(--color-lime)]"
-                          : "bg-[var(--color-bg)] border-[var(--color-border)] text-[var(--color-muted)]"
+                          ? "bg-white/10 border-white/20 text-[#3657E8]"
+                          : "bg-[var(--color-bg)] border-white/10 text-[var(--color-muted)]"
                       }`}
                     >
                       <ModIcon size={17} />
@@ -261,7 +261,7 @@ export default function AILab() {
                     size={15}
                     className={`transition-transform duration-200 ${
                       isSelected
-                        ? "text-[var(--color-lime)] translate-x-1"
+                        ? "text-[#3657E8] translate-x-1"
                         : "text-[var(--color-muted)] opacity-40"
                     }`}
                   />
@@ -272,7 +272,7 @@ export default function AILab() {
 
           {/* Architecture Blueprint Display Panel */}
           <div className="lg:col-span-7">
-            <div className="h-full p-8 md:p-10 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)] flex flex-col justify-between">
+            <div className="h-full p-8 md:p-10 rounded-[var(--radius-card)] bg-[#22242A] border border-white/10 flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeModule.id}
@@ -283,10 +283,10 @@ export default function AILab() {
                   className="space-y-8"
                 >
                   {/* Top Bar */}
-                  <div className="flex items-center justify-between pb-6 border-b border-[var(--color-border)]">
+                  <div className="flex items-center justify-between pb-6 border-b border-white/10">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center">
-                        <ActiveIcon size={19} className="text-[var(--color-lime)]" />
+                      <div className="w-10 h-10 rounded-lg bg-[var(--color-bg)] border border-white/10 flex items-center justify-center">
+                        <ActiveIcon size={19} className="text-[#3657E8]" />
                       </div>
                       <div>
                         <h3 className="font-display font-semibold text-xl text-white">
@@ -298,7 +298,7 @@ export default function AILab() {
                       </div>
                     </div>
 
-                    <span className="font-mono text-[11px] px-3 py-1 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] text-[var(--color-lime)]">
+                    <span className="font-mono text-[11px] px-3 py-1 rounded-full bg-[var(--color-bg)] border border-white/10 text-[#3657E8]">
                       Active Practice
                     </span>
                   </div>
@@ -317,7 +317,7 @@ export default function AILab() {
                       {activeModule.specs.map((spec) => (
                         <div
                           key={spec.label}
-                          className="p-3.5 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)]"
+                          className="p-3.5 rounded-lg bg-[var(--color-bg)] border border-white/10"
                         >
                           <span className="font-mono text-[10px] text-[var(--color-muted)] block uppercase">
                             {spec.label}
@@ -339,9 +339,9 @@ export default function AILab() {
                       {activeModule.architecture.map((layer, lIdx) => (
                         <div
                           key={layer}
-                          className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[var(--color-bg)]/60 border border-[var(--color-border)] text-xs font-mono text-white/90"
+                          className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[var(--color-bg)]/60 border border-white/10 text-xs font-mono text-white/90"
                         >
-                          <span className="text-[var(--color-lime)] font-semibold">
+                          <span className="text-[#3657E8] font-semibold">
                             0{lIdx + 1}
                           </span>
                           <span>{layer}</span>
@@ -353,7 +353,7 @@ export default function AILab() {
               </AnimatePresence>
 
               {/* Action */}
-              <div className="mt-8 pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center justify-between gap-4">
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
                 <span className="font-mono text-xs text-[var(--color-muted)]">
                   Custom VPC deployments available for enterprise engagements.
                 </span>

@@ -306,15 +306,15 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-[#050508] text-white">
+      <body className="bg-[#F7F7F5] text-[#15171B]">
         {/* WCAG 2.2 AA Skip Link */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-[var(--color-lime)] focus:text-black focus:font-mono focus:text-xs focus:font-semibold focus:rounded-full focus:shadow-2xl focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-[#3657E8] focus:text-white focus:font-mono focus:text-xs focus:font-semibold focus:rounded-full focus:shadow-2xl focus:outline-none"
         >
           Skip to main content
         </a>
-        <CursorSpotlight />
+        
         <div className="film-grain" aria-hidden="true" />
         <Preloader />
         <CustomCursor />

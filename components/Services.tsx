@@ -116,7 +116,7 @@ export default function Services() {
   const inView = useInView(sectionRef, { once: true, margin: "-12%" });
 
   return (
-    <section ref={sectionRef} className="section-pad border-t border-[var(--color-border)] relative bg-[var(--color-bg)] overflow-hidden">
+    <section ref={sectionRef} className="section-pad border-t border-[#15171B]/[0.08] relative bg-[var(--color-bg)] overflow-hidden">
       {/* Section annotation — 03 */}
       <span className="section-annotation hidden lg:block" aria-hidden="true">
         03 — Capabilities
@@ -133,11 +133,11 @@ export default function Services() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
-              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#6E7179]">
                 03 / Capabilities &amp; Solutions
               </span>
             </div>
-            <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white">
+            <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-[#15171B]">
               Digital systems engineered to<br />
               <span className="text-gradient-silver">grow, streamline &amp; scale.</span>
             </h2>
@@ -145,7 +145,7 @@ export default function Services() {
 
           <Link
             href="/services"
-            className="font-mono text-xs uppercase tracking-widest text-white/80 hover:text-[var(--color-lime)] transition-colors duration-200 flex items-center gap-2 group pb-2"
+            className="font-mono text-xs uppercase tracking-widest text-[#15171B]/80 hover:text-[#3657E8] transition-colors duration-200 flex items-center gap-2 group pb-2"
           >
             <span>Explore All Capabilities</span>
             <ArrowRight
@@ -179,8 +179,8 @@ export default function Services() {
                   aria-pressed={isActive}
                   className={`group relative text-left w-full p-6 md:p-7 rounded-[var(--radius-card)] border transition-all duration-300 flex items-center justify-between cursor-pointer ${
                     isActive
-                      ? "bg-[var(--color-panel-elevated)] text-white border-white/20 shadow-xl"
-                      : "bg-[var(--color-panel)] text-white/70 border-[var(--color-border)] hover:border-white/20 hover:text-white"
+                      ? "bg-[var(--color-panel-elevated)] text-[#15171B] border-white/20 shadow-xl"
+                      : "bg-[#F7F7F5] text-[#15171B]/70 border-[#15171B]/[0.08] hover:border-white/20 hover:text-[#15171B]"
                   }`}
                 >
                   {/* Left accent bar on active */}
@@ -196,13 +196,13 @@ export default function Services() {
                     <span
                       className={`font-mono text-xs tracking-wider tabular-nums font-semibold ${
                         isActive
-                          ? "text-[var(--color-lime)]"
-                          : "text-[var(--color-muted)] group-hover:text-white/60"
+                          ? "text-[#3657E8]"
+                          : "text-[#6E7179] group-hover:text-[#15171B]/60"
                       }`}
                     >
                       {service.number}
                     </span>
-                    <span className="font-display text-base md:text-lg font-semibold tracking-tight text-white">
+                    <span className="font-display text-base md:text-lg font-semibold tracking-tight text-[#15171B]">
                       {service.shortTitle}
                     </span>
                   </div>
@@ -211,8 +211,8 @@ export default function Services() {
                     size={16}
                     className={`transition-all duration-200 ${
                       isActive
-                        ? "text-[var(--color-lime)] translate-x-1"
-                        : "text-[var(--color-muted)] group-hover:text-white group-hover:translate-x-1 opacity-50"
+                        ? "text-[#3657E8] translate-x-1"
+                        : "text-[#6E7179] group-hover:text-[#15171B] group-hover:translate-x-1 opacity-50"
                     }`}
                   />
                 </motion.button>
@@ -222,7 +222,7 @@ export default function Services() {
 
           {/* Right Column: Dynamic Detail Panel */}
           <div className="lg:col-span-7">
-            <div className="relative h-full min-h-[460px] md:min-h-[480px] p-8 md:p-12 rounded-[var(--radius-card)] bg-[var(--color-panel)] border border-[var(--color-border)] overflow-hidden flex flex-col justify-between">
+            <div className="relative h-full min-h-[460px] md:min-h-[480px] p-8 md:p-12 rounded-[var(--radius-card)] bg-[#F7F7F5] border border-[#15171B]/[0.08] overflow-hidden flex flex-col justify-between">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeService.id}
@@ -235,24 +235,24 @@ export default function Services() {
                   <div>
                     {/* Header badge & icon */}
                     <div className="flex items-center justify-between mb-8">
-                      <div className="w-12 h-12 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-xl bg-[var(--color-bg)] border border-[#15171B]/[0.08] flex items-center justify-center">
                         <ActiveIcon
                           size={22}
-                          className="text-[var(--color-lime)]"
+                          className="text-[#3657E8]"
                         />
                       </div>
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[var(--color-muted)] px-3 py-1.5 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] font-medium">
+                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#6E7179] px-3 py-1.5 rounded-full bg-[var(--color-bg)] border border-[#15171B]/[0.08] font-medium">
                         Practice {activeService.number}
                       </span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-display font-semibold text-2xl md:text-3xl text-white mb-4 leading-snug">
+                    <h3 className="font-display font-semibold text-2xl md:text-3xl text-[#15171B] mb-4 leading-snug">
                       {activeService.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed mb-8 max-w-xl">
+                    <p className="font-body text-sm md:text-base text-[#6E7179] leading-relaxed mb-8 max-w-xl">
                       {activeService.description}
                     </p>
 
@@ -261,7 +261,7 @@ export default function Services() {
                       {activeService.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1.5 rounded-full text-xs font-mono text-white/80 bg-[var(--color-bg)] border border-[var(--color-border)]"
+                          className="px-3 py-1.5 rounded-full text-xs font-mono text-[#15171B]/80 bg-[var(--color-bg)] border border-[#15171B]/[0.08]"
                         >
                           {tag}
                         </span>
@@ -270,7 +270,7 @@ export default function Services() {
                   </div>
 
                   {/* Actions: EXPLORE SERVICE + SCOPE ENGAGEMENT + CASE STUDY */}
-                  <div className="pt-6 border-t border-[var(--color-border)] flex flex-wrap items-center gap-4">
+                  <div className="pt-6 border-t border-[#15171B]/[0.08] flex flex-wrap items-center gap-4">
                     <Link
                       href={activeService.href}
                       className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-lime)] text-[var(--color-bg)] font-display font-bold text-xs uppercase tracking-wider hover:bg-white transition-colors duration-200"
@@ -282,7 +282,7 @@ export default function Services() {
                     <MagneticButton>
                       <Link
                         href={`/contact?service=${activeService.id}`}
-                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-white font-mono text-xs uppercase tracking-wider hover:border-white transition-colors duration-200"
+                        className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-[#15171B] font-mono text-xs uppercase tracking-wider hover:border-white transition-colors duration-200"
                       >
                         Scope Engagement
                       </Link>
@@ -291,10 +291,10 @@ export default function Services() {
                     <Link
                       href={activeService.proofSlug}
                       data-cursor="view"
-                      className="inline-flex items-center gap-2 px-4 py-3 rounded-full border border-transparent hover:border-white/20 text-white/70 hover:text-white font-mono text-xs uppercase tracking-wider transition-colors duration-200"
+                      className="inline-flex items-center gap-2 px-4 py-3 rounded-full border border-transparent hover:border-white/20 text-[#15171B]/70 hover:text-[#15171B] font-mono text-xs uppercase tracking-wider transition-colors duration-200"
                     >
                       Case Study
-                      <ArrowUpRight size={13} className="text-[var(--color-muted)]" />
+                      <ArrowUpRight size={13} className="text-[#6E7179]" />
                     </Link>
                   </div>
                 </motion.div>
@@ -302,7 +302,7 @@ export default function Services() {
 
               {/* Subdued Watermark */}
               <div
-                className="absolute right-4 -bottom-4 font-display font-black text-[clamp(7rem,18vw,14rem)] leading-none text-white/[0.02] select-none pointer-events-none tracking-tighter"
+                className="absolute right-4 -bottom-4 font-display font-black text-[clamp(7rem,18vw,14rem)] leading-none text-[#15171B]/[0.02] select-none pointer-events-none tracking-tighter"
                 aria-hidden="true"
               >
                 {activeService.number}

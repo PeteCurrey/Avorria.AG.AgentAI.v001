@@ -82,7 +82,7 @@ export default function Preloader() {
         >
           {/* Top Label */}
           <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-6">
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-white/80 font-medium">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#15171B]/80 font-medium">
               AVORRIA · LONDON &amp; NEW YORK
             </span>
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)]">
@@ -95,7 +95,7 @@ export default function Preloader() {
             <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-muted)] mb-3">
               DIGITAL FLAGSHIP PRACTICE
             </span>
-            <div className="font-display font-medium text-[clamp(4.5rem,16vw,12rem)] leading-[0.9] tracking-[-0.04em] text-white tabular-nums flex items-baseline">
+            <div className="font-display font-medium text-[clamp(4.5rem,16vw,12rem)] leading-[0.9] tracking-[-0.04em] text-[#15171B] tabular-nums flex items-baseline">
               <span>{count < 10 ? `00${count}` : count < 100 ? `0${count}` : count}</span>
               <span className="text-[var(--color-muted)] text-[0.35em] ml-3 font-mono font-normal">
                 / 100
@@ -105,7 +105,7 @@ export default function Preloader() {
 
           {/* Bottom Hairline Progress Indicator */}
           <div className="w-full space-y-3">
-            <div className="w-full h-[1px] bg-white/10 relative overflow-hidden">
+            <div className="w-full h-[1px] bg-[#15171B]/10 relative overflow-hidden">
               <motion.div
                 className="absolute inset-y-0 left-0 bg-white"
                 style={{ width: `${count}%` }}
@@ -117,7 +117,7 @@ export default function Preloader() {
               <button
                 type="button"
                 onClick={handleSkip}
-                className="hover:text-white transition-colors duration-200 cursor-pointer underline underline-offset-4"
+                className="hover:text-[#15171B] transition-colors duration-200 cursor-pointer underline underline-offset-4"
                 aria-label="Skip introduction animation"
               >
                 SKIP INTRO [ESC]

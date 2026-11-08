@@ -3,19 +3,20 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import MagneticButton from "./MagneticButton";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Sparkles } from "lucide-react";
 
 const WebGLHero = dynamic(() => import("./WebGLHero"), { ssr: false });
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { delayChildren: 0.6, staggerChildren: 0.11 } },
+  visible: { transition: { delayChildren: 0.3, staggerChildren: 0.1 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
@@ -29,142 +30,140 @@ const itemVariants = {
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // ── Parallax depth layers ─────────────────────────────────────────────────
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  const headlineY  = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
-  const subtextY   = useTransform(scrollYProgress, [0, 1], ["0%", "-26%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
-  // Ghosted watermark drifts at a slightly different rate — deepest layer
-  const watermarkY = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
+  const headlineY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "14%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[92vh] lg:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[var(--color-bg)]"
+      className="relative min-h-[95vh] lg:min-h-screen flex flex-col justify-between pt-32 pb-16 overflow-hidden bg-[#F7F7F5] border-b border-[#15171B]/[0.08]"
     >
-      {/* WebGL lattice */}
-      <WebGLHero />
+      {/* Interactive WebGL Spatial Canvas (Cobalt & Soft Coral Pointcloud) */}
+      <div className="absolute inset-0 pointer-events-none opacity-45">
+        <WebGLHero />
+      </div>
 
-      {/* Depth vignettes */}
+      {/* Atmospheric depth gradients on porcelain */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)] via-transparent to-[var(--color-bg)] pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.025)_0%,transparent_70%)] pointer-events-none"
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F7F7F5]/50 to-[#F7F7F5] pointer-events-none"
         aria-hidden="true"
       />
 
-      {/* ── Ghosted AVORRIA watermark — deepest z-layer ───────────────────── */}
-      <motion.div
-        style={{ y: watermarkY }}
-        aria-hidden="true"
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
-      >
-        <span
-          className="font-display text-white uppercase leading-none"
-          style={{
-            fontSize: "clamp(6rem, 18vw, 16rem)",
-            fontWeight: 200,
-            letterSpacing: "-0.04em",
-            opacity: 0.015,
-            whiteSpace: "nowrap",
-          }}
+      <div className="container-px mx-auto max-w-[1440px] w-full relative z-10 flex-1 flex flex-col justify-center my-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          style={{ opacity: heroOpacity }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
         >
-          AVORRIA
-        </span>
-      </motion.div>
+          {/* Left Column: Monumental Editorial Display Typography (7 cols) */}
+          <div className="lg:col-span-7 space-y-8">
+            {/* Studio Status Pill */}
+            <motion.div variants={itemVariants} className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#3657E8] animate-pulse" aria-hidden="true" />
+              <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#15171B]/60">
+                Creative Engineering · London & New York
+              </span>
+            </motion.div>
 
-      {/* ── Content ──────────────────────────────────────────────────────────── */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ opacity: heroOpacity }}
-        className="relative z-10 container-px mx-auto max-w-[1440px] w-full pt-28 pb-16 lg:pt-32 lg:pb-20"
-      >
-        {/* Eyebrow — LEFT aligned, compact institutional */}
-        <motion.div variants={itemVariants} className="flex items-center gap-2.5 mb-6">
-          <span className="w-1 h-1 rounded-full bg-[var(--color-lime)] shrink-0" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
-            London · New York · Digital Development &amp; Applied Intelligence
-          </span>
-        </motion.div>
+            {/* Headline — Light, confident editorial scale */}
+            <motion.div variants={itemVariants} style={{ y: headlineY }}>
+              <h1 className="font-display text-[clamp(2.9rem,7.5vw,7.2rem)] font-light leading-[0.98] tracking-[-0.045em] text-[#15171B] uppercase">
+                DIGITAL CRAFT.<br />
+                <span className="text-[#3657E8] font-normal">APPLIED AI.</span><br />
+                COMMERCIAL FORCE.
+              </h1>
+            </motion.div>
 
-        {/* Headline — refined, understated architectural scale */}
-        <motion.div style={{ y: headlineY }}>
-          <motion.h1
-            variants={itemVariants}
-            className="font-display text-[clamp(2rem,4.2vw,3.8rem)] leading-[1.04] tracking-[-0.035em] text-white mb-6 max-w-3xl"
-          >
-            Architecting digital<br className="hidden sm:block" />
-            flagships &amp;{" "}
-            <span className="text-gradient-lime">applied intelligence.</span>
-          </motion.h1>
-        </motion.div>
+            {/* Body Description */}
+            <motion.p
+              variants={itemVariants}
+              className="font-body text-[#6E7179] text-base md:text-xl max-w-xl leading-relaxed font-light"
+            >
+              We design and engineer bespoke web flagships, spatial 3D interactions, and autonomous AI systems for category-defining brands.
+            </motion.p>
 
-        {/* Subtitle + CTAs — concise, commercial & confident */}
-        <motion.div style={{ y: subtextY }} className="max-w-2xl">
-          <motion.p
-            variants={itemVariants}
-            className="font-body text-sm sm:text-base text-[var(--color-muted)] mb-8 leading-[1.65] max-w-xl"
-          >
-            We turn ambitious ideas into exceptional digital experiences and intelligent business systems.
-            From high-performance websites and immersive digital platforms to bespoke automation,
-            Avorria combines creative ambition with engineering precision to help businesses grow,
-            operate efficiently, and compete effectively.
-          </motion.p>
+            {/* CTAs */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-4 pt-4"
+            >
+              <MagneticButton>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#3657E8] text-white font-display font-medium text-sm hover:bg-[#2544CC] transition-all duration-300 shadow-[0_12px_24px_-6px_rgba(54,87,232,0.35)]"
+                >
+                  Initiate Commission
+                  <ArrowRight size={15} />
+                </Link>
+              </MagneticButton>
 
+              <MagneticButton>
+                <Link
+                  href="/work"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white border border-[#15171B]/12 text-[#15171B] font-display font-medium text-sm hover:border-[#15171B]/30 hover:bg-[#F0F0EC] transition-all duration-300"
+                >
+                  Explore Selected Work
+                  <ArrowUpRight size={15} />
+                </Link>
+              </MagneticButton>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Featured Cinematic Visual Art (5 cols) */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-3.5"
+            style={{ y: imageY }}
+            className="lg:col-span-5 relative"
           >
-            <MagneticButton>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-display font-medium text-xs sm:text-sm hover:bg-[var(--color-lime)] transition-all duration-200 group shadow-[0_4px_20px_rgba(255,255,255,0.08)]"
-              >
-                Start a Conversation
-                <ArrowRight
-                  size={14}
-                  className="group-hover:translate-x-1 transition-transform duration-200"
-                />
-              </Link>
-            </MagneticButton>
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-[#15171B]/10 bg-white group">
+              {/* Bespoke high-resolution editorial imagery */}
+              <Image
+                src="/imagery/hero/spatial-monolith.webp"
+                alt="Avorria Creative Technology & Spatial Engineering"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#15171B]/80 via-transparent to-transparent" />
 
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] bg-transparent text-white/75 font-display font-light text-xs sm:text-sm hover:border-white/25 hover:text-white transition-all duration-200"
-            >
-              Explore Selected Work
-              <ArrowUpRight size={13} className="text-[var(--color-muted)]" />
-            </Link>
+              {/* Floating Architectural Annotation Card */}
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-lg bg-white/95 backdrop-blur-md border border-[#15171B]/10 flex items-center justify-between text-xs">
+                <div>
+                  <span className="font-mono uppercase text-[10px] tracking-widest text-[#3657E8] block mb-1 font-semibold">
+                    Featured Showcase
+                  </span>
+                  <p className="font-display font-medium text-[#15171B] text-sm">
+                    Axiom Finance · Spatial WebGL Architecture
+                  </p>
+                </div>
+                <Link
+                  href="/work/axiom-finance"
+                  className="w-8 h-8 rounded-full bg-[#15171B] text-white flex items-center justify-center hover:bg-[#3657E8] transition-colors shrink-0"
+                  aria-label="View Axiom Finance Case Study"
+                >
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
+      </div>
 
-        {/* ── Bottom Metadata Strip ─────────────────────────────────────────── */}
-        <motion.div
-          variants={itemVariants}
-          className="mt-14 pt-5 border-t border-[var(--color-border)] hidden md:grid grid-cols-3 gap-8 text-left"
-        >
-          <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Core Focus</span>
-            <span className="font-mono text-[11px] text-white/60">Digital Experiences · Next.js 16</span>
-          </div>
-          <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Applied Systems</span>
-            <span className="font-mono text-[11px] text-white/60">Intelligent AI &amp; Workflow Automation</span>
-          </div>
-          <div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30 block mb-1">Availability</span>
-            <span className="font-mono text-[11px] text-[var(--color-lime)]">Commissions Open — Q1 2027</span>
-          </div>
-        </motion.div>
-      </motion.div>
+      {/* Ticker strip at the foot of the hero */}
+      <div className="container-px mx-auto max-w-[1440px] w-full pt-8 border-t border-[#15171B]/[0.08] flex flex-wrap items-center justify-between text-xs font-mono text-[#6E7179] gap-4 z-10">
+        <span>LONDON · NEW YORK</span>
+        <span className="text-[#3657E8] font-semibold">60% LIGHT EDITORIAL · 25% DEEP OBSIDIAN</span>
+        <span>NEXT.JS 16 · THREE.JS · APPLIED AI</span>
+      </div>
     </section>
   );
 }

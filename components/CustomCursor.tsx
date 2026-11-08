@@ -8,19 +8,19 @@ type CursorType = "default" | "hover" | "view" | "drag";
 const RING_CONFIG: Record<CursorType, { size: number; classes: string }> = {
   default: {
     size: 32,
-    classes: "border border-white/30 bg-transparent",
+    classes: "border border-[#15171B]/35 bg-transparent",
   },
   hover: {
     size: 48,
-    classes: "border border-white/60 bg-white/5",
+    classes: "border border-[#3657E8] bg-[#3657E8]/10",
   },
   view: {
     size: 78,
-    classes: "border-none bg-white text-black",
+    classes: "border-none bg-[#15171B] text-white",
   },
   drag: {
     size: 64,
-    classes: "border border-white/60 bg-black/70 backdrop-blur-sm text-white",
+    classes: "border border-[#15171B]/50 bg-[#FFFFFF]/90 backdrop-blur-md text-[#15171B]",
   },
 };
 
@@ -141,7 +141,7 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-white pointer-events-none z-[10001]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-[#15171B] pointer-events-none z-[10001]"
         style={{
           willChange: "transform",
           opacity: visible ? 1 : 0,

@@ -56,7 +56,7 @@ export const projects: Project[] = [
     category: "Web Design & Development",
     tags: ["Next.js 16", "Three.js", "Fintech"],
     year: 2025,
-    cover: "/work/axiom-cover.jpg",
+    cover: "/imagery/projects/axiom-finance.webp",
     images: ["/work/axiom-1.jpg", "/work/axiom-2.jpg"],
     description:
       "A flagship digital architecture for high-growth financial technology. We engineered an immersive WebGL-powered platform delivering sub-second LCP and high-conversion onboarding workflows.",
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     category: "Brand & Digital",
     tags: ["Brand Identity", "Kinetic Motion", "WebGL"],
     year: 2025,
-    cover: "/work/nocturne-cover.jpg",
+    cover: "/imagery/projects/nocturne-studio.webp",
     images: ["/work/nocturne-1.jpg"],
     description:
       "End-to-end brand identity and portfolio architecture for high-end audio production studios. Full cinematic choreography powered by hardware-accelerated scroll and Framer Motion.",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     category: "Applied AI & Systems",
     tags: ["AI Systems", "Autonomous Agents", "Next.js 16"],
     year: 2026,
-    cover: "/work/vanta-cover.jpg",
+    cover: "/imagery/projects/vanta-ai.webp",
     images: ["/work/vanta-1.jpg", "/work/vanta-2.jpg"],
     description:
       "Product design and architecture showcase for an enterprise AI operations platform. Features an in-browser multi-agent sandbox that demonstrates real-time routing and deterministic task resolution.",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     category: "Web Design & Development",
     tags: ["Headless Commerce", "Motion Design", "Next.js 16"],
     year: 2025,
-    cover: "/work/bloom-cover.jpg",
+    cover: "/imagery/projects/bloom-health.webp",
     images: ["/work/bloom-1.jpg"],
     description:
       "Headless D2C wellness storefront with bespoke liquid components, particle accents, and a story-first editorial design language engineered for sub-second checkout speeds.",
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     category: "Web Design & Development",
     tags: ["Architecture", "Three.js", "Next.js 16"],
     year: 2026,
-    cover: "/work/meridian-cover.jpg",
+    cover: "/imagery/projects/meridian-arc.webp",
     images: ["/work/meridian-1.jpg"],
     description:
       "High-precision digital portfolio architecture for luxury architectural studios. Real-time 3D glTF model inspection, spatial lighting simulator, and responsive editorial layout.",

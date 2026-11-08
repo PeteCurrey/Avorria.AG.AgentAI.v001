@@ -1,26 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* ─── Palette ─── */
-  --color-bg:     #050508;
-  --color-panel:  #0b0b12;
-  --color-lime:   #D6FF3F;
-  --color-violet: #7C5CFF;
-  --color-cyan:   #38E1FF;
-  --color-coral:  #FF5C38;
-  --color-white:  #FFFFFF;
-  --color-muted:  #6B7280;
-  --color-border: rgba(255,255,255,0.08);
+  /* ─── Avorria Design System 2.0 Palette ─── */
+  --color-porcelain: #F7F7F5;
+  --color-white:     #FFFFFF;
+  --color-stone:     #E5E5E0;
+  --color-graphite:  #22242A;
+  --color-charcoal:  #15171B;
+  --color-cobalt:    #3657E8;
+  --color-coral:     #E77B68;
+  --color-muted:     #6E7179;
+  --color-border:    rgba(34, 36, 42, 0.08);
+
+  /* Semantic aliases */
+  --color-bg:        var(--color-porcelain);
+  --color-panel:     var(--color-white);
+  --color-accent:    var(--color-cobalt);
 
   /* ─── Typography: Work Sans ─── */
   --font-display: var(--font-work-sans), sans-serif;
   --font-body:    var(--font-work-sans), sans-serif;
 
-  /* ─── Spacing scale overrides ─── */
-  --spacing-section: 8rem;
+  /* ─── Spacing ─── */
+  --spacing-section: clamp(6rem, 12vw, 11rem);
 
-  /* ─── Radius ─── */
-  --radius-card: 0.25rem;   /* 4px — sharp, architectural */
+  /* ─── Radius: Refined Architectural ─── */
+  --radius-card: 0.375rem; /* 6px */
   --radius-pill: 9999px;
 
   /* ─── Transitions ─── */
@@ -35,26 +40,33 @@
   }
 
   :root {
-    color-scheme: dark;
-    --font-work-sans: "Work Sans", system-ui, sans-serif;
-    --color-bg: #07070A;
-    --color-panel: #0E0E14;
-    --color-panel-elevated: #15151E;
-    --color-lime: #D6FF3F;
-    --color-violet: #8B5CF6;
-    --color-cyan: #38BDF8;
-    --color-coral: #F43F5E;
+    color-scheme: light;
+    --font-work-sans: "Work Sans", system-ui, -apple-system, sans-serif;
+    
+    /* Design System 2.0 Core Tokens */
+    --color-porcelain: #F7F7F5;
     --color-white: #FFFFFF;
-    --color-muted: #8E8E9A;
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-border-hover: rgba(255, 255, 255, 0.18);
+    --color-stone: #E5E5E0;
+    --color-graphite: #22242A;
+    --color-charcoal: #15171B;
+    --color-cobalt: #3657E8;
+    --color-coral: #E77B68;
+    
+    /* Functional Mappings */
+    --color-bg: #F7F7F5;
+    --color-text: #15171B;
+    --color-panel: #FFFFFF;
+    --color-panel-elevated: #F0F0EC;
+    --color-muted: #6E7179;
+    --color-border: rgba(21, 23, 27, 0.09);
+    --color-border-hover: rgba(54, 87, 232, 0.35);
   }
 
   html {
-    background-color: var(--color-bg);
-    color: var(--color-white);
+    background-color: var(--color-porcelain);
+    color: var(--color-charcoal);
     font-family: var(--font-work-sans), sans-serif;
-    font-weight: 300; /* Work Sans Light for all other text */
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: auto;
@@ -62,31 +74,32 @@
   }
 
   body {
-    background-color: var(--color-bg);
+    background-color: var(--color-porcelain);
+    color: var(--color-charcoal);
     font-family: var(--font-work-sans), sans-serif;
-    font-weight: 300; /* Work Sans Light */
+    font-weight: 300;
     overflow-x: clip;
   }
 
   p, span, a, li, input, textarea, button, label {
-    font-weight: 300; /* Work Sans Light */
+    font-weight: 300;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-work-sans), sans-serif;
-    font-weight: 200 !important; /* Work Sans Extra Light */
+    font-weight: 200 !important;
     line-height: 1.02;
-    letter-spacing: -0.042em;
+    letter-spacing: -0.04em;
+    color: var(--color-charcoal);
   }
 
-  /* Hide native cursor on pointer:fine devices only */
+  /* Desktop fine pointer cursor */
   @media (pointer: fine) {
     *, *::before, *::after {
       cursor: none !important;
     }
   }
 
-  /* Hide custom cursor on touch/coarse devices */
   @media (pointer: coarse), (hover: none) {
     .custom-cursor {
       display: none !important;
@@ -94,62 +107,48 @@
   }
 
   ::selection {
-    background-color: var(--color-lime);
-    color: var(--color-bg);
+    background-color: var(--color-cobalt);
+    color: #FFFFFF;
   }
 
-  /* Scrollbar - Clean architectural scrollbar */
+  /* Minimal custom scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-bg);
+    background: var(--color-porcelain);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(21, 23, 27, 0.16);
     border-radius: 9999px;
-    transition: background-color 0.2s ease;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(54, 87, 232, 0.6);
   }
 
-  /* Architectural subtle ambient vignette - replaces noisy animated grain */
-  .film-grain {
-    display: none;
-  }
-
-  /* 28s Infinite CSS Marquee */
+  /* Keyframe animations */
   @keyframes marquee-track {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
   }
 
   @keyframes marquee-track-reverse {
-    from {
-      transform: translate3d(-50%, 0, 0);
-    }
-    to {
-      transform: translate3d(0, 0, 0);
-    }
+    from { transform: translate3d(-50%, 0, 0); }
+    to { transform: translate3d(0, 0, 0); }
   }
 
   .animate-marquee-css {
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: marquee-track 28s linear infinite;
+    animation: marquee-track 32s linear infinite;
   }
 
   .animate-marquee-css-reverse {
     display: flex;
     width: max-content;
     will-change: transform;
-    animation: marquee-track-reverse 28s linear infinite;
+    animation: marquee-track-reverse 32s linear infinite;
   }
 
   a {
@@ -168,34 +167,36 @@
     font-weight: 300;
   }
 
+  /* Editorial gradient text */
+  .text-gradient-dark {
+    background: linear-gradient(180deg, #15171B 15%, rgba(34, 36, 42, 0.65) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-cobalt {
+    background: linear-gradient(135deg, #15171B 20%, #3657E8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
   .text-gradient-silver {
-    background: linear-gradient(180deg, #FFFFFF 15%, rgba(255, 255, 255, 0.55) 100%);
+    background: linear-gradient(180deg, #FFFFFF 15%, rgba(255, 255, 255, 0.65) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .text-gradient-lime {
-    background: linear-gradient(135deg, #FFFFFF 25%, #D6FF3F 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-gradient-violet {
-    background: linear-gradient(135deg, #FFFFFF 25%, #C4B5FD 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .bg-glass {
-    background: rgba(14, 14, 20, 0.75);
+  .bg-glass-light {
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
   }
 
-  .border-subtle {
-    border-color: var(--color-border);
+  .bg-glass-dark {
+    background: rgba(21, 23, 27, 0.88);
+    backdrop-filter: blur(16px);
   }
 
   .section-pad {
@@ -203,92 +204,26 @@
   }
 
   .container-px {
-    padding-inline: clamp(1.25rem, 5vw, 5rem);
+    padding-inline: clamp(1.5rem, 5.5vw, 6rem);
   }
 
-  /* ── Architectural Card ───────────────────────────────────────────────────
-   * Sharp corners, lit top edge (inner highlight), crisp hover ring.
-   * Use instead of rounded-xl on all panel cards.
-   * ────────────────────────────────────────────────────────────────────────── */
+  /* Architectural Card: Sharp, crisp border, elegant ambient elevation */
   .card-arch {
     border-radius: var(--radius-card);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px -4px rgba(0, 0, 0, 0.03);
+    transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-arch:hover {
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 0 0 1px rgba(255, 255, 255, 0.16);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 20px 36px -6px rgba(54, 87, 232, 0.08);
   }
 
-  /* ── Section Annotation ───────────────────────────────────────────────────
-   * Vertical monospace index number in section left margin.
-   * Desktop only. Positioned absolute — parent must be relative.
-   * ────────────────────────────────────────────────────────────────────────── */
-  .section-annotation {
-    position: absolute;
-    left: clamp(0.5rem, 1.5vw, 2rem);
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: center center;
-    font-family: var(--font-work-sans), monospace;
-    font-size: 10px;
-    font-weight: 300;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.2);
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  /* ── Section reveal keyframes (used by @layer utilities) ─────────────────── */
-  @keyframes reveal-up {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── Clip-path text mask reveal ────────────────────────────────────────────
-   * Wraps a container whose inner text slides up into view from below
-   * a clipping rectangle. Zero layout shift, compositor-only.
-   * Usage: parent gets overflow-hidden, child gets .reveal-mask-inner
-   * ────────────────────────────────────────────────────────────────────────── */
-  @keyframes reveal-mask {
-    from { clip-path: inset(0 0 100% 0); transform: translateY(16px); }
-    to   { clip-path: inset(0 0 0% 0);   transform: translateY(0); }
-  }
-
-  /* ── Image reveal: inset wipe from right ─────────────────────────────────── */
-  @keyframes reveal-wipe-right {
-    from { clip-path: inset(0 100% 0 0); }
-    to   { clip-path: inset(0 0% 0 0); }
-  }
-
-  /* ── Stagger utility: each direct child animates in with offset delay ────── */
-  .stagger-children > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .stagger-children.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
-  .stagger-children.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 90ms; }
-  .stagger-children.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 180ms; }
-  .stagger-children.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 270ms; }
-  .stagger-children.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 360ms; }
-  .stagger-children.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 450ms; }
-
-  /* ── WCAG 2.2 AA Focus Visible ─────────────────────────────────────────── */
+  /* WCAG 2.2 AA Focus Visible */
   :focus-visible {
-    outline: 2px solid var(--color-lime) !important;
+    outline: 2px solid var(--color-cobalt) !important;
     outline-offset: 3px !important;
   }
 
-  /* ── Respect prefers-reduced-motion for all CSS animations ───────────────── */
   @media (prefers-reduced-motion: reduce) {
-    .stagger-children > * {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
     .animate-marquee-css,
     .animate-marquee-css-reverse {
       animation-duration: 0.01ms !important;

@@ -70,7 +70,7 @@ export default function FAQ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <section className="section-pad border-t border-[var(--color-border)] bg-[var(--color-bg)] relative overflow-hidden">
+      <section className="section-pad border-t border-[#15171B]/[0.08] bg-[var(--color-bg)] relative overflow-hidden">
         {/* Section annotation — 07 */}
         <span className="section-annotation hidden lg:block" aria-hidden="true">
           07 — Inquiries
@@ -82,25 +82,25 @@ export default function FAQ() {
             <div className="lg:col-span-4 lg:sticky lg:top-32">
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
-                <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
+                <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#6E7179]">
                   07 / Common Inquiries
                 </span>
               </div>
-              <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-white mb-6">
+              <h2 className="font-display text-[clamp(2.4rem,5.5vw,5.5rem)] leading-[0.98] tracking-[-0.042em] text-[#15171B] mb-6">
                 Commercial clarity.<br />
                 <span className="text-gradient-silver">Technical precision.</span>
               </h2>
-              <p className="font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed mb-8">
+              <p className="font-body text-sm md:text-base text-[#6E7179] leading-relaxed mb-8">
                 Key considerations regarding engagement parameters, pricing models, technical standards, and delivery velocity.
               </p>
-              <div className="p-6 card-arch bg-[var(--color-panel)] border border-[var(--color-border)] space-y-2">
-                <p className="font-display font-medium text-white text-sm">Complex project scope?</p>
-                <p className="font-body text-xs text-[var(--color-muted)]">
+              <div className="p-6 card-arch bg-[#FFFFFF] border border-[#15171B]/[0.08] space-y-2">
+                <p className="font-display font-medium text-[#15171B] text-sm">Complex project scope?</p>
+                <p className="font-body text-xs text-[#6E7179]">
                   Our practice directors respond to technical inquiries within 4 business hours.
                 </p>
                 <a
                   href="mailto:hello@avorria.com"
-                  className="font-mono text-xs text-white hover:text-[var(--color-lime)] transition-colors inline-block pt-2"
+                  className="font-mono text-xs text-[#15171B] hover:text-[#3657E8] transition-colors inline-block pt-2"
                 >
                   hello@avorria.com →
                 </a>
@@ -108,7 +108,7 @@ export default function FAQ() {
             </div>
 
             {/* Right Accordion Column: 6 Items */}
-            <div className="lg:col-span-8 divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+            <div className="lg:col-span-8 divide-y divide-[var(--color-border)] border-y border-[#15171B]/[0.08]">
               {FAQS_6_ITEMS.map((faq, idx) => {
                 const isOpen = openIndex === idx;
                 return (
@@ -120,7 +120,7 @@ export default function FAQ() {
                       aria-controls={`faq-answer-${faq.id}`}
                       className="w-full flex items-center justify-between gap-6 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-xl py-1 px-1 -mx-1"
                     >
-                      <span className="font-display font-semibold text-lg md:text-xl text-white group-hover:text-white/90 transition-colors duration-200 leading-snug">
+                      <span className="font-display font-semibold text-lg md:text-xl text-[#15171B] group-hover:text-[#15171B]/90 transition-colors duration-200 leading-snug">
                         {faq.question}
                       </span>
 
@@ -129,7 +129,7 @@ export default function FAQ() {
                         className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
                           isOpen
                             ? "border-[var(--color-lime)] bg-[var(--color-lime)] text-[var(--color-bg)]"
-                            : "border-[var(--color-border)] group-hover:border-[var(--color-lime)]/50 text-[var(--color-muted)] group-hover:text-white"
+                            : "border-[#15171B]/[0.08] group-hover:border-[var(--color-lime)]/50 text-[#6E7179] group-hover:text-[#15171B]"
                         }`}
                       >
                         <Plus
@@ -150,7 +150,7 @@ export default function FAQ() {
                           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                           className="overflow-hidden"
                         >
-                          <p className="pt-4 font-body text-sm md:text-base text-[var(--color-muted)] leading-relaxed max-w-3xl">
+                          <p className="pt-4 font-body text-sm md:text-base text-[#6E7179] leading-relaxed max-w-3xl">
                             {faq.answer}
                           </p>
                         </motion.div>

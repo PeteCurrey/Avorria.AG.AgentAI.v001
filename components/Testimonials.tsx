@@ -80,7 +80,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="section-pad border-t border-[var(--color-border)] bg-[var(--color-panel)] relative overflow-hidden"
+      className="section-pad border-t border-[#15171B]/[0.08] bg-[var(--color-panel)] relative overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -94,24 +94,24 @@ export default function Testimonials() {
         <div className="flex items-center justify-between mb-16">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-lime)]" />
-            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-muted)]">
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#6E7179]">
               07 / Why Avorria · Standards &amp; Impact
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--color-lime)]">
+          <div className="flex items-center gap-1.5 text-xs font-mono text-[#3657E8]">
             <Star size={14} className="fill-[var(--color-lime)]" />
             <Star size={14} className="fill-[var(--color-lime)]" />
             <Star size={14} className="fill-[var(--color-lime)]" />
             <Star size={14} className="fill-[var(--color-lime)]" />
             <Star size={14} className="fill-[var(--color-lime)]" />
-            <span className="ml-2 text-white font-medium">5.0 / 5.0</span>
+            <span className="ml-2 text-[#15171B] font-medium">5.0 / 5.0</span>
           </div>
         </div>
 
         {/* Testimonial Box */}
         <div className="max-w-4xl mx-auto text-center" data-cursor="drag">
-          <Quote size={48} className="text-[var(--color-lime)] mx-auto mb-8 opacity-60" />
+          <Quote size={48} className="text-[#3657E8] mx-auto mb-8 opacity-60" />
 
           {/* Big Display Quote */}
           <div className="min-h-[180px] md:min-h-[220px] flex items-center justify-center">
@@ -122,7 +122,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display text-[clamp(1.85rem,4vw,3.4rem)] text-white leading-[1.15] tracking-[-0.038em] mb-8"
+                className="font-display text-[clamp(1.85rem,4vw,3.4rem)] text-[#15171B] leading-[1.15] tracking-[-0.038em] mb-8"
               >
                 &ldquo;{t.quote}&rdquo;
               </motion.blockquote>
@@ -140,14 +140,14 @@ export default function Testimonials() {
               className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mb-12"
             >
               <div>
-                <p className="font-display font-medium text-lg text-white">{t.author}</p>
-                <p className="font-body text-xs md:text-sm text-[var(--color-muted)]">
-                  {t.role} · <span className="text-white/80">{t.company}</span>
+                <p className="font-display font-medium text-lg text-[#15171B]">{t.author}</p>
+                <p className="font-body text-xs md:text-sm text-[#6E7179]">
+                  {t.role} · <span className="text-[#15171B]/80">{t.company}</span>
                 </p>
               </div>
 
               {/* Refined Metric Pill */}
-              <span className="px-3.5 py-1 rounded-full bg-[var(--color-panel)] border border-white/20 text-white font-mono text-xs tracking-wider uppercase">
+              <span className="px-3.5 py-1 rounded-full bg-[var(--color-panel)] border border-[#15171B]/20 text-[#15171B] font-mono text-xs tracking-wider uppercase">
                 {t.metric}
               </span>
             </motion.div>
@@ -160,7 +160,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={prev}
                 aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-full border border-[var(--color-border)] hover:border-white/40 flex items-center justify-center text-white/80 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-10 h-10 rounded-full border border-[#15171B]/[0.08] hover:border-[#15171B]/40 flex items-center justify-center text-[#15171B]/80 hover:text-[#15171B] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <ChevronLeft size={16} />
               </button>
@@ -179,7 +179,7 @@ export default function Testimonials() {
                         progressKey.current += 1;
                       }}
                       aria-label={`Jump to testimonial ${i + 1}`}
-                      className="relative w-10 md:w-14 h-1 rounded-full bg-white/10 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      className="relative w-10 md:w-14 h-1 rounded-full bg-[#15171B]/10 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
                     >
                       {isActive && (
                         <motion.div
@@ -187,11 +187,11 @@ export default function Testimonials() {
                           initial={{ width: "0%" }}
                           animate={{ width: isPaused ? undefined : "100%" }}
                           transition={{ duration: 6, ease: "linear" }}
-                          className="absolute inset-y-0 left-0 bg-white"
+                          className="absolute inset-y-0 left-0 bg-[#3657E8]"
                         />
                       )}
                       {!isActive && i < current && (
-                        <div className="w-full h-full bg-white/40" />
+                        <div className="w-full h-full bg-[#3657E8]/40" />
                       )}
                     </button>
                   );
@@ -202,13 +202,13 @@ export default function Testimonials() {
                 type="button"
                 onClick={next}
                 aria-label="Next testimonial"
-                className="w-10 h-10 rounded-full border border-[var(--color-border)] hover:border-white/40 flex items-center justify-center text-white/80 hover:text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="w-10 h-10 rounded-full border border-[#15171B]/[0.08] hover:border-[#15171B]/40 flex items-center justify-center text-[#15171B]/80 hover:text-[#15171B] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <ChevronRight size={16} />
               </button>
             </div>
 
-            <span className="font-mono text-[11px] text-[var(--color-muted)] uppercase tracking-widest">
+            <span className="font-mono text-[11px] text-[#6E7179] uppercase tracking-widest">
               0{current + 1} / 0{TESTIMONIALS_DATA.length} · Auto-advancing
             </span>
           </div>
