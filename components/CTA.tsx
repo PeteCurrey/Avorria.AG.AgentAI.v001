@@ -7,19 +7,23 @@ import { ArrowRight } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 
 /**
- * CTA — High-Impact Cobalt Section
+ * Section 09 — FINAL CONVERSION
  *
- * Replaces the old green background with Cobalt (#3657E8).
- * Premium architectural typography with pure white text and an understated
- * white consultation initiation button.
+ * Exact Brief Specification:
+ * Headline: "Have something ambitious in mind?"
+ * Supporting copy: "Let's explore what we could build together."
+ * CTA: Start a Project.
+ *
+ * High-impact architectural Cobalt (#3657E8) with pure white typography,
+ * oversized typographic arrow depth layer, and direct partner SLA assurance.
  */
-export default function CTA() {
+export default function FinalConversionCTA() {
   return (
     <section className="relative overflow-hidden bg-[#3657E8] text-white">
       {/* Large typographic arrow anchor */}
       <span
         aria-hidden="true"
-        className="absolute right-0 bottom-0 font-display leading-none select-none pointer-events-none text-white/[0.08] text-[clamp(12rem,30vw,28rem)] font-extralight tracking-[-0.05em] translate-x-[6%] translate-y-[12%]"
+        className="absolute right-0 bottom-0 font-display leading-none select-none pointer-events-none text-white/[0.08] text-[clamp(12rem,32vw,30rem)] font-extralight tracking-[-0.05em] translate-x-[6%] translate-y-[12%]"
       >
         →
       </span>
@@ -31,37 +35,37 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-3 mb-10"
+          className="flex items-center gap-3 mb-8"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-white shrink-0" />
           <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-white/80">
-            07 / Direct Engagement · Q1 2027 Commissioning Schedule
+            09 / Direct Engagement · Commissions Open
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline — Exact requested text */}
         <motion.h2
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(2.8rem,7vw,7rem)] leading-[0.96] tracking-[-0.045em] text-white mb-10 max-w-5xl font-light uppercase"
+          className="font-display text-[clamp(2.8rem,7vw,7.2rem)] leading-[0.96] tracking-[-0.045em] text-white mb-8 max-w-5xl font-light"
         >
-          Turn ambitious vision into exceptional digital reality.
+          Have something ambitious in mind?
         </motion.h2>
 
-        {/* Supporting description */}
+        {/* Supporting copy — Exact requested text */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="font-body text-white/80 text-base md:text-xl max-w-2xl mb-12 leading-relaxed font-light"
+          className="font-body text-white/85 text-xl md:text-3xl max-w-2xl mb-12 leading-relaxed font-light"
         >
-          We partner with founders, executive teams, and creative directors who refuse to accept generic digital experiences. Senior pod access from discovery to deployment.
+          Let&apos;s explore what we could build together.
         </motion.p>
 
-        {/* Action Button */}
+        {/* CTA Button — Exact requested label */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,9 +76,9 @@ export default function CTA() {
           <MagneticButton>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-9 py-5 rounded-full bg-white text-[#15171B] font-display font-medium text-sm md:text-base hover:bg-[#F7F7F5] transition-all duration-300 shadow-xl group"
+              className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-white text-[#15171B] font-display font-medium text-sm md:text-base hover:bg-[#F7F7F5] transition-all duration-300 shadow-2xl group"
             >
-              <span>Initiate Project Commission</span>
+              <span>Start a Project</span>
               <ArrowRight
                 size={16}
                 className="group-hover:translate-x-1 transition-transform duration-200"
@@ -83,7 +87,7 @@ export default function CTA() {
           </MagneticButton>
 
           <span className="font-mono text-xs text-white/70">
-            Direct response within 24 hours · NDA signed on request
+            Direct partner response within 24 hours · Mutual NDA signed on request
           </span>
         </motion.div>
       </div>

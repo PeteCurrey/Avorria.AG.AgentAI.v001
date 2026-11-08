@@ -160,7 +160,7 @@ export default function AvorriaSculpturalObject({
 
     // Animation Loop
     let animationId: number;
-    let clock = new THREE.Clock();
+    const clock = new THREE.Clock();
 
     const animate = () => {
       animationId = requestAnimationFrame(animate);

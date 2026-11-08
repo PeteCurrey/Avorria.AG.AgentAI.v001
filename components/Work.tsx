@@ -94,7 +94,7 @@ export default function Work() {
             <div className="flex items-center gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3657E8]" />
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#6E7179]">
-                03 / Selected Client Commissions
+                04 / Selected Work
               </span>
             </div>
             <h2 className="font-display text-[clamp(2.4rem,5.5vw,4.8rem)] text-[#15171B] leading-[1.02] tracking-[-0.04em]">
